@@ -20,19 +20,40 @@ body {
 
 }
 
+/*****************************************
+			* Large Desktop
+*****************************************/
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}/* Large desktop */
 
 /*****************************************
 				* Desktop
 *****************************************/
 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}// Portrait tablet to landscape and desktop
 
 /*****************************************
 				* Tablet
 *****************************************/
 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}// Portrait tablet to landscape & desktop
 
 
 /*****************************************
 				* Mobile
 *****************************************/
 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+
+}// mobile phones
