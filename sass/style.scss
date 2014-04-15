@@ -1,6 +1,6 @@
 body {
     min-height: 100%;
-    background-color: black;
+    background-color: white;
 }
 
 * {
@@ -16,6 +16,68 @@ body {
     text-align: center;
 }
 
-.candidate-image {
-    background
+
+.desktop-left-section {
+    height: 100%;
+    background-color: red;
+    width: 100%;
+
+    @media only screen and (min-width: 1000px) {
+        float: left;
+        width: 30%;
+    }
+
+    .candidate-image {
+        background-color: purple;
+        height: 200px;
+        width: 100%;
+
+    }
+
+    .candidate-committees {
+        background-color: green;
+        height: 100px;
+        display: none;
+
+        @media only screen and (min-width: 1000px) {
+            float: left;
+            width: 100%;
+            display: block;
+        }
+    }
+
+    .bills-sponsored-section {
+        background-color: yellow;
+        height: 400px;
+        width: 100%;
+
+        @media only screen and (min-width: 1000px) {
+            float: left;
+            width: 100%;
+        }
+    }
+
+}
+
+.desktop-right-section {
+    height: 100%;
+    background-color: pink;
+    width: 100%;
+
+    @media only screen and (min-width: 1000px) {
+        display: inline-block;
+        width: 70%;
+    }
+
+    .campaign-contributions-section {
+        height: 300px;
+        background-color: lightblue;
+        width: 100%;
+    }
+
+    .industry-influence-section {
+        height: 300px;
+        background-color: orchid;
+        width: 100%;
+    }
 }
