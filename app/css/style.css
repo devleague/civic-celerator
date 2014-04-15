@@ -19,73 +19,73 @@ body {
   text-align: center;
 }
 
-/* line 20, ../../sass/style.scss */
+/* line 19, ../../sass/style.scss */
 .desktop-left-section {
   height: 100%;
   background-color: red;
   width: 100%;
 }
 @media only screen and (min-width: 1000px) {
-  /* line 20, ../../sass/style.scss */
+  /* line 19, ../../sass/style.scss */
   .desktop-left-section {
     float: left;
     width: 30%;
   }
 }
-/* line 30, ../../sass/style.scss */
+/* line 29, ../../sass/style.scss */
 .desktop-left-section .candidate-image {
   background-color: purple;
   height: 200px;
   width: 100%;
 }
-/* line 37, ../../sass/style.scss */
+/* line 36, ../../sass/style.scss */
 .desktop-left-section .candidate-committees {
   background-color: green;
   height: 100px;
   display: none;
 }
 @media only screen and (min-width: 1000px) {
-  /* line 37, ../../sass/style.scss */
+  /* line 36, ../../sass/style.scss */
   .desktop-left-section .candidate-committees {
     float: left;
     width: 100%;
     display: block;
   }
 }
-/* line 49, ../../sass/style.scss */
+/* line 48, ../../sass/style.scss */
 .desktop-left-section .bills-sponsored-section {
   background-color: yellow;
   height: 400px;
   width: 100%;
 }
 @media only screen and (min-width: 1000px) {
-  /* line 49, ../../sass/style.scss */
+  /* line 48, ../../sass/style.scss */
   .desktop-left-section .bills-sponsored-section {
     float: left;
     width: 100%;
   }
 }
 
-/* line 62, ../../sass/style.scss */
+/* line 61, ../../sass/style.scss */
 .desktop-right-section {
   height: 100%;
   background-color: pink;
   width: 100%;
 }
 @media only screen and (min-width: 1000px) {
-  /* line 62, ../../sass/style.scss */
+  /* line 61, ../../sass/style.scss */
   .desktop-right-section {
     display: inline-block;
     width: 70%;
   }
 }
-/* line 72, ../../sass/style.scss */
+/* line 71, ../../sass/style.scss */
 .desktop-right-section .campaign-contributions-section {
   height: 300px;
   background-color: lightblue;
   width: 100%;
 }
-/* line 78, ../../sass/style.scss */
+/* line 77, ../../sass/style.scss */
 .desktop-right-section .industry-influence-section {
   height: 300px;
   background-color: orchid;
