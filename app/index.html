@@ -26,98 +26,50 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
         </ul>
-        <form class="navbar-form navbar-left" role="search">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Kingtak</a></li>
+          <li><a href="#">Raytak</a></li>
+          <li><a href="#">Tytak</a></li>
+          <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
-  <div ng-controller="CarouselDemoCtrl">
-    <div style="height: 305px">
-      <carousel interval="myInterval">
-        <slide ng-repeat="slide in slides" active="slide.active">
-          <img ng-src="{{slide.image}}" style="margin:auto;">
-          <div class="carousel-caption">
-            <h4>Slide {{$index}}</h4>
-            <p>{{slide.text}}</p>
-          </div>
-        </slide>
-      </carousel>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <a class="btn btn-info" ng-click="addSlide()">Add Slide</a>
-      </div>
-      <div class="col-md-6">
-        Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
-        <br />Enter a negative number to stop the interval.
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
+  <!-- ******************* ENDS NAV-BAR ******************* -->
 
   <div class="container">
 
     <div class="candidate-section">
-<<<<<<< HEAD
-      <h1> Candidate Name </h1>
-      <h2> Platform </h2>
-      <div class="candidate-image">
-        
-      </div>
-=======
+
         <div class="candidate-info">
           <h1> Candidate Name </h1>
           <h2> Platform </h2>
         </div <!-- end of div.candidate-info -->
->>>>>>> b91fef31274d3236533b6ea954c41b9aa329bd66
 
-      </div> <!-- end of div.candidate-section -->
+    </div> <!-- end of div.candidate-section -->
 
     <div class="desktop-left-section">
 
       <div class="candidate-image">
-        <h1> Candidate Image</h1>
+
+        <div ng-controller="CarouselCtrl">
+          <div carousel interval="3000">
+            <div slide ng-repeat="slide in slides" active="slide.active">
+              <img ng-src="{{slide.image}}" style="margin: auto;">
+              <div class="carousel-caption">
+                <h4>Slide {{$index}}</h4>
+                <p>{{slide.text}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div> <!-- end of div.candidate-image -->
 
       <div class="candidate-committees">
@@ -142,25 +94,26 @@
       </div> <!-- end of div.industry-influence-section -->
 
       <div class="bills-sponsored-section-desktop">
-        <h1> Bills </h1>
+
+        <div ng-controller="TabsCtrl">
+          <tabset vertical="true" type="navType">
+            <tab heading="Bill 1">Politics Translates</tab>
+            <tab heading="Bill 2">To Many Ticks</tab>
+            <tab heading="Bill 3">Kingtak Says</tab>
+            <tab heading="Bill 4">Recursion is a must</tab>
+            <tab heading="Bill 5">and PI is necessary</tab>
+            <tab heading="Bill 6">Kingtak </tab>
+            <tab heading="Bill 7">Rocks out</tab>
+            <tab heading="Bill 8">With his socks out</tab>
+            <tab heading="Bill 9">Hand gestures</tab>
+          </tabset>
+        </div>
+
       </div> <!-- end of div.bills-sponsored-section -->
 
     </div> <!-- end div.desktop-right-section -->
 
   </div> <!-- end of div.container -->
-
-<<<<<<< HEAD
-=======
-
-
-
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
->>>>>>> b91fef31274d3236533b6ea954c41b9aa329bd66
-
 
   <div ng-view></div>
 
@@ -170,6 +123,8 @@
   -->
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>

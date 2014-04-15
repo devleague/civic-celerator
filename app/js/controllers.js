@@ -2,4 +2,30 @@
 
 /* Controllers */
 
-var App = angular.module( 'myApp.controllers', [] );
+var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
+
+
+App.controller( 'CarouselCtrl', [ '$scope', function ( $scope ) {
+
+  $scope.slides = [];
+  $scope.slides.push({ text : 'Cats!', image : 'http://placekitten.com/300/200' });
+  $scope.slides.push({text: 'cats!', image: 'http://placekitten.com/301/200'});
+  $scope.slides.push({text: 'cats!', image: 'http://placekitten.com/302/200'});
+
+  $scope.setActive = function ( idx ) {
+
+    $scope.slides[idx].active = true;
+
+  };
+
+}]);
+
+App.controller( 'TabsCtrl', [ '$scope', function ( $scope ) {
+
+  $scope.tabs = [
+
+    { title : 'Bill1', content : 'HK432N2' },
+    { title : 'Bill2', content : 'MSDF231', disabled : true }
+  ];
+
+}])
