@@ -9,10 +9,66 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/js/foundation.min.js"></script>
 </head>
 <body>
+  <!-- Foundation nav-bar -->
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">My Site</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="active"><a href="#">Right Button Active</a></li>
+        <li class="has-dropdown">
+          <a href="#">Right Button Dropdown</a>
+          <ul class="dropdown">
+            <li><a href="#">First link in dropdown</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><a href="#">Left Nav Button</a></li>
+      </ul>
+    </section>
+  </nav>
+
+  <div class="container">
+
+    <div class="candidate-section">
+      <h1> Candidate Name </h1>
+      <h2> Platform </h2>
+      <div class="candidate-image"></div>
+
+    </div> <!-- end of div.candidate-section -->
+
+    <div class="campain-contributions-section">
+
+
+    </div> <!-- end of div.campaing-contributions-section -->
+
+    <div class="industry-influence-section">
+
+
+    </div> <!-- end of div.industry-influence-section -->
+
+    <div class="bills-sponsored-section">
+
+
+    </div> <!-- end of div.bills-sponsored-section -->
+
+  </div> <!-- end of div.container -->
+
   <ul class="menu">
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/view2">view2</a></li>
   </ul>
+
+
 
   <div ng-view></div>
 
