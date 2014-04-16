@@ -21,7 +21,7 @@ body {
     background-color: white;
     @media only screen and (max-width: 1000px) {
         padding: 0px !important;
-        margin: 0px 0px 0px 20px !important;
+        margin: 0 0 20px 0 !important;
         width: 100% !important;
     }
 }
@@ -118,7 +118,6 @@ body {
         display: inline-block;
         width: 70%;
     }
-<<<<<<< HEAD
 }
 
 .campaign-contributions-section {
@@ -154,7 +153,6 @@ body {
         display: none;
     }
 }
-=======
 
     .campaign-contributions-section {
         text-align: center;
@@ -206,7 +204,6 @@ body {
             display: none;
         }
     }
-}
 
 .footer {
     background-color: black;
@@ -222,4 +219,3 @@ body {
     }
 }
 
->>>>>>> 759d36a413bdca0bc725ddd54e246d98fca6b5cf
