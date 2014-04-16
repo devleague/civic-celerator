@@ -2,30 +2,41 @@
 
 /* Controllers */
 
-var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
+// var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 
 
-App.controller( 'CarouselCtrl', [ '$scope', function ( $scope ) {
+// App.controller( 'CarouselCtrl', [ '$scope', function ( $scope ) {
 
-  $scope.slides = [];
-  $scope.slides.push({ text : 'Cats!', image : 'http://placekitten.com/300/200' });
-  $scope.slides.push({text: 'cats!', image: 'http://placekitten.com/301/200'});
-  $scope.slides.push({text: 'cats!', image: 'http://placekitten.com/302/200'});
+//   $scope.slides = [];
+//   $scope.slides.push({ text : 'Cats!', image : 'http://placekitten.com/300/200' });
+//   $scope.slides.push({text: 'cats!', image: 'http://placekitten.com/301/200'});
+//   $scope.slides.push({text: 'cats!', image: 'http://placekitten.com/302/200'});
 
-  $scope.setActive = function ( idx ) {
+//   $scope.setActive = function ( idx ) {
 
-    $scope.slides[idx].active = true;
+//     $scope.slides[idx].active = true;
 
-  };
+//   };
 
-}]);
+// }]);
 
-App.controller( 'TabsCtrl', [ '$scope', function ( $scope ) {
+// App.controller( 'TabsCtrl', [ '$scope', function ( $scope ) {
 
-  $scope.tabs = [
+//   $scope.tabs = [
 
-    { title : 'Bill1', content : 'HK432N2' },
-    { title : 'Bill2', content : 'MSDF231', disabled : true }
-  ];
+//     { title : 'Bill1', content : 'HK432N2' },
+//     { title : 'Bill2', content : 'MSDF231', disabled : true }
+//   ];
 
-}])
+// }])
+
+var myApp = angular.module('myApp.controllers', []);
+
+myApp.controller('customController', ['$scope',
+  function($scope) {
+    var industrymoneya = [3, 23, 12, 15, 24, 34];
+    var data = {industrymoney: industrymoneya}
+    $scope.pData = data;
+  }
+])
+

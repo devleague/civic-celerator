@@ -275,11 +275,13 @@ h2 {
             }
         }
 
-        .influence-graph {
-            background: url("http://enterpriseprogrammer.files.wordpress.com/2013/01/sucessfactorspiechart.png");
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
+        .influence-graph-section {
             min-height: 400px;
+
+            .pie-chart {
+                width: 100%;
+                height: 300px;
+            }
         }
     }
 
