@@ -43,7 +43,9 @@
   <div class="container">
 
     <div class="bills-name-section">
-
+      <div class="left-x">
+        <span>&nbsp;</span>
+      </div> <!-- end of div.left-arrow -->
       <div class="bills-info">
         <h1> Bill Name </h1>
       </div> <!-- end of div.candidate-info -->
@@ -55,14 +57,14 @@
 
     <div class="desktop-left-section">
 
-      <div class="candidate-committees">
-        <h1> Description </h1>
+      <div class="bill-description-desktop">
+        <h1> Description: </h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. Curabitur euismod pellentesque massa, a egestas turpis pharetra quis.
         </p>
       </div> <!-- end of div.candidate-committees -->
 
       <div class="bills-sponsored-section-desktop">
-        <h1> Bills Sponsored</h1>
+        <h1> Candidate's Supporting</h1>
         <div ng-controller="TabsCtrl">
           <tabset vertical="true" type="navType" class="bill-list">
             <tab class="bill-item" heading="Bill 1">Politics Translates</tab>
@@ -82,28 +84,28 @@
     </div> <!-- end of div.desktop-left-section -->
 
     <div class="desktop-right-section">
-      <div class="industry-influence-section">
+      <div class="bill-industry-influence-section">
         <h1>Monetary Influence (by Industry) </h1>
         <div class="influence-graph"></div> <!-- end of div.influence-graph -->
       </div> <!-- end of div.industry-influence-section -->
-      <div class="bill-page-industry-description">
+      <div class="bill-industry-description">
         <p>Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna. Aliquam dui diam, laoreet eu lacus ut, suscipit commodo quam. Vestibulum vehicula suscipit mauris, id pellentesque turpis ullamcorper quis. Etiam suscipit turpis dui, ut imperdiet mi euismod at. Praesent eget feugiat velit. Fusce eu ultricies tortor. Nam quis nisi ante. Praesent eget volutpat odio.
         </p>
       </div> <!-- end of div.bill-page-industry-description -->
+      <div class="bill-description-mobile">
+        <h1> Description: </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. Curabitur euismod pellentesque massa, a egestas turpis pharetra quis.
+        </p>
+      </div> <!-- end of div.candidate-committees -->
 
-      <div class="bills-sponsored-section-mobile">
-        <h1> Bills Sponsored</h1>
+      <div class="candidate-list-section-mobile">
+        <h1> Candidate's Supporting</h1>
         <div ng-controller="TabsCtrl">
-          <tabset vertical="true" type="navType" class="bill-list">
-            <tab class="bill-item" heading="Bill 1">Politics Translates</tab>
-            <tab class="bill-item" heading="Bill 2">To Many Ticks</tab>
-            <tab class="bill-item" heading="Bill 3">Kingtak Says</tab>
-            <tab class="bill-item" heading="Bill 4">Recursion is a must</tab>
-            <tab class="bill-item" heading="Bill 5">and PI is necessary</tab>
-            <tab class="bill-item" heading="Bill 6">Kingtak </tab>
-            <tab class="bill-item" heading="Bill 7">Rocks out</tab>
-            <tab class="bill-item" heading="Bill 8">With his socks out</tab>
-            <tab class="bill-item" heading="Bill 9">Hand gestures</tab>
+          <tabset vertical="true" type="navType" class="candidate-list">
+            <tab class="candidate-item" heading="Candidate 1">Politics Translates</tab>
+            <tab class="candidate-item" heading="Candidate 2">To Many Ticks</tab>
+            <tab class="candidate-item" heading="Candidate 3">Kingtak Says</tab>
+            <tab class="candidate-item" heading="Candidate 4">Recursion is a must</tab>
           </tabset>
         </div>
       </div> <!-- end of div.bills-sponsored-section -->

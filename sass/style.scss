@@ -31,7 +31,7 @@ h2 {
 
     .navbar-brand {
         color: lightgray;
-        font-size: 1.5em;
+        font-size: 2em;
     }
 
 }
@@ -57,7 +57,8 @@ h2 {
         vertical-align: middle;
         display: inline-block;
         float: left;
-        font-size: 5em;
+        font-size: 4.5em;
+        padding-left: 10px;
     }
 
     .candidate-info {
@@ -66,7 +67,7 @@ h2 {
         h1 {
             font-weight: bold;
             margin-bottom: 0;
-            font-size: 3em;
+            font-size: 2.5em;
         }
 
         h2 {
@@ -78,7 +79,8 @@ h2 {
     .right-arrow {
         display: inline-block;
         float: right;
-        font-size: 5em;
+        font-size: 4.5em;
+        padding-right: 10px;
     }
 }
 
@@ -86,18 +88,28 @@ h2 {
     text-align: center;
     line-height: 100px;
 
+    .left-x {
+        vertical-align: middle;
+        display: inline-block;
+        float: left;
+        font-size: 4em;
+        padding-left: 10px;
+    }
+
     .bills-info {
         display: inline-block;
 
         h1 {
             font-weight: bold;
-            font-size: 3em;
+            font-size: 2.5em;
         }
     }
 
     .right-x {
+        display: inline-block;
         float: right;
         font-size: 4em;
+        padding-right: 10px;
     }
 }
 
@@ -154,6 +166,17 @@ h2 {
         }
     }
 
+    .bill-description-desktop {
+        display: none;
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 1000px) {
+            float: left;
+            width: 80%;
+            display: block;
+        }
+    }
+
     .bills-sponsored-section-desktop {
         width: 100%;
         display: none;
@@ -197,12 +220,17 @@ h2 {
         background-color: lightgray;
         width: 100%;
         margin-bottom: 20px;
+        
+        h1 {
+            padding-top: 20px;
+        }
 
         @media only screen and (min-width: 1000px) {
             text-align: left;
             
             h1 {
                 background-color: white;
+                padding-top: 0;
             }
         }
 
@@ -219,8 +247,16 @@ h2 {
         text-align: center;
         width: 100%;
 
+        h1 {
+            padding-top: 20px;
+        }
+
         @media only screen and (min-width: 1000px) {
             text-align: left;
+
+            h1 {
+                padding-top: 0;
+            }
         }
 
         .influence-graph {
@@ -231,19 +267,91 @@ h2 {
         }
     }
 
+    .bill-industry-influence-section {
+        text-align: center;
+        width: 100%;
+        background-color: lightgray;
+
+        h1 {
+            padding-top: 20px;
+        }
+
+        @media only screen and (min-width: 1000px) {
+            text-align: left;
+
+            h1 {
+                background-color: white;
+                padding-top: 0;
+            }
+        }
+
+        .influence-graph {
+            background: url("http://placekitten.com/600/401");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            min-height: 400px;
+        }
+    }
+
+    .bill-industry-description {
+        background-color: darkgray;
+        padding: 30px;
+        display: none;
+
+        @media only screen and (min-width: 1000px) {
+            display: block;
+        }
+    }
+
+    .bill-description-mobile {
+        width: 100%;
+        padding: 30px;
+
+        @media only screen and (min-width: 1000px) {
+            display: none;
+        }
+        
+    }
+
     .bills-sponsored-section-mobile {
         background-color: lightgray;
         width: 100%;
-        font-size: 1.5em;
 
         h1 {
             text-align: center;
+            padding-top: 20px;
         }
 
         .bill-list {
             background-color: lightgray;
 
             .bill-item {
+                border-bottom: 1px solid white;
+                border-top: 1px solid white;
+                margin-top: 0px;
+
+            }
+            
+        }
+
+        @media only screen and (min-width: 1000px) {
+            display: none;
+        }
+    }
+
+    .candidate-list-section-mobile {
+        background-color: lightgray;
+        width: 100%;
+
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .candidate-list {
+            background-color: lightgray;
+
+            .candidate-item {
                 border-bottom: 1px solid white;
                 border-top: 1px solid white;
                 margin-top: 0px;
@@ -273,14 +381,22 @@ h2 {
         list-style-type: none;
     }
 
-    @media only screen and (min-width: 1000px) {
-            h2 {
-                padding: 30px 100px 0 100px;
-            }
+    h2 {
+        padding: 0 20px 0 20px;
+    }
 
-            p {
-                padding: 0 100px 100px 100px;
-            }
+    p {
+        padding: 0 20px 20px 20px;
+    }
+
+    @media only screen and (min-width: 1000px) {
+        h2 {
+            padding: 30px 100px 0 100px;
         }
+
+        p {
+            padding: 0 100px 100px 100px;
+        }
+    }
 }
 
