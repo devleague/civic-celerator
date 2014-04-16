@@ -22,22 +22,32 @@ myApp.directive('pchart', function($window) {
 
       //if the window gets resized
       window.onresize = function() {
-        scope.render();
+        width = d3.select(element[0]).node().offsetWidth;
+        height = d3.select(element[0]).node().offsetHeight;
+        console.log("resize");
+        svg = d3.select(element[0])
+        .append("svg")
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
+        scope.renderPie();
       };
 
       //watch the window the angular way
       scope.$watch(function() {
         return angular.element(window)[0].innerWidth;
       }, function() {
-        scope.render(scope.pData.industymoney);
+        scope.renderPie();
       });
 
       //continue watching for new values
       scope.$watch('pData', function(newVals, oldVals) {
-        return scope.render(newVals);
+        return scope.renderPie(newVals);
       }, true);
 
-      scope.render = function(data) {
+      scope.renderPie = function() {
+        console.log(width);
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
         //for a bar graph
@@ -55,7 +65,6 @@ myApp.directive('pchart', function($window) {
         var pie = d3.layout.pie()
           .sort(null)
           .value(function(data, i) {
-            console.log(data);
             return scope.pData.industrymoney[i];
           })
 
@@ -102,34 +111,39 @@ myApp.directive('lchart', function($window) {
         .attr('transform', 'translate(0,' + height + ")");
 
       //if the window gets resized
-      window.onresize = function() {
-        scope.render();
-      };
+      // window.onresize = function() {
+      //   scope.renderLine();
+      // };
 
       //watch the window the angular way
       scope.$watch(function() {
         return angular.element(window)[0].innerWidth;
       }, function() {
-        scope.render(scope.lData);
+        scope.renderLine(scope.lData);
       });
 
       //continue watching for new values
       scope.$watch('scope.lData.contributionmoney', function(newVals, oldVals) {
-        return scope.render(newVals);
+        return scope.renderLine(newVals);
       }, true);
 
-      scope.render = function(data) {
+      scope.renderLine = function() {
         //remove the elements (after rerender)
-        svg.selectAll("*").remove();
+        // svg.selectAll("*").remove();
         
         var x = d3.time.scale()
             .range([0, width]);
+
         var y = d3.scale.linear()
             .range([height, 0]);
 
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("right");
 
         var line = d3.svg.line()
             .x(function(point, index) {
@@ -158,7 +172,7 @@ myApp.directive('lchart', function($window) {
         .text("Contribution overall");
 
         svg.append("path")
-        .datum(data)
+        .datum(scope.lData)
         .attr("class", "line")
         .attr("d", line);
 
