@@ -1,6 +1,11 @@
+html,
 body {
     min-height: 100%;
-    background-color: white;
+    background-color: black;
+
+    @media only screen and (max-width: 1000px) {
+        margin: 0px !important;
+    }
 }
 
 * {
@@ -11,8 +16,17 @@ body {
     box-sizing: border-box;
 }
 
+.container {
+    width: 100%;
+    background-color: white;
+    @media only screen and (max-width: 1000px) {
+        padding: 0px !important;
+        margin: 0px 0px 0px 20px !important;
+        width: 100% !important;
+    }
+}
+
 .candidate-section {
-    background-color: blue;
     text-align: center;
 }
 
@@ -21,7 +35,6 @@ body {
 *****************************************/
 .desktop-left-section {
     height: 100%;
-    background-color: red;
     width: 100%;
 
     @media only screen and (min-width: 1000px) {
@@ -30,34 +43,68 @@ body {
     }
 
     .candidate-image {
-        background-color: purple;
-        height: 200px;
-        width: 100%;
+        margin: auto;
+        text-align: center;
 
-    }
-
-    .candidate-committees {
-        background-color: green;
-        height: 100px;
-        display: none;
+        h1 {
+            display: none;;
+        }
 
         @media only screen and (min-width: 1000px) {
-            float: left;
-            width: 100%;
-            display: block;
+            text-align: left;
+
+            h1 {
+                display: block;
+            }
         }
     }
 
-    .bills-sponsored-section-mobile {
-        background-color: yellow;
-        height: 400px;
+    .candidate-committees {
+        display: none;
+
+        @media only screen and (min-width: 1000px) {
+            float: left;
+            width: 80%;
+            display: block;
+
+            h1 {
+                background-color: white;
+            }
+
+            ul {
+                font-size: 1.5em;
+                background-color: lightgray;
+                line-height: 2em;
+            }
+
+            li {
+                list-style-type: none;
+            }
+        }
+    }
+
+    .bills-sponsored-section-desktop {
         width: 100%;
         display: none;
 
         @media only screen and (min-width: 1000px) {
             float: left;
-            width: 100%;
+            width: 80%;
             display: block;
+
+            h1 {
+                background-color: white;
+            }
+
+            ul {
+                font-size: 1.5em;
+                background-color: lightgray;
+                line-height: 2em;
+            }
+
+            li {
+                list-style-type: none;
+            }
         }
     }
 
@@ -65,13 +112,13 @@ body {
 
 .desktop-right-section {
     height: 100%;
-    background-color: pink;
     width: 100%;
 
     @media only screen and (min-width: 1000px) {
         display: inline-block;
         width: 70%;
     }
+<<<<<<< HEAD
 }
 
 .campaign-contributions-section {
@@ -107,3 +154,72 @@ body {
         display: none;
     }
 }
+=======
+
+    .campaign-contributions-section {
+        text-align: center;
+        background-color: lightgray;
+        width: 100%;
+
+        @media only screen and (min-width: 1000px) {
+            text-align: left;
+            
+            h1 {
+                background-color: white;
+            }
+        }
+
+        .contributions-graph {
+            background: url("http://placekitten.com/600/400");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            min-height: 400px;
+
+        }
+    }
+
+    .industry-influence-section {
+        text-align: center;
+        width: 100%;
+
+        @media only screen and (min-width: 1000px) {
+            text-align: left;
+        }
+
+        .influence-graph {
+            background: url("http://placekitten.com/600/401");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            min-height: 400px;
+        }
+    }
+
+    .bills-sponsored-section-mobile {
+        background-color: lightgray;
+        width: 100%;
+
+        h1 {
+            text-align: center;
+        }
+
+        @media only screen and (min-width: 1000px) {
+            display: none;
+        }
+    }
+}
+
+.footer {
+    background-color: black;
+
+    ul {
+        text-align: center;
+        font-size: 2em;
+    }
+
+    li {
+        display: inline;
+        list-style-type: none;
+    }
+}
+
+>>>>>>> 759d36a413bdca0bc725ddd54e246d98fca6b5cf
