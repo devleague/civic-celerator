@@ -38,7 +38,6 @@ myApp.directive('pchart', function($window) {
       }, true);
 
       scope.render = function(data) {
-        console.log("us");
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
         //for a bar graph
@@ -87,7 +86,7 @@ myApp.directive('pchart', function($window) {
   }
 });
 
-myApp.directive('pchart', function($window) {
+myApp.directive('lchart', function($window) {
   return {
     restrict: 'A',
     //happens when everything is associated and attached to the dom
@@ -100,7 +99,7 @@ myApp.directive('pchart', function($window) {
         .attr('width', width)
         .attr('height', height)
         .append('g')
-        .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
+        .attr('transform', 'translate(0,' + height + ")");
 
       //if the window gets resized
       window.onresize = function() {
@@ -111,20 +110,58 @@ myApp.directive('pchart', function($window) {
       scope.$watch(function() {
         return angular.element(window)[0].innerWidth;
       }, function() {
-        scope.render(scope.pData.industymoney);
+        scope.render(scope.lData);
       });
 
       //continue watching for new values
-      scope.$watch('lData', function(newVals, oldVals) {
+      scope.$watch('scope.lData.contributionmoney', function(newVals, oldVals) {
         return scope.render(newVals);
       }, true);
 
       scope.render = function(data) {
-        console.log("us");
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
-        //for a bar graph
-        // var width, height, max;
+        
+        var x = d3.time.scale()
+            .range([0, width]);
+        var y = d3.scale.linear()
+            .range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var line = d3.svg.line()
+            .x(function(point, index) {
+              return x(scope.lData[index].date);
+            })
+            .y(function(point, index){
+              return y(scope.lData[index].contributionmoney);
+            });
+
+        x.domain(d3.extent(scope.lData, function(point, index){ return scope.lData[index].date}));
+        y.domain(d3.extent(scope.lData, function(point, index) { return scope.lData[index].contributionmoney}));
+
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0,"+height+")")
+        .call(xAxis);
+
+        svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy",".71em")
+        .style("text-anchor", "end")
+        .text("Contribution overall");
+
+        svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+
       }
     }
   }
