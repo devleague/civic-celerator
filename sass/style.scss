@@ -16,6 +16,9 @@ body {
     text-align: center;
 }
 
+/*****************************************
+            * Large Desktop
+*****************************************/
 .desktop-left-section {
     height: 100%;
     background-color: red;
@@ -38,23 +41,12 @@ body {
         height: 100px;
         display: none;
 
-<<<<<<< HEAD
-/*****************************************
-			* Large Desktop
-*****************************************/
-
-/* Large desktop */
-@media (min-width: 1200px) {
-
-}/* Large desktop */
-=======
         @media only screen and (min-width: 1000px) {
             float: left;
             width: 100%;
             display: block;
         }
     }
->>>>>>> b91fef31274d3236533b6ea954c41b9aa329bd66
 
     .bills-sponsored-section-mobile {
         background-color: yellow;
@@ -62,19 +54,12 @@ body {
         width: 100%;
         display: none;
 
-<<<<<<< HEAD
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-
-}// Portrait tablet to landscape and desktop
-=======
         @media only screen and (min-width: 1000px) {
             float: left;
             width: 100%;
             display: block;
         }
     }
->>>>>>> b91fef31274d3236533b6ea954c41b9aa329bd66
 
 }
 
@@ -83,45 +68,42 @@ body {
     background-color: pink;
     width: 100%;
 
-<<<<<<< HEAD
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-
-}// Portrait tablet to landscape & desktop
-=======
     @media only screen and (min-width: 1000px) {
         display: inline-block;
         width: 70%;
     }
->>>>>>> b91fef31274d3236533b6ea954c41b9aa329bd66
+}
 
-    .campaign-contributions-section {
-        height: 300px;
-        background-color: lightblue;
-        width: 100%;
-    }
+.campaign-contributions-section {
+    height: 300px;
+    background-color: lightblue;
+    width: 100%;
+}
 
-    .industry-influence-section {
-        height: 300px;
-        background-color: orchid;
-        width: 100%;
-    }
+.industry-influence-section {
+    height: 300px;
+    background-color: orchid;
+    width: 100%;
+}
+/*****************************************
+                * Desktop
+*****************************************/
 
-<<<<<<< HEAD
-/* Landscape phones and down */
-@media (max-width: 480px) {
+/*****************************************
+                * Tablet
+*****************************************/
+
+/*****************************************
+                * Mobile
+*****************************************/
 
 
-}// mobile phones
-=======
-    .bills-sponsored-section-desktop {
-        background-color: yellow;
-        height: 400px;
-        width: 100%;
+.bills-sponsored-section-desktop {
+    background-color: yellow;
+    height: 400px;
+    width: 100%;
 
-        @media only screen and (min-width: 1000px) {
-            display: none;
-        }
+    @media only screen and (min-width: 1000px) {
+        display: none;
     }
 }
->>>>>>> b91fef31274d3236533b6ea954c41b9aa329bd66
