@@ -1,7 +1,7 @@
 html,
 body {
     min-height: 100%;
-    background-color: black;
+    background-color: white;
 
     @media only screen and (max-width: 1000px) {
         margin: 0px !important;
@@ -16,18 +16,89 @@ body {
     box-sizing: border-box;
 }
 
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+.navbar {
+    background-color: black;
+    border-color: black;
+    margin-bottom: 0px;
+
+    .navbar-brand {
+        color: lightgray;
+        font-size: 1.5em;
+    }
+
+}
+
 .container {
     width: 100%;
     background-color: white;
-    @media only screen and (max-width: 1000px) {
-        padding: 0px !important;
-        margin: 0px 0px 0px 20px !important;
-        width: 100% !important;
+    padding: 0px 0px 20px 0px !important;
+    margin: 0px 0px 0px 0px !important;
+
+    @media only screen and (min-width: 1000px) {
+        padding: 0 0 100px 0 !important;
+        width: 1000px;
+        margin: 0 auto !important;
     }
 }
 
 .candidate-section {
     text-align: center;
+    line-height: 100px;
+
+    .left-arrow {
+        vertical-align: middle;
+        display: inline-block;
+        float: left;
+        font-size: 5em;
+    }
+
+    .candidate-info {
+        display: inline-block;
+
+        h1 {
+            font-weight: bold;
+            margin-bottom: 0;
+            font-size: 3em;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-weight: thin;
+        }
+    }
+
+    .right-arrow {
+        display: inline-block;
+        float: right;
+        font-size: 5em;
+    }
+}
+
+.bills-name-section {
+    text-align: center;
+    line-height: 100px;
+
+    .bills-info {
+        display: inline-block;
+
+        h1 {
+            font-weight: bold;
+            font-size: 3em;
+        }
+    }
+
+    .right-x {
+        float: right;
+        font-size: 4em;
+    }
 }
 
 .desktop-left-section {
@@ -42,6 +113,7 @@ body {
     .candidate-image {
         margin: auto;
         text-align: center;
+        margin-bottom: 20px;
 
         h1 {
             display: none;;
@@ -58,6 +130,7 @@ body {
 
     .candidate-committees {
         display: none;
+        margin-bottom: 20px;
 
         @media only screen and (min-width: 1000px) {
             float: left;
@@ -69,6 +142,7 @@ body {
             }
 
             ul {
+                padding-left: 15px;
                 font-size: 1.5em;
                 background-color: lightgray;
                 line-height: 2em;
@@ -93,15 +167,17 @@ body {
                 background-color: white;
             }
 
-            ul {
-                font-size: 1.5em;
-                background-color: lightgray;
-                line-height: 2em;
-            }
+            .bill-list {
+            background-color: lightgray;
 
-            li {
-                list-style-type: none;
+            .bill-item {
+                font-size: 1.5em;
+                border-bottom: 1px solid white;
+                border-top: 1px solid white;
+                margin-top: 0px;
             }
+            
+        }
         }
     }
 
@@ -120,6 +196,7 @@ body {
         text-align: center;
         background-color: lightgray;
         width: 100%;
+        margin-bottom: 20px;
 
         @media only screen and (min-width: 1000px) {
             text-align: left;
@@ -157,9 +234,22 @@ body {
     .bills-sponsored-section-mobile {
         background-color: lightgray;
         width: 100%;
+        font-size: 1.5em;
 
         h1 {
             text-align: center;
+        }
+
+        .bill-list {
+            background-color: lightgray;
+
+            .bill-item {
+                border-bottom: 1px solid white;
+                border-top: 1px solid white;
+                margin-top: 0px;
+
+            }
+            
         }
 
         @media only screen and (min-width: 1000px) {
@@ -169,9 +259,11 @@ body {
 }
 
 .footer {
+    color: lightgray;
     background-color: black;
 
     ul {
+        padding-top: 30px;
         text-align: center;
         font-size: 2em;
     }
@@ -180,5 +272,15 @@ body {
         display: inline;
         list-style-type: none;
     }
+
+    @media only screen and (min-width: 1000px) {
+            h2 {
+                padding: 30px 100px 0 100px;
+            }
+
+            p {
+                padding: 0 100px 100px 100px;
+            }
+        }
 }
 
