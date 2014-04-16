@@ -39,121 +39,83 @@
     </div><!-- /.container-fluid -->
   </nav>
   <!-- ******************* ENDS NAV-BAR ******************* -->
+  <div ng-controller="MainCtrl">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="candidate-section">
+      <div class="candidate-section">
 
-        <div class="candidate-info">
-          <h1>{{ Candidate.first_name }} {{ Candidate.last_name }}</h1>
-          <h2> {{ Candidate.platform }} </h2>
-        </div <!-- end of div.candidate-info -->
+        <h1><span class="left-arrow" ng-click="back()">&laquo;</span></h1>
+        
+          <div class="candidate-info">
+            <h1> {{ firstName }} {{ lastName }} </h1>
+            <h2> {{ party }} </h2>
+          </div> <!-- end of div.candidate-info -->
 
-      <div class="left-arrow">
-      </div> <!-- end of div.left-arrow -->
 
-      <div class="candidate-info">
-        <h1> Kingtak </h1>
-        <h2> Republiking </h2>
-      </div> <!-- end of div.candidate-info -->
+        <h1><span class="right-arrow" ng-click="forward()">&raquo;</span></h1>
 
-      <div class="right-arrow">
-        <span>></span>
-      </div> <!-- end of div.right-arrow -->
-    </div> <!-- end of div.candidate-section -->
+      </div> <!-- end of div.candidate-section -->
 
-    <div class="desktop-left-section">
+      <div class="desktop-left-section">
 
-      <div class="candidate-image">
+        <div class="candidate-image">
 
-        <!-- <div ng-controller="CarouselCtrl">
-          <div carousel interval="3000">
-            <div slide ng-repeat="slide in slides" active="slide.active">
-              <img ng-src="{{slide.image}}" style="margin: auto;">
-              <div class="carousel-caption">
-                <h4>Slide {{$index}}</h4>
-                <p>{{slide.text}}</p>
+          <div ng-controller="CarouselCtrl">
+            <div carousel interval="3000">
+              <div slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin: auto;">
+                <div class="carousel-caption">
+                  <h4>Slide {{$index}}</h4>
+                  <p>{{slide.text}}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div> -->
-        <h1>&nbsp;</h1>
-        <img src="http://placekitten.com/200/250">
-      </div> <!-- end of div.candidate-image -->
-
-      <div class="candidate-committees">
-        <h1> Committees </h1>
-        <ul>
-          <li ng-repeat='comittee in comittees'>
-            <span>{{ committee }}</span>
-          </li>
-        </ul>
-      </div> <!-- end of div.candidate-committees -->
-
-      <div class="bills-sponsored-section-desktop">
-        <h1> Bills Sponsored</h1>
-        <div ng-controller="TabsCtrl">
-
-          <tabset vertical="true" type="navType">
-
+       <!--    <h1>&nbsp;</h1>
+          <img src="http://placekitten.com/200/250"> -->
+        </div> <!-- end of div.candidate-image -->
+          <div class="candidate-committees">
+            <h1> Committees </h1>
             <ul>
-              <li ng-repeat='bill in bills'>
-                <tab heading='{{ bill }}'>{{ bill.what }}</tab>
+              <li ng-repeat='com in coms'>
+                <span>{{ com }}</span>
               </li>
             </ul>
-
-          <tabset vertical="true" type="navType" class="bill-list">
-            <tab class="bill-item" heading="Bill 1">Politics Translates</tab>
-            <tab class="bill-item" heading="Bill 2">To Many Ticks</tab>
-            <tab class="bill-item" heading="Bill 3">Kingtak Says</tab>
-            <tab class="bill-item" heading="Bill 4">Recursion is a must</tab>
-            <tab class="bill-item" heading="Bill 5">and PI is necessary</tab>
-<!--             <tab class="bill-item" heading="Bill 6">Kingtak </tab>
-            <tab class="bill-item" heading="Bill 7">Rocks out</tab>
-            <tab class="bill-item" heading="Bill 8">With his socks out</tab>
-            <tab class="bill-item" heading="Bill 9">Hand gestures</tab>
-
-            <tab class="bill-item" heading="Bill 9">Hand gestures</tab> -->
-          </tabset>
-        </div>
-      </div> <!-- end of div.bills-sponsored-section -->
+          </div> <!-- end of div.candidate-committees -->
+        <div class="bills-sponsored-section-desktop">
+          <h1> Bills Sponsored</h1>
+          <ul>
+            <li ng-repeat="bill in bills">{{ bill}}</li>
+          </ul>
+        </div> <!-- end of div.bills-sponsored-section -->
 
 
-    </div> <!-- end of div.desktop-left-section -->
+      </div> <!-- end of div.desktop-left-section -->
 
-    <div class="desktop-right-section">
+      <div class="desktop-right-section">
 
-       <div class="campaign-contributions-section">
-        <h1> Campaign Contributions </h1>
-        <div class="contributions-graph"></div> <!-- end of div.contributions-graph -->
-      </div> <!-- end of div.campaing-contributions-section -->
+         <div class="campaign-contributions-section">
+          <h1> Campaign Contributions </h1>
+          <div class="contributions-graph"></div> <!-- end of div.contributions-graph -->
+        </div> <!-- end of div.campaing-contributions-section -->
 
-      <div class="industry-influence-section">
-        <h1>Monetary Influence (by Industry) </h1>
-        <div class="influence-graph"></div> <!-- end of div.influence-graph -->
-      </div> <!-- end of div.industry-influence-section -->
+        <div class="industry-influence-section">
+          <h1>Monetary Influence (by Industry) </h1>
+          <div class="influence-graph"></div> <!-- end of div.influence-graph -->
+        </div> <!-- end of div.industry-influence-section -->
 
-      <div class="bills-sponsored-section-mobile">
-        <h1> Bills Sponsored</h1>
-        <div ng-controller="TabsCtrl">
-          <tabset vertical="true" type="navType" class="bill-list">
-            <tab class="bill-item" heading="Bill 1">Politics Translates</tab>
-            <tab class="bill-item" heading="Bill 2">To Many Ticks</tab>
-            <tab class="bill-item" heading="Bill 3">Kingtak Says</tab>
-            <tab class="bill-item" heading="Bill 4">Recursion is a must</tab>
-            <tab class="bill-item" heading="Bill 5">and PI is necessary</tab>
-<!--             <tab class="bill-item" heading="Bill 6">Kingtak </tab>
-            <tab class="bill-item" heading="Bill 7">Rocks out</tab>
-            <tab class="bill-item" heading="Bill 8">With his socks out</tab>
-            <tab class="bill-item" heading="Bill 9">Hand gestures</tab> -->
-          </tabset>
-        </div>
-      </div> <!-- end of div.bills-sponsored-section -->
-        
-    </div> <!-- end div.desktop-right-section -->
+        <div class="bills-sponsored-section-mobile">
+          <h1> Bills Sponsored</h1>
+          <ul>
+            <li ng-repeat="bill in bills">{{ bill }}</li>
+          </ul>
+        </div> <!-- end of div.bills-sponsored-section -->
+          
+      </div> <!-- end div.desktop-right-section -->
 
-  </div> <!-- end of div.container -->
-
+    </div> <!-- end of div.container -->
+  </div> <!-- end of ChangeCandidateCtrl -->
     <footer class="footer">
       <ul>
         <li>About</li>
