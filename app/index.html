@@ -20,7 +20,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#">PoliPie</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,9 +28,6 @@
         <ul class="nav navbar-nav">
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Kingtak</a></li>
-          <li><a href="#">Raytak</a></li>
-          <li><a href="#">Tytak</a></li>
           <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
@@ -52,13 +49,24 @@
           <h2> {{ Candidate.platform }} </h2>
         </div <!-- end of div.candidate-info -->
 
+      <div class="left-arrow">
+      </div> <!-- end of div.left-arrow -->
+
+      <div class="candidate-info">
+        <h1> Candidate Name </h1>
+        <h2> Platform </h2>
+      </div> <!-- end of div.candidate-info -->
+
+      <div class="right-arrow">
+        <span>></span>
+      </div> <!-- end of div.right-arrow -->
     </div> <!-- end of div.candidate-section -->
 
     <div class="desktop-left-section">
 
       <div class="candidate-image">
 
-        <div ng-controller="CarouselCtrl">
+        <!-- <div ng-controller="CarouselCtrl">
           <div carousel interval="3000">
             <div slide ng-repeat="slide in slides" active="slide.active">
               <img ng-src="{{slide.image}}" style="margin: auto;">
@@ -68,7 +76,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+        <h1>&nbsp;</h1>
+        <img src="http://placekitten.com/200/250">
       </div> <!-- end of div.candidate-image -->
 
       <div class="candidate-committees">
@@ -83,6 +93,7 @@
       <div class="bills-sponsored-section-desktop">
         <h1> Bills Sponsored</h1>
         <div ng-controller="TabsCtrl">
+
           <tabset vertical="true" type="navType">
 
             <ul>
@@ -90,15 +101,18 @@
                 <tab heading='{{ bill }}'>{{ bill.what }}</tab>
               </li>
             </ul>
-            <tab heading="Bill 1">Politics Translates</tab>
-            <tab heading="Bill 2">To Many Ticks</tab>
-            <tab heading="Bill 3">Kingtak Says</tab>
-            <tab heading="Bill 4">Recursion is a must</tab>
-            <tab heading="Bill 5">and PI is necessary</tab>
-            <tab heading="Bill 6">Kingtak </tab>
-            <tab heading="Bill 7">Rocks out</tab>
-            <tab heading="Bill 8">With his socks out</tab>
-            <tab heading="Bill 9">Hand gestures</tab>
+
+          <tabset vertical="true" type="navType" class="bill-list">
+            <tab class="bill-item" heading="Bill 1">Politics Translates</tab>
+            <tab class="bill-item" heading="Bill 2">To Many Ticks</tab>
+            <tab class="bill-item" heading="Bill 3">Kingtak Says</tab>
+            <tab class="bill-item" heading="Bill 4">Recursion is a must</tab>
+            <tab class="bill-item" heading="Bill 5">and PI is necessary</tab>
+            <tab class="bill-item" heading="Bill 6">Kingtak </tab>
+            <tab class="bill-item" heading="Bill 7">Rocks out</tab>
+            <tab class="bill-item" heading="Bill 8">With his socks out</tab>
+            <tab class="bill-item" heading="Bill 9">Hand gestures</tab>
+
           </tabset>
         </div>
       </div> <!-- end of div.bills-sponsored-section -->
@@ -121,16 +135,16 @@
       <div class="bills-sponsored-section-mobile">
         <h1> Bills Sponsored</h1>
         <div ng-controller="TabsCtrl">
-          <tabset vertical="true" type="navType">
-            <tab heading="Bill 1">Politics Translates</tab>
-            <tab heading="Bill 2">To Many Ticks</tab>
-            <tab heading="Bill 3">Kingtak Says</tab>
-            <tab heading="Bill 4">Recursion is a must</tab>
-            <tab heading="Bill 5">and PI is necessary</tab>
-            <tab heading="Bill 6">Kingtak </tab>
-            <tab heading="Bill 7">Rocks out</tab>
-            <tab heading="Bill 8">With his socks out</tab>
-            <tab heading="Bill 9">Hand gestures</tab>
+          <tabset vertical="true" type="navType" class="bill-list">
+            <tab class="bill-item" heading="Bill 1">Politics Translates</tab>
+            <tab class="bill-item" heading="Bill 2">To Many Ticks</tab>
+            <tab class="bill-item" heading="Bill 3">Kingtak Says</tab>
+            <tab class="bill-item" heading="Bill 4">Recursion is a must</tab>
+            <tab class="bill-item" heading="Bill 5">and PI is necessary</tab>
+            <tab class="bill-item" heading="Bill 6">Kingtak </tab>
+            <tab class="bill-item" heading="Bill 7">Rocks out</tab>
+            <tab class="bill-item" heading="Bill 8">With his socks out</tab>
+            <tab class="bill-item" heading="Bill 9">Hand gestures</tab>
           </tabset>
         </div>
       </div> <!-- end of div.bills-sponsored-section -->
@@ -139,17 +153,17 @@
 
   </div> <!-- end of div.container -->
 
-
-  <footer class="footer">
-    <ul>
-      <li>About</li>
-      <li>|</li>
-      <li>API</li>
-    </ul>
-    <h2>What industry sectors influence bills being passed?</h2>
-    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
-
-    Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna. 
+    <footer class="footer">
+      <ul>
+        <li>About</li>
+        <li>|</li>
+        <li>API</li>
+      </ul>
+      <h2>What industry sectors influence bills being passed?</h2>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
+      <br />
+      Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna.
+      </p> 
 
   </footer>
 
