@@ -86,47 +86,47 @@ myApp.directive('pchart', function($window) {
   }
 });
 
-myApp.directive('pchart', function($window) {
-  return {
-    restrict: 'A',
-    //happens when everything is associated and attached to the dom
-    link: function(scope, element, attrs) {
+// myApp.directive('pchart', function($window) {
+//   return {
+//     restrict: 'A',
+//     //happens when everything is associated and attached to the dom
+//     link: function(scope, element, attrs) {
 
-      var width = d3.select(element[0]).node().offsetWidth;
-      var height = d3.select(element[0]).node().offsetHeight;
-      var svg = d3.select(element[0])
-        .append("svg")
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
+//       var width = d3.select(element[0]).node().offsetWidth;
+//       var height = d3.select(element[0]).node().offsetHeight;
+//       var svg = d3.select(element[0])
+//         .append("svg")
+//         .attr('width', width)
+//         .attr('height', height)
+//         .append('g')
+//         .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
 
-      //if the window gets resized
-      window.onresize = function() {
-        scope.render();
-      };
+//       //if the window gets resized
+//       window.onresize = function() {
+//         scope.render();
+//       };
 
-      //watch the window the angular way
-      scope.$watch(function() {
-        return angular.element(window)[0].innerWidth;
-      }, function() {
-        scope.render(scope.pData.industymoney);
-      });
+//       //watch the window the angular way
+//       scope.$watch(function() {
+//         return angular.element(window)[0].innerWidth;
+//       }, function() {
+//         scope.render(scope.pData.industymoney);
+//       });
 
-      //continue watching for new values
-      scope.$watch('lData', function(newVals, oldVals) {
-        return scope.render(newVals);
-      }, true);
+//       //continue watching for new values
+//       scope.$watch('lData', function(newVals, oldVals) {
+//         return scope.render(newVals);
+//       }, true);
 
-      scope.render = function(data) {
-        console.log("us");
-        //remove the elements (after rerender)
-        svg.selectAll("*").remove();
-        //for a bar graph
-        // var width, height, max;
-      }
-    }
-  }
-});
+//       scope.render = function(data) {
+//         console.log("us");
+//         //remove the elements (after rerender)
+//         svg.selectAll("*").remove();
+//         //for a bar graph
+//         // var width, height, max;
+//       }
+//     }
+//   }
+// });
 
 

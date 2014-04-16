@@ -224,15 +224,15 @@ h2 {
     background-color: white;
   }
   /* line 202, ../../sass/style.scss */
-  .desktop-left-section .bills-sponsored-section-desktop .bill-list {
-    background-color: lightgray;
-  }
-  /* line 205, ../../sass/style.scss */
-  .desktop-left-section .bills-sponsored-section-desktop .bill-list .bill-item {
+  .desktop-left-section .bills-sponsored-section-desktop ul {
+    padding-left: 15px;
     font-size: 1.5em;
-    border-bottom: 1px solid white;
-    border-top: 1px solid white;
-    margin-top: 0px;
+    background-color: lightgray;
+    line-height: 2em;
+  }
+  /* line 209, ../../sass/style.scss */
+  .desktop-left-section .bills-sponsored-section-desktop li {
+    list-style-type: none;
   }
 }
 
@@ -303,147 +303,149 @@ h2 {
   }
 }
 /* line 278, ../../sass/style.scss */
-.desktop-right-section .industry-influence-section .influence-graph {
-  background: url("http://enterpriseprogrammer.files.wordpress.com/2013/01/sucessfactorspiechart.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  min-height: 400px;
+.desktop-right-section .industry-influence-section .influence-graph-section {
+  height: 400px;
 }
-/* line 286, ../../sass/style.scss */
+/* line 281, ../../sass/style.scss */
+.desktop-right-section .industry-influence-section .influence-graph-section .pie-chart {
+  width: 100%;
+  height: 300px;
+}
+/* line 288, ../../sass/style.scss */
 .desktop-right-section .bill-industry-influence-section {
   text-align: center;
   width: 100%;
   background-color: lightgray;
 }
-/* line 291, ../../sass/style.scss */
+/* line 293, ../../sass/style.scss */
 .desktop-right-section .bill-industry-influence-section h1 {
   padding-top: 20px;
 }
 @media only screen and (min-width: 900px) {
-  /* line 286, ../../sass/style.scss */
+  /* line 288, ../../sass/style.scss */
   .desktop-right-section .bill-industry-influence-section {
     text-align: left;
   }
-  /* line 298, ../../sass/style.scss */
+  /* line 300, ../../sass/style.scss */
   .desktop-right-section .bill-industry-influence-section h1 {
     background-color: white;
     padding-top: 0;
   }
 }
-/* line 304, ../../sass/style.scss */
+/* line 306, ../../sass/style.scss */
 .desktop-right-section .bill-industry-influence-section .influence-graph {
   background: url("http://placekitten.com/600/401");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   min-height: 400px;
 }
-/* line 312, ../../sass/style.scss */
+/* line 314, ../../sass/style.scss */
 .desktop-right-section .bill-industry-description {
   background-color: darkgray;
   padding: 30px;
   display: none;
 }
 @media only screen and (min-width: 900px) {
-  /* line 312, ../../sass/style.scss */
+  /* line 314, ../../sass/style.scss */
   .desktop-right-section .bill-industry-description {
     display: block;
   }
 }
-/* line 322, ../../sass/style.scss */
+/* line 324, ../../sass/style.scss */
 .desktop-right-section .bill-description-mobile {
   width: 100%;
   padding: 30px;
 }
 @media only screen and (min-width: 900px) {
-  /* line 322, ../../sass/style.scss */
+  /* line 324, ../../sass/style.scss */
   .desktop-right-section .bill-description-mobile {
     display: none;
   }
 }
-/* line 332, ../../sass/style.scss */
+/* line 334, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile {
   background-color: lightgray;
   width: 100%;
 }
-/* line 336, ../../sass/style.scss */
+/* line 338, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile h1 {
   text-align: center;
   padding-top: 20px;
 }
-/* line 341, ../../sass/style.scss */
+/* line 343, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile .bill-list {
   background-color: lightgray;
 }
-/* line 344, ../../sass/style.scss */
+/* line 346, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile .bill-list .bill-item {
   border-bottom: 1px solid white;
   border-top: 1px solid white;
   margin-top: 0px;
 }
 @media only screen and (min-width: 900px) {
-  /* line 332, ../../sass/style.scss */
+  /* line 334, ../../sass/style.scss */
   .desktop-right-section .bills-sponsored-section-mobile {
     display: none;
   }
 }
-/* line 358, ../../sass/style.scss */
+/* line 360, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile {
   background-color: lightgray;
   width: 100%;
 }
-/* line 362, ../../sass/style.scss */
+/* line 364, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile h1 {
   text-align: center;
   padding-top: 20px;
 }
-/* line 367, ../../sass/style.scss */
+/* line 369, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile .candidate-list {
   background-color: lightgray;
 }
-/* line 370, ../../sass/style.scss */
+/* line 372, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile .candidate-list .candidate-item {
   border-bottom: 1px solid white;
   border-top: 1px solid white;
   margin-top: 0px;
 }
 @media only screen and (min-width: 900px) {
-  /* line 358, ../../sass/style.scss */
+  /* line 360, ../../sass/style.scss */
   .desktop-right-section .candidate-list-section-mobile {
     display: none;
   }
 }
 
-/* line 385, ../../sass/style.scss */
+/* line 387, ../../sass/style.scss */
 .footer {
   color: lightgray;
   background-color: black;
   height: 100%;
 }
-/* line 390, ../../sass/style.scss */
+/* line 392, ../../sass/style.scss */
 .footer ul {
   padding-top: 30px;
   text-align: center;
   font-size: 2em;
 }
-/* line 396, ../../sass/style.scss */
+/* line 398, ../../sass/style.scss */
 .footer li {
   display: inline;
   list-style-type: none;
 }
-/* line 401, ../../sass/style.scss */
+/* line 403, ../../sass/style.scss */
 .footer h2 {
   padding: 0 20px 0 20px;
 }
-/* line 405, ../../sass/style.scss */
+/* line 407, ../../sass/style.scss */
 .footer p {
   padding: 0 20px 20px 20px;
 }
 @media only screen and (min-width: 900px) {
-  /* line 410, ../../sass/style.scss */
+  /* line 412, ../../sass/style.scss */
   .footer h2 {
     padding: 30px 100px 0 100px;
   }
-  /* line 414, ../../sass/style.scss */
+  /* line 416, ../../sass/style.scss */
   .footer p {
     padding: 0 100px 100px 100px;
   }
