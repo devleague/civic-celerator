@@ -22,15 +22,26 @@
     <div class="desktop-left-section">
 
       <div class="candidate-image">
-        <h1> Candidate Image</h1>
+        <h1>&nbsp;</h1>
+        <img src="http://placekitten.com/200/250">
       </div> <!-- end of div.candidate-image -->
 
       <div class="candidate-committees">
         <h1> Committees </h1>
+        <ul>
+          <li>Committee 1</li>
+          <li>Committee 2</li>
+          <li>Committee 3</li>
+        </ul>
       </div> <!-- end of div.candidate-committees -->
 
-      <div class="bills-sponsored-section-mobile">
-        <h1> Bills </h1>
+      <div class="bills-sponsored-section-desktop">
+        <h1> Bills Sponsored</h1>
+        <ul>
+          <li> Bill 1 </li>
+          <li> Bill 2 </li>
+          <li> Bill 3 </li>
+        </ul>
       </div> <!-- end of div.bills-sponsored-section -->
 
 
@@ -39,25 +50,47 @@
     <div class="desktop-right-section">
 
        <div class="campaign-contributions-section">
-        <h1> Contributions </h1>
+        <h1> Campaign Contributions </h1>
+        <div class="contributions-graph"></div> <!-- end of div.contributions-graph -->
       </div> <!-- end of div.campaing-contributions-section -->
 
       <div class="industry-influence-section">
-        <h1>Industry Influence</h1>
+        <h1>Monetary Influence (by Industry) </h1>
+        <div class="influence-graph"></div> <!-- end of div.influence-graph -->
       </div> <!-- end of div.industry-influence-section -->
 
-      <div class="bills-sponsored-section-desktop">
-        <h1> Bills </h1>
+      <div class="bills-sponsored-section-mobile">
+        <h1> Bills Sponsored </h1>
+        <ul>
+          <li> Bill 1 </li>
+          <li> Bill 2 </li>
+          <li> Bill 3 </li>
+        </ul>
       </div> <!-- end of div.bills-sponsored-section -->
 
     </div> <!-- end div.desktop-right-section -->
 
   </div> <!-- end of div.container -->
 
+    <footer class="footer">
+      <ul>
+        <li>About</li>
+        <li>|</li>
+        <li>API</li>
+      </ul>
+      <h2>What industry sectors influence bills being passed?</h2>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
+
+      Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna. 
+
+    </footer>
+
+  
 
 
 
-  <ul class="menu">
+
+<!--   <ul class="menu">
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/view2">view2</a></li>
   </ul>
@@ -66,7 +99,7 @@
 
   <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <div>Angular seed app: v<span app-version></span></div> -->
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
