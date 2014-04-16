@@ -48,8 +48,8 @@
     <div class="candidate-section">
 
         <div class="candidate-info">
-          <h1> Candidate Name </h1>
-          <h2> Platform </h2>
+          <h1>{{ Candidate.first_name }} {{ Candidate.last_name }}</h1>
+          <h2> {{ Candidate.platform }} </h2>
         </div <!-- end of div.candidate-info -->
 
     </div> <!-- end of div.candidate-section -->
@@ -74,9 +74,9 @@
       <div class="candidate-committees">
         <h1> Committees </h1>
         <ul>
-          <li>Committee 1</li>
-          <li>Committee 2</li>
-          <li>Committee 3</li>
+          <li ng-repeat='comittee in comittees'>
+            <span>{{ committee }}</span>
+          </li>
         </ul>
       </div> <!-- end of div.candidate-committees -->
 
@@ -84,6 +84,12 @@
         <h1> Bills Sponsored</h1>
         <div ng-controller="TabsCtrl">
           <tabset vertical="true" type="navType">
+
+            <ul>
+              <li ng-repeat='bill in bills'>
+                <tab heading='{{ bill }}'>{{ bill.what }}</tab>
+              </li>
+            </ul>
             <tab heading="Bill 1">Politics Translates</tab>
             <tab heading="Bill 2">To Many Ticks</tab>
             <tab heading="Bill 3">Kingtak Says</tab>
@@ -134,18 +140,18 @@
   </div> <!-- end of div.container -->
 
 
-    <footer class="footer">
-      <ul>
-        <li>About</li>
-        <li>|</li>
-        <li>API</li>
-      </ul>
-      <h2>What industry sectors influence bills being passed?</h2>
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
+  <footer class="footer">
+    <ul>
+      <li>About</li>
+      <li>|</li>
+      <li>API</li>
+    </ul>
+    <h2>What industry sectors influence bills being passed?</h2>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
 
-      Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna. 
+    Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna. 
 
-    </footer>
+  </footer>
 
   
 
