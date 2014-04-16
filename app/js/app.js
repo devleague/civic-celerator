@@ -11,6 +11,14 @@ angular.module('myApp', [
 
 ]);
 
+angular.module('myApp2', [
+  'ngRoute',
+  'myApp2.filters',
+  'myApp2.services',
+  'myApp2.directives',
+  'myApp2.controllers'
+
+]);
 // var d3Element = angular.module('d3', []);
 
 // d3Element.factory('d3', ['$document', '$q', '$rootScope',

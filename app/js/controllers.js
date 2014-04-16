@@ -40,3 +40,13 @@ myApp.controller('customController', ['$scope',
   }
 ])
 
+var myApp2 = angular.module('myApp2.controllers', []);
+
+myApp2.controller('customController2', ['$scope',
+  function($scope) {
+    var industrymoneya = [15, 4, 42, 8, 23, 16];
+    var data = {industrymoney: industrymoneya}
+    $scope.pData = data;
+  }
+])
+

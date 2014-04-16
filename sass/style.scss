@@ -1,9 +1,8 @@
 html,
 body {
-    min-height: 100%;
     background-color: white;
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 950px) {
         margin: 0px !important;
     }
 }
@@ -43,9 +42,9 @@ h2 {
     padding: 0px 0px 20px 0px !important;
     margin: 0px 0px 0px 0px !important;
 
-    @media only screen and (min-width: 900px) {
+    @media only screen and (min-width: 950px) {
         padding: 0 0 100px 0 !important;
-        width: 900px;
+        width: 950px;
         margin: 0 auto !important;
     }
 }
@@ -118,7 +117,7 @@ h2 {
     height: 100%;
     width: 100%;
 
-    @media only screen and (min-width: 900px) {
+    @media only screen and (min-width: 950px) {
         float: left;
         width: 30%;
     }
@@ -136,7 +135,7 @@ h2 {
             width: 30%;
         }
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             text-align: left;
 
             h1 {
@@ -153,7 +152,7 @@ h2 {
         display: none;
         margin-bottom: 20px;
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             float: left;
             width: 80%;
             display: block;
@@ -179,7 +178,7 @@ h2 {
         display: none;
         margin-bottom: 20px;
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             float: left;
             width: 80%;
             display: block;
@@ -190,7 +189,7 @@ h2 {
         width: 100%;
         display: none;
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             float: left;
             width: 80%;
             display: block;
@@ -200,16 +199,85 @@ h2 {
             }
 
             ul {
-                padding-left: 15px;
+                padding-left: 0;
                 font-size: 1.5em;
                 background-color: lightgray;
                 line-height: 2em;
             }
 
             li {
+                padding-left: 15px;
                 list-style-type: none;
+                border-top: 1px solid white;
+
+                span {
+                    float: right;
+                    font-size: 1.5em;
+                    vertical-align: middle;
+                    line-height: 1.3em;
+                    padding-right: 15px;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
             }
             
+            a:hover {
+
+                li {
+                    background-color: darkgray;
+                }
+            }
+        }
+    }
+
+    .candidate-list-section-desktop {
+        width: 100%;
+        display: none;
+
+        @media only screen and (min-width: 950px) {
+            float: left;
+            width: 80%;
+            display: block;
+
+            h1 {
+                background-color: white;
+            }
+
+            ul {
+                padding-left: 0;
+                font-size: 1.5em;
+                background-color: lightgray;
+                line-height: 2em;
+            }
+
+            li {
+                padding-left: 15px;
+                list-style-type: none;
+                border-top: 1px solid white;
+
+                span {
+                    float: right;
+                    font-size: 1.5em;
+                    vertical-align: middle;
+                    line-height: 1.3em;
+                    padding-right: 15px;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            
+            a:hover {
+
+                li {
+                    background-color: darkgray;
+                }
+            }
         }
     }
 
@@ -219,7 +287,7 @@ h2 {
     height: 100%;
     width: 100%;
 
-    @media only screen and (min-width: 900px) {
+    @media only screen and (min-width: 950px) {
         display: inline-block;
         width: 70%;
     }
@@ -234,7 +302,7 @@ h2 {
             padding-top: 20px;
         }
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             text-align: left;
             
             h1 {
@@ -263,7 +331,7 @@ h2 {
             padding-top: 20px;
         }
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             text-align: left;
             background-color: lightgray;
 
@@ -276,11 +344,12 @@ h2 {
         }
 
         .influence-graph-section {
-            height: 400px;
+            height: 300px;
 
             .pie-chart {
-                width: 100%;
+                width: 320px;
                 height: 300px;
+                margin: 0 auto;
             }
         }
     }
@@ -294,7 +363,7 @@ h2 {
             padding-top: 20px;
         }
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             text-align: left;
 
             h1 {
@@ -303,11 +372,14 @@ h2 {
             }
         }
 
-        .influence-graph {
-            background: url("http://placekitten.com/600/401");
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            min-height: 400px;
+        .influence-graph-section {
+            height: 300px;
+
+            .pie-chart {
+                width: 320px;
+                height: 300px;
+                margin: 0 auto;
+            }
         }
     }
 
@@ -316,7 +388,7 @@ h2 {
         padding: 30px;
         display: none;
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             display: block;
         }
     }
@@ -325,7 +397,7 @@ h2 {
         width: 100%;
         padding: 30px;
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 950px) {
             display: none;
         }
         
@@ -340,19 +412,40 @@ h2 {
             padding-top: 20px;
         }
 
-        .bill-list {
+        ul {
+            padding-left: 0;
+            font-size: 1.5em;
             background-color: lightgray;
-
-            .bill-item {
-                border-bottom: 1px solid white;
-                border-top: 1px solid white;
-                margin-top: 0px;
-
-            }
-            
+            line-height: 3em;
         }
 
-        @media only screen and (min-width: 900px) {
+        li {
+            padding-left: 50px;
+            list-style-type: none;
+            border-top: 1px solid white;
+
+            span {
+                float: right;
+                font-size: 1.5em;
+                vertical-align: middle;
+                line-height: 1.3em;
+                padding-right: 50px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        a:hover {
+
+            li {
+                background-color: darkgray;
+            }
+        }
+
+        @media only screen and (min-width: 950px) {
             display: none;
         }
     }
@@ -366,19 +459,44 @@ h2 {
             padding-top: 20px;
         }
 
-        .candidate-list {
+        ul {
+            padding-left: 0;
+            font-size: 1.5em;
             background-color: lightgray;
-
-            .candidate-item {
-                border-bottom: 1px solid white;
-                border-top: 1px solid white;
-                margin-top: 0px;
-
-            }
-            
+            line-height: 3em;
         }
 
-        @media only screen and (min-width: 900px) {
+        li {
+            padding-left: 50px;
+            list-style-type: none;
+            border-top: 1px solid white;
+
+            span {
+                float: right;
+                font-size: 1.5em;
+                vertical-align: middle;
+                line-height: 1.3em;
+                padding-right: 50px;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        a:hover {
+
+            li {
+                background-color: darkgray;
+            }
+        }
+
+        @media only screen and (min-width: 950px) {
+            display: none;
+        }
+
+        @media only screen and (min-width: 950px) {
             display: none;
         }
     }
@@ -402,15 +520,17 @@ h2 {
 
     h2 {
         padding: 0 20px 0 20px;
+        text-align: center;
     }
 
     p {
         padding: 0 20px 20px 20px;
     }
 
-    @media only screen and (min-width: 900px) {
+    @media only screen and (min-width: 950px) {
         h2 {
             padding: 30px 100px 0 100px;
+            text-align: left;
         }
 
         p {
