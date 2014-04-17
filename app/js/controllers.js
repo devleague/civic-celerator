@@ -10,7 +10,8 @@ var Candidates = [
     last_name: "Trump",
     party: "sexist",
     committees: ["NAMBLA","Alpha Gamma Pi", "Skulls", "Daggars"],
-    bills: ["HK432N","123ABC","FUCK23", "KINGTA", "JASON5", "RAYYAR" ]
+    bills: ["HK432N","123ABC","FUCK23", "KINGTA", "JASON5", "RAYYAR" ],
+    industry: [ ]
   },
   {
     first_name: "Kingtak",
@@ -33,6 +34,18 @@ var Candidates = [
     committees: ["Rambla","gambla", "hammah", "jang"],
     bills: ["sdfcdN","r4rwec","we23sd", "df42sd", "asdffb", "asfasdg" ]
   }
+];
+
+var Industry = [
+{
+  candidateFirst: "Kingtak",
+  candidateLast: "Wong",
+  sex: "28",
+  entertainment: "15",
+  politics: "31",
+  food: "2",
+  retail: "11"
+}
 ];
 
 
@@ -77,9 +90,22 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
 
 }]);
 
+<<<<<<< HEAD
 App.controller('customController', [ '$scope',
   function ( $scope ) {
     var industrymoneya = [3, 23, 12, 15, 24, 34];
+=======
+App.controller('customController', ['$scope',
+  function($scope) {
+
+    $scope.sex = Candidates[28;
+    $scope.entertainment = 15;
+    $scope.politics = 31;
+    $scope.food = 2;
+    $scope.retail = 11;
+
+    var industrymoneya = [$scope.sex, $scope.entertainment, $scope.politics, $scope.food, $scope.retail];
+>>>>>>> 5854889aa8041235f22689ca92b299868967dc48
     var data = {industrymoney: industrymoneya}
     $scope.pData = data;
   }

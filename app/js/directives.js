@@ -46,7 +46,7 @@ myApp.directive('pchart', function($window) {
         //defining the width of the svg reactively
         var radius = Math.min(width, height) / 2;
         var color = d3.scale.ordinal()
-          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#ff00ff"]);
 
         var arc = d3.svg.arc()
           .outerRadius(radius - 10)

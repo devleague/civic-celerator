@@ -47,27 +47,32 @@
 
     <div class="candidate-section">
 
-      <button class='left-arrow', ng-click="back()">&laquo;</button>
+      <div class="left-arrow">
+        <button ng-click="back()">&laquo;</button>
+      </div> <!-- end of div.left-arrow -->
       
         <div class="candidate-info">
           <h1> {{ firstName }} {{ lastName }} </h1>
           <h2> {{ party }} </h2>
         </div> <!-- end of div.candidate-info -->
       
-      <button class='right-arrow', ng-click='forward()'>&raquo;</button>
+      <div class="right-arrow">
+        <button ng-click='forward()'>&raquo;</button>
+      </div> <!-- end of div.right-arrow -->
+      
   
-  </div> <!-- end of div.candidate-section -->
+    </div> <!-- end of div.candidate-section -->
 
-  <div class="container">
+    <div class="container">
 
-    <div class="desktop-left-section">
+      <div class="desktop-left-section">
 
-      <div class="candidate-image">
+        <div class="candidate-image">
 
-        <h1>&nbsp;</h1>
-        <img src="http://placekitten.com/200/250">
+          <h1>&nbsp;</h1>
+          <img src="http://placekitten.com/200/250">
 
-      </div> <!-- end of div.candidate-image -->
+        </div> <!-- end of div.candidate-image -->
 
         <div class="candidate-committees">
 
@@ -87,9 +92,8 @@
           <ul>
             <li ng-repeat="bill in bills">{{ bill}}</li>
           </ul>
-
-        </div> <!-- end of div.bills-sponsored-section -->
-
+        </div> <!-- end of div.bills-sponsored-section-desktop -->
+          
       </div> <!-- end of div.desktop-left-section -->
 
       <div class="desktop-right-section">
@@ -104,7 +108,9 @@
         <div class="industry-influence-section">
 
           <h1>Monetary Influence (by Industry)</h1>
-          <div class="influence-graph"></div> <!-- end of div.influence-graph -->
+          <div ng-controller="customController" class="influence-graph-section">
+            <div class="pie-chart" pchart></div>
+          </div> <!-- end of div.influence-graph-section -->
 
         </div> <!-- end of div.industry-influence-section -->
 
@@ -115,6 +121,7 @@
           <ul>
             <li ng-repeat="bill in bills">{{ bill }}</li>
           </ul>
+
 
         </div> <!-- end of div.bills-sponsored-section -->
           
