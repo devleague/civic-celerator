@@ -4,20 +4,18 @@
 
 var restify   = require('restify');
 var server    = restify.createServer();
-var mongoose  = require('mongoose/');
+var mongoose  = require('mongoose');
 
 server.use(restify.bodyParser());
+mongoose.connect('mongodb://localhost/civic')
 
 
 /**************************************
             * Mongoose.js
 ***************************************/
 
-// var config = require('./config');
-db = mongoose.connect('mongodb://localhost/text');
-
-
 // Mongoose Schemas //
+
 var candidateSchema = new mongoose.Schema({
 
   first_name      : String,
@@ -26,7 +24,7 @@ var candidateSchema = new mongoose.Schema({
   party           : String,
   service_begin   : Number,
   service_end     : Number,
-  committiees     : [String],
+  committees     : [String],
   sponsored_bills : [String]
 
 });
@@ -43,28 +41,45 @@ var contributionsSchema = new mongoose.Schema({
 });
 
 // Mongoose Models //
+
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
 var Contributions = mongoose.model( 'contribution', contributionsSchema );
+
+
+/**************************************
+            * index.html
+***************************************/
 
 
 // server.get('/api/candidates') //
 function getCandidates ( req, res ) {
   
   /* figure out how to get the page number to increment up in the db */
-  var page = req.params.page  
+  var page = req.params.page;
 
   Candidate.find().sort().skip( 150 * page ).limit( 150 ).exec(
-    function () {
+    function ( err, politicians ) {
 
+      if ( err ) console.log( 'Error ' + err );
+      console.log(politicians);
+      res.json( politicians );
 
     });
 
 
 }// getCanidates
 
+
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
+  Contributions.find().sort().skip( 150 * page ).limit( 150 ).exec(
+    function ( err, money ) {
+
+      if ( err ) console.log( 'Error ' + err );
+
+      res.json( money );
+    });
 
 }// getContributions 
 
