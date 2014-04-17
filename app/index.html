@@ -43,93 +43,93 @@
     </div><!-- /.container-fluid -->
   </nav>
   <!-- ******************* ENDS NAV-BAR ******************* -->
+  <div ng-controller="MainCtrl">
 
-  <div class="candidate-section">
+    <div class="candidate-section">
+
       <div class="left-arrow">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+        <button ng-click="back()">&laquo;</button>
       </div> <!-- end of div.left-arrow -->
-
-      <div class="candidate-info">
-        <h1> Kingtak </h1>
-        <h2> Republiking </h2>
-      </div> <!-- end of div.candidate-info -->
-
+      
+        <div class="candidate-info">
+          <h1> {{ firstName }} {{ lastName }} </h1>
+          <h2> {{ party }} </h2>
+        </div> <!-- end of div.candidate-info -->
+      
       <div class="right-arrow">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+        <button ng-click='forward()'>&raquo;</button>
       </div> <!-- end of div.right-arrow -->
+      
+  
     </div> <!-- end of div.candidate-section -->
 
-  <div class="container">
+    <div class="container">
 
-    <div class="desktop-left-section">
+      <div class="desktop-left-section">
 
-      <div class="candidate-image">
+        <div class="candidate-image">
 
-        <!-- <div ng-controller="CarouselCtrl">
-          <div carousel interval="3000">
-            <div slide ng-repeat="slide in slides" active="slide.active">
-              <img ng-src="{{slide.image}}" style="margin: auto;">
-              <div class="carousel-caption">
-                <h4>Slide {{$index}}</h4>
-                <p>{{slide.text}}</p>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        <h1>&nbsp;</h1>
-        <img src="http://placekitten.com/200/250">
-      </div> <!-- end of div.candidate-image -->
+          <h1>&nbsp;</h1>
+          <img src="http://placekitten.com/200/250">
 
-      <div class="candidate-committees">
-        <h1> Committees </h1>
-        <ul>
-          <li>Awesome Sauce</li>
-          <li>King of the Ring</li>
-          <li>Tak Tak City</li>
-        </ul>
-      </div> <!-- end of div.candidate-committees -->
+        </div> <!-- end of div.candidate-image -->
 
-      <div class="bills-sponsored-section-desktop">
-        <h1> Bills Sponsored</h1>
-        <ul>
-          <a href="#"><li>R2D2<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-          <a href="#"><li>C3PO<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-          <a href="#"><li>AK47<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-          <a href="#"><li>WD40<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-        </ul>
-      </div> <!-- end of div.bills-sponsored-section -->
+        <div class="candidate-committees">
+
+          <h1> Committees </h1>
+
+          <ul>
+            <li ng-repeat='com in coms'>
+              <span>{{ com }}</span>
+            </li>
+          </ul>
+        </div> <!-- end of div.candidate-committees -->
+
+        <div class="bills-sponsored-section-desktop">
+
+          <h1> Bills Sponsored</h1>
+
+          <ul>
+            <li ng-repeat="bill in bills">{{ bill}}</li>
+          </ul>
+        </div> <!-- end of div.bills-sponsored-section-desktop -->
+          
+      </div> <!-- end of div.desktop-left-section -->
+
+      <div class="desktop-right-section">
+
+        <div class="campaign-contributions-section">
+
+          <h1> Campaign Contributions </h1>
+          <div class="contributions-graph"></div> 
+
+        </div> <!-- end of div.campaing-contributions-section -->
+
+        <div class="industry-influence-section">
+
+          <h1>Monetary Influence (by Industry)</h1>
+          <div ng-controller="customController" class="influence-graph-section">
+            <div class="pie-chart" pchart></div>
+          </div> <!-- end of div.influence-graph-section -->
+
+        </div> <!-- end of div.industry-influence-section -->
+
+        <div class="bills-sponsored-section-mobile">
+
+          <h1> Bills Sponsored</h1>
+
+          <ul>
+            <li ng-repeat="bill in bills">{{ bill }}</li>
+          </ul>
 
 
-    </div> <!-- end of div.desktop-left-section -->
+        </div> <!-- end of div.bills-sponsored-section -->
+          
+      </div> <!-- end div.desktop-right-section -->
 
-    <div class="desktop-right-section">
+    </div> <!-- end of div.container -->
 
-       <div class="campaign-contributions-section">
-        <h1> Campaign Contributions </h1>
-        <div class="contributions-graph"></div> <!-- end of div.contributions-graph -->
-      </div> <!-- end of div.campaing-contributions-section -->
-
-      <div class="industry-influence-section">
-        <h1>Monetary Influence (by Industry) </h1>
-        <div ng-controller="customController" class="influence-graph-section">
-          <div class="pie-chart" pchart></div>
-        </div> <!-- end of div.influence-graph-section -->
-      </div> <!-- end of div.industry-influence-section -->
-
-      <div class="bills-sponsored-section-mobile">
-        <h1> Bills Sponsored</h1>
-        <ul>
-          <a href="#"><li>R2D2<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-          <a href="#"><li>C3PO<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-          <a href="#"><li>AK47<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-          <a href="#"><li>WD40<span class="glyphicon glyphicon-chevron-right"></span></li></a>
-        </ul>
-      </div> <!-- end of div.bills-sponsored-section -->
-
-    </div> <!-- end div.desktop-right-section -->
-
-  </div> <!-- end of div.container -->
-
+  </div> <!-- end of MainCtrl -->
 
     <footer class="footer">
       <ul>
@@ -143,7 +143,7 @@
       Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna.
       </p> 
 
-    </footer>
+  </footer>
 
   
 
