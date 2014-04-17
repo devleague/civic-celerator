@@ -74,11 +74,6 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     success( function ( data, status, headers, config ) {
 
       var Candidates    = data;
-      console.log("inside /api/candidate data:");
-      console.log(Candidates);
-      console.log(Candidates[0].first_name);
-
-
       var CurCandidate  = 0;
       var pieData       = { industrymoney : Candidates[CurCandidate].industry };
 
@@ -128,10 +123,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     }).
     error( function ( data, status, headers, config ) {
 
-      console.log( 'Error status : ' + status );
-      console.log( 'Error data : ' + data );
-      console.log( 'Error headers : ' + headers );
-      console.log( 'Error config : ' + config );
+      console.log('Error ' + status);
 
     });
 
@@ -143,14 +135,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     }).
     success( function ( data, status, headers, config ) {
 
+      console.log('/api/contributions data:');
 
     }).
     error( function ( data, status, headers, config ) {
 
       console.log( 'Error status : ' + status );
-      console.log( 'Error data : ' + data );
-      console.log( 'Error headers : ' + headers );
-      console.log( 'Error config : ' + config );
 
     });
 

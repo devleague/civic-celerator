@@ -7,7 +7,7 @@ var server    = restify.createServer();
 var mongoose  = require('mongoose');
 
 server.use(restify.bodyParser());
-mongoose.connect('mongodb://localhost/civic')
+mongoose.connect('mongodb://localhost/civic');
 
 
 /**************************************
@@ -24,7 +24,7 @@ var candidateSchema = new mongoose.Schema({
   party           : String,
   service_begin   : Number,
   service_end     : Number,
-  committees     : [String],
+  committiees     : [String],
   sponsored_bills : [String]
 
 });
@@ -57,11 +57,11 @@ function getCandidates ( req, res ) {
   /* figure out how to get the page number to increment up in the db */
   var page = req.params.page;
 
-  Candidate.find().sort().skip( 150 * page ).limit( 150 ).exec(
+  Candidate.find().sort({ last_name : 1 }).exec(
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
-      console.log(politicians);
+
       res.json( politicians );
 
     });
@@ -73,12 +73,15 @@ function getCandidates ( req, res ) {
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  Contributions.find().sort().skip( 150 * page ).limit( 150 ).exec(
+  var page = req.params.page;
+
+  Contributions.find().sort().exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
 
       res.json( money );
+
     });
 
 }// getContributions 
