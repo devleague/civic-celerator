@@ -66,6 +66,12 @@ h2 {
         float: left;
         font-size: 4.5em;
         padding-left: 10px;
+
+        button {
+            border: 0;
+            background-color: white;
+            color: black;
+        }
     }
 
     .candidate-info {
@@ -88,6 +94,12 @@ h2 {
         float: right;
         font-size: 4.5em;
         padding-right: 10px;
+
+        button {
+            border: 0;
+            background-color: white;
+            color: black;
+        }
     }
 }
 

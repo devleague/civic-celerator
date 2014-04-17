@@ -11,6 +11,7 @@ var Candidates = [
     party: "sexist",
     committees: ["NAMBLA","Alpha Gamma Pi", "Skulls", "Daggars"],
     bills: ["HK432N","123ABC","FUCK23", "KINGTA", "JASON5", "RAYYAR" ],
+    portrait: "http://placekitten.com/200/250",
     industry: [28, 15, 31, 2, 11]
   },
   {
@@ -19,6 +20,7 @@ var Candidates = [
     party: "All The Time",
     committees: ["Sexy","alcoholics anonymous", "Fight club", "dealers"],
     bills: [ "123456","abcdef","kingwa", "wongbu", "rawrsd", "poopie" ],
+    portrait: "http://placekitten.com/201/250",
     industry: [18, 34, 22, 12, 21]
   },
   {
@@ -27,6 +29,7 @@ var Candidates = [
     party: "Green",
     committees: ["Hippies","DARPA", "Skulls", "Alii"],
     bills: ["(.)(.)","qrthfds","artwqtr", "dgsdga", "gjgfhk", "rwewg" ],
+    portrait: "http://placekitten.com/200/251",
     industry: [7, 25, 13, 12, 15]
   },
   {
@@ -35,6 +38,7 @@ var Candidates = [
     party: "Rock",
     committees: ["Rambla","gambla", "hammah", "jang"],
     bills: ["sdfcdN","r4rwec","we23sd", "df42sd", "asdffb", "asfasdg" ],
+    portrait: "http://placekitten.com/200/249",
     industry: [16, 14, 26, 2, 31]
   }
 ];
@@ -64,6 +68,7 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
   $scope.party      = Candidates[CurCandidate].party;
   $scope.coms       = Candidates[CurCandidate].committees;
   $scope.bills      = Candidates[CurCandidate].bills;
+  $scope.portrait   = Candidates[CurCandidate].portrait;
 
   var industrymoneya = Candidates[CurCandidate].industry;
   var data = {industrymoney: industrymoneya};
@@ -79,6 +84,7 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
     $scope.party      = Candidates[CurCandidate].party;
     $scope.coms       = Candidates[CurCandidate].committees;
     $scope.bills      = Candidates[CurCandidate].bills;
+    $scope.portrait   = Candidates[CurCandidate].portrait;
 
     var industrymoneya = Candidates[CurCandidate].industry;
     var data = {industrymoney: industrymoneya};
@@ -95,6 +101,7 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
     $scope.party      = Candidates[CurCandidate].party;
     $scope.coms       = Candidates[CurCandidate].committees;
     $scope.bills      = Candidates[CurCandidate].bills;
+    $scope.portrait   = Candidates[CurCandidate].portrait;
 
     var industrymoneya = Candidates[CurCandidate].industry;
     var data = {industrymoney: industrymoneya};
