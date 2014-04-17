@@ -77,21 +77,19 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
 
 }]);
 
-App.controller('customController', ['$scope',
-  function($scope) {
+App.controller('customController', [ '$scope',
+  function ( $scope ) {
     var industrymoneya = [3, 23, 12, 15, 24, 34];
     var data = {industrymoney: industrymoneya}
     $scope.pData = data;
   }
-])
+]);
 
-var App2 = angular.module('myApp2.controllers', []);
-
-App2.controller('customController2', ['$scope',
-  function($scope) {
+App.controller('customController2', ['$scope',
+  function ( $scope ) {
     var industrymoneya = [15, 4, 42, 8, 23, 16];
     var data = {industrymoney: industrymoneya}
     $scope.pData = data;
   }
-])
+]);
 
