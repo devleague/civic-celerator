@@ -137,7 +137,7 @@ myApp2.directive('pchart', function($window) {
           .innerRadius(0);
 
         var pie = d3.layout.pie()
-          .sort(null)`
+          .sort(null)
           .value(function(data, i) {
             console.log(data);
             return scope.pData.industrymoney[i];

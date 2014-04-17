@@ -66,36 +66,30 @@ App.controller( 'MainCtrl', [ '$scope',
   function ( $scope ) {
 
     var CurCandidate  = 0;
-    var politician    = Candidates[CurCandidate];
-    
-    // Reusable 
-    var firstName = politician.first_name;
-    var lastName  = politician.last_name;
-    var party     = politician.party;
-    var committee = politician.committees;
-    var picture   = politician.picture;
-    var bills     = politician.bills;
-    var pieData   = { industrymoney : politician.industry };
+    var pieData       = { industrymoney : Candidates[CurCandidate].industry };
 
-    $scope.firstName  = firstName;
-    $scope.lastName   = lastName;
-    $scope.party      = party;
-    $scope.coms       = committee;
-    $scope.bills      = bills;
-    $scope.picture    = picture;
+    $scope.firstName  = Candidates[CurCandidate].first_name;
+    $scope.lastName   = Candidates[CurCandidate].last_name;
+    $scope.party      = Candidates[CurCandidate].party;
+    $scope.coms       = Candidates[CurCandidate].committees;
+    $scope.bills      = Candidates[CurCandidate].bills;
+    $scope.picture    = Candidates[CurCandidate].picture;
     $scope.pData      = pieData;
+    console.log(pieData);
   
     // right arrow click  
     $scope.forward      = function () {
 
       CurCandidate      = ( CurCandidate + 1 ) % Candidates.length;
+      var pieData       = { industrymoney : Candidates[CurCandidate].industry };
 
-      $scope.firstName  = firstName;
-      $scope.lastName   = lastName;
-      $scope.party      = party;
-      $scope.picture    = picture;
-      $scope.coms       = committee;
-      $scope.bills      = bills;
+
+      $scope.firstName  = Candidates[CurCandidate].first_name;
+      $scope.lastName   = Candidates[CurCandidate].last_name;
+      $scope.party      = Candidates[CurCandidate].party;
+      $scope.picture    = Candidates[CurCandidate].picture;
+      $scope.coms       = Candidates[CurCandidate].committees;
+      $scope.bills      = Candidates[CurCandidate].bills;
       $scope.pData      = pieData;
 
     };
@@ -104,53 +98,17 @@ App.controller( 'MainCtrl', [ '$scope',
     $scope.back         =  function () {
 
       ( CurCandidate === 0 )? CurCandidate = Candidates.length -1 : CurCandidate--;
+      var pieData       = { industrymoney : Candidates[CurCandidate].industry };
 
-      $scope.firstName  = firstName;
-      $scope.lastName   = lastName;
-      $scope.party      = party;
-      $scope.picture    = picture;
-      $scope.coms       = committee;
-      $scope.bills      = bills;
+      $scope.firstName  = Candidates[CurCandidate].first_name;
+      $scope.lastName   = Candidates[CurCandidate].last_name;
+      $scope.party      = Candidates[CurCandidate].party;
+      $scope.picture    = Candidates[CurCandidate].picture;
+      $scope.coms       = Candidates[CurCandidate].committees;
+      $scope.bills      = Candidates[CurCandidate].bills;
       $scope.pData      = pieData;
     
     };
-
-  }
-
-]);
-
-/**************************************************
-                * Bill.html
-**************************************************/
-
-
-App.controller( 'MoneyCtrl', [ '$scope',
-
-  function ( $scope ) {
-
-    //$scope.sex            = Candidates = 28;
-    $scope.entertainment  = 15;
-    $scope.politics       = 31;
-    $scope.food           = 2;
-    $scope.retail         = 11;
-
-    var industrymoneya    = [ $scope.sex, $scope.entertainment, $scope.politics, $scope.food, $scope.retail ];
-    var data              = { industrymoney : industrymoneya };
-
-    $scope.pData = data;
-
-  }
-
-]);
-
-App.controller( 'IndustryCtrl', [ '$scope',
-
-  function ( $scope ) {
-
-    var industrymoneya  = [ 15, 4, 42, 8, 23, 16 ];
-    var data            = { industrymoney : industrymoneya };
-
-    $scope.pData        = data;
 
   }
 
