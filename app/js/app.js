@@ -22,7 +22,7 @@ angular.module('myApp', [
 //     function onScriptLoad() {
 //       console.log(promised);
 
-//       //apply d3 to the rootscope 
+//       //apply d3 to the rootscope
 //       $rootScope.$apply(function() {
 //         promised.resolve(window.d3);
 //       });
@@ -56,6 +56,6 @@ angular.module('myApp', [
 //         }
 //       }
 //     };
-//   } //ending the anonomous fucntion 
+//   } //ending the anonomous fucntion
 
 // ]);

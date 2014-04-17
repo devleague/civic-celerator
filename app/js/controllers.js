@@ -12,12 +12,24 @@ myApp.controller('customController', ['$scope',
 
     $scope.lData = [
       {
-        "date": "01201990",
+        "date": "2013-03-01T01:10:00",
         "contributionmoney": "151651"
       },
       {
-        "date": "02121990",
+        "date": "2013-03-06T01:10:00",
         "contributionmoney": "324234"
+      },
+      {
+        "date": "2013-03-23T01:10:00",
+        "contributionmoney": "843567334"
+      },
+      {
+        "date": "2013-04-20T01:10:00",
+        "contributionmoney": "34654"
+      },
+      {
+        "date": "2013-04-21T01:10:00",
+        "contributionmoney": "9877"
       }
     ];
 

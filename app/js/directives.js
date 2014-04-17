@@ -153,7 +153,12 @@ myApp.directive('lchart', function($window) {
               return y(scope.lData[index].contributionmoney);
             });
 
-        x.domain(d3.extent(scope.lData, function(point, index){ return scope.lData[index].date}));
+        x.domain(d3.extent(scope.lData, function(point, index){
+          var dateFormat = d3.time.format("%Y-%m-%dT%H:%M:%S");
+          var prettyDate = dateFormat.parse(scope.lData[index].date);
+          console.log(prettyDate);
+          return prettyDate;
+        }));
         y.domain(d3.extent(scope.lData, function(point, index) { return scope.lData[index].contributionmoney}));
 
         svg.append("g")
