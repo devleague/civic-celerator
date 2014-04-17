@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
+var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap', 'ngTouch' ] );
 
 var Candidates = [
   {
