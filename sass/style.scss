@@ -56,6 +56,16 @@ h2 {
     }
 }
 
+button {
+    border: 0;
+    background-color: white;
+    color: black;
+}
+
+button:focus {
+    outline: none;
+}
+
 .candidate-section {
     text-align: center;
     line-height: 100px;
@@ -67,11 +77,7 @@ h2 {
         font-size: 4.5em;
         padding-left: 10px;
 
-        button {
-            border: 0;
-            background-color: white;
-            color: black;
-        }
+
     }
 
     .candidate-info {
@@ -366,7 +372,7 @@ h2 {
             height: 300px;
 
             .pie-chart {
-                width: 320px;
+                width: 400px;
                 height: 300px;
                 margin: 0 auto;
             }

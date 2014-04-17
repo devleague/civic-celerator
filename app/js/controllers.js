@@ -11,8 +11,15 @@ var Candidates = [
     party: "sexist",
     committees: ["NAMBLA","Alpha Gamma Pi", "Skulls", "Daggars"],
     bills: ["HK432N","123ABC","FUCK23", "KINGTA", "JASON5", "RAYYAR" ],
-    portrait: "http://placekitten.com/200/250",
-    industry: [28, 15, 31, 2, 11]
+    portrait: "http://placekitten.com/200/249",
+    industry: [
+      {"label" : "Candidate Committee", "value" : 28},
+      {"label" : "Individual", "value" : 52},
+      {"label" : "National Political Party", "value" : null},
+      {"label" : "Non-Candidate Committee", "value" : 7},
+      {"label" : "Other Entity", "value" : 24},
+      {"label" : "Vendor/Business", "value" : 53}
+      ]
   },
   {
     first_name: "Kingtak",
@@ -21,7 +28,14 @@ var Candidates = [
     committees: ["Sexy","alcoholics anonymous", "Fight club", "dealers"],
     bills: [ "123456","abcdef","kingwa", "wongbu", "rawrsd", "poopie" ],
     portrait: "http://placekitten.com/201/250",
-    industry: [18, 34, 22, 12, 21]
+    industry: [
+      {"label" : "Candidate Committee", "value" : null},
+      {"label" : "Individual", "value" : 32},
+      {"label" : "National Political Party", "value" : 27},
+      {"label" : "Non-Candidate Committee", "value" : 76},
+      {"label" : "Other Entity", "value" : 34},
+      {"label" : "Vendor/Business", "value" : 57}
+      ]
   },
   {
     first_name: "Tyler",
@@ -30,7 +44,14 @@ var Candidates = [
     committees: ["Hippies","DARPA", "Skulls", "Alii"],
     bills: ["(.)(.)","qrthfds","artwqtr", "dgsdga", "gjgfhk", "rwewg" ],
     portrait: "http://placekitten.com/200/251",
-    industry: [7, 25, 13, 12, 15]
+    industry: [
+      {"label" : "Candidate Committee", "value" : 67},
+      {"label" : "Individual", "value" : null},
+      {"label" : "National Political Party", "value" : 35},
+      {"label" : "Non-Candidate Committee", "value" : 79},
+      {"label" : "Other Entity", "value" : null},
+      {"label" : "Vendor/Business", "value" : 63}
+      ]
   },
   {
     first_name: "Ray",
@@ -38,21 +59,16 @@ var Candidates = [
     party: "Rock",
     committees: ["Rambla","gambla", "hammah", "jang"],
     bills: ["sdfcdN","r4rwec","we23sd", "df42sd", "asdffb", "asfasdg" ],
-    portrait: "http://placekitten.com/200/249",
-    industry: [16, 14, 26, 2, 31]
+    portrait: "http://placekitten.com/200/250",
+    industry: [
+      {"label" : "Candidate Committee", "value" : 51},
+      {"label" : "Individual", "value" : 5},
+      {"label" : "National Political Party", "value" : 99},
+      {"label" : "Non-Candidate Committee", "value" : 27},
+      {"label" : "Other Entity", "value" : null},
+      {"label" : "Vendor/Business", "value" : null}
+      ]
   }
-];
-
-var Industry = [
-{
-  candidateFirst: "Kingtak",
-  candidateLast: "Wong",
-  sex: "28",
-  entertainment: "15",
-  politics: "31",
-  food: "2",
-  retail: "11"
-}
 ];
 
 
