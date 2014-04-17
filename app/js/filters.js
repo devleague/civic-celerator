@@ -8,3 +8,10 @@ angular.module('myApp.filters', []).
       return String(text).replace(/\%VERSION\%/mg, version);
     };
   }]);
+
+angular.module('myApp2.filters', []).
+  filter('interpolate', ['version', function(version) {
+    return function(text) {
+      return String(text).replace(/\%VERSION\%/mg, version);
+    };
+  }]);

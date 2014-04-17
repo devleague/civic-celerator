@@ -2,9 +2,13 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="initial-scale=1">
   <title>Civic-Celerator</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css"/>
+  <script src="http://d3js.org/d3.v2.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
@@ -41,81 +45,85 @@
   <!-- ******************* ENDS NAV-BAR ******************* -->
   <div ng-controller="MainCtrl">
 
-    <div class="container">
+    <div class="candidate-section">
 
-      <div class="candidate-section">
+      <button class='left-arrow', ng-click="back()">&laquo;</button>
+      
+        <div class="candidate-info">
+          <h1> {{ firstName }} {{ lastName }} </h1>
+          <h2> {{ party }} </h2>
+        </div> <!-- end of div.candidate-info -->
+      
+      <button class='right-arrow', ng-click='forward()'>&raquo;</button>
+  
+  </div> <!-- end of div.candidate-section -->
 
-        <h1><span class="left-arrow" ng-click="back()">&laquo;</span></h1>
-        
-          <div class="candidate-info">
-            <h1> {{ firstName }} {{ lastName }} </h1>
-            <h2> {{ party }} </h2>
-          </div> <!-- end of div.candidate-info -->
+  <div class="container">
 
+    <div class="desktop-left-section">
 
-        <h1><span class="right-arrow" ng-click="forward()">&raquo;</span></h1>
+      <div class="candidate-image">
 
-      </div> <!-- end of div.candidate-section -->
+        <h1>&nbsp;</h1>
+        <img src="http://placekitten.com/200/250">
 
-      <div class="desktop-left-section">
+      </div> <!-- end of div.candidate-image -->
 
-        <div class="candidate-image">
+        <div class="candidate-committees">
 
-          <div ng-controller="CarouselCtrl">
-            <div carousel interval="3000">
-              <div slide ng-repeat="slide in slides" active="slide.active">
-                <img ng-src="{{slide.image}}" style="margin: auto;">
-                <div class="carousel-caption">
-                  <h4>Slide {{$index}}</h4>
-                  <p>{{slide.text}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-       <!--    <h1>&nbsp;</h1>
-          <img src="http://placekitten.com/200/250"> -->
-        </div> <!-- end of div.candidate-image -->
-          <div class="candidate-committees">
-            <h1> Committees </h1>
-            <ul>
-              <li ng-repeat='com in coms'>
-                <span>{{ com }}</span>
-              </li>
-            </ul>
-          </div> <!-- end of div.candidate-committees -->
+          <h1> Committees </h1>
+
+          <ul>
+            <li ng-repeat='com in coms'>
+              <span>{{ com }}</span>
+            </li>
+          </ul>
+        </div> <!-- end of div.candidate-committees -->
+
         <div class="bills-sponsored-section-desktop">
+
           <h1> Bills Sponsored</h1>
+
           <ul>
             <li ng-repeat="bill in bills">{{ bill}}</li>
           </ul>
-        </div> <!-- end of div.bills-sponsored-section -->
 
+        </div> <!-- end of div.bills-sponsored-section -->
 
       </div> <!-- end of div.desktop-left-section -->
 
       <div class="desktop-right-section">
 
-         <div class="campaign-contributions-section">
+        <div class="campaign-contributions-section">
+
           <h1> Campaign Contributions </h1>
-          <div class="contributions-graph"></div> <!-- end of div.contributions-graph -->
+          <div class="contributions-graph"></div> 
+
         </div> <!-- end of div.campaing-contributions-section -->
 
         <div class="industry-influence-section">
-          <h1>Monetary Influence (by Industry) </h1>
+
+          <h1>Monetary Influence (by Industry)</h1>
           <div class="influence-graph"></div> <!-- end of div.influence-graph -->
+
         </div> <!-- end of div.industry-influence-section -->
 
         <div class="bills-sponsored-section-mobile">
+
           <h1> Bills Sponsored</h1>
+
           <ul>
             <li ng-repeat="bill in bills">{{ bill }}</li>
           </ul>
+
         </div> <!-- end of div.bills-sponsored-section -->
           
       </div> <!-- end div.desktop-right-section -->
 
     </div> <!-- end of div.container -->
-  </div> <!-- end of ChangeCandidateCtrl -->
+
+  </div> <!-- end of MainCtrl -->
+
     <footer class="footer">
       <ul>
         <li>About</li>
@@ -145,7 +153,6 @@
   <div ng-view></div>
 
   <div>Angular seed app: v<span app-version></span></div> -->
-
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>

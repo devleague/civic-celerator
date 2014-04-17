@@ -65,34 +65,33 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
   // left arrow click
   $scope.back       =  function () {
 
-    var wrap = Candidates.length - 1;
-    var pos  = Math.abs( CurCandidate - Candidates.length );
-
-    CurCandidate = pos;
+    ( CurCandidate === 0 )? CurCandidate = Candidates.length -1 : CurCandidate--;
 
     $scope.firstName  = Candidates[CurCandidate].first_name;
     $scope.lastName   = Candidates[CurCandidate].last_name;
     $scope.party      = Candidates[CurCandidate].party;
     $scope.coms       = Candidates[CurCandidate].committees;
     $scope.bills      = Candidates[CurCandidate].bills;
-
+  
   };
 
 }]);
-/****************************
-      * Profile Picture
-****************************/
-App.controller( 'CarouselCtrl', [ '$scope', function ( $scope ) {
 
-  $scope.slides = [];
-  $scope.slides.push({ text : 'Cats!', image : 'http://placekitten.com/3ii/2ii' });
-  $scope.slides.push({ text : 'Cats!', image : 'http://placekitten.com/3i1/2ii' });
-  $scope.slides.push({ text : 'Cats!', image : 'http://placekitten.com/3i2/2ii' });
+App.controller('customController', ['$scope',
+  function($scope) {
+    var industrymoneya = [3, 23, 12, 15, 24, 34];
+    var data = {industrymoney: industrymoneya}
+    $scope.pData = data;
+  }
+])
 
-  $scope.setActive = function ( idx ) {
+var App2 = angular.module('myApp2.controllers', []);
 
-    $scope.slides[idx].active = true;
+App2.controller('customController2', ['$scope',
+  function($scope) {
+    var industrymoneya = [15, 4, 42, 8, 23, 16];
+    var data = {industrymoney: industrymoneya}
+    $scope.pData = data;
+  }
+])
 
-  };
-
-}]);
