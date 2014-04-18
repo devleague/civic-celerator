@@ -37,7 +37,6 @@ myApp.directive('pchart', function($window) {
       }, true);
 
       scope.render = function(data) {
-        console.log("Kingtak im here");
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
         //for a bar graph
@@ -217,7 +216,7 @@ myApp.directive('lchart', function($window) {
         var parseDate = d3.time.format("%Y-%m-%dT%H:%M:%S").parse;
 
         data.forEach(function (d) {
-          console.log(parseDate(d.date));
+
           d.date = parseDate(d.date);
           d.contributionmoney = +d.contributionmoney;
         });

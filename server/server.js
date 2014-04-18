@@ -7,7 +7,7 @@ var server    = restify.createServer();
 var mongoose  = require('mongoose');
 
 server.use(restify.bodyParser());
-mongoose.connect('mongodb://localhost/civic');
+mongoose.connect('mongodb://kingtak:kingtak@ds041367.mongolab.com:41367/civ_accelerator');
 
 
 /**************************************
@@ -25,7 +25,7 @@ var candidateSchema = new mongoose.Schema({
   service_begin   : Number,
   service_end     : Number,
   committiees     : [String],
-  sponsored_bills : [String]
+  bill_id         : [String]
 
 });
 
@@ -40,10 +40,17 @@ var contributionsSchema = new mongoose.Schema({
 
 });
 
+var committeeSchema = new mongoose.Schema({
+
+  committee  : [String]
+
+});
+
 // Mongoose Models //
 
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
 var Contributions = mongoose.model( 'contribution', contributionsSchema );
+var Committee     = mongoose.model( 'committee', committeeSchema );
 
 
 /**************************************
@@ -61,11 +68,10 @@ function getCandidates ( req, res ) {
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
-
+      console.log(politicians);
       res.json( politicians );
 
     });
-
 
 }// getCanidates
 
