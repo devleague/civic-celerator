@@ -79,7 +79,6 @@ function getCommittees ( req, res ) {
 
     if ( err ) console.log( 'Error ' + err );
 
-    console.log()
     res.json( comm );
 
   });

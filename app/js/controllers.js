@@ -12,7 +12,6 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
   function ( $scope, $http ) {
 
     politician();
-    committee();
 
     $http({
 
@@ -50,6 +49,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
         var Candidates    = data;
         var CurCandidate  = 0;
+        $scope.committees = {list: []};
 
         // first politician //
         $scope.firstName  = Candidates[CurCandidate].first_name;
@@ -59,7 +59,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         $scope.forward    = forwardClick;
         $scope.back       = backwardClick;
         $scope.leg_id     = Candidates[CurCandidate].leg_id;
-        //console.log("$scope.leg_id underneath");
+        
+        getCommittee( function( committee ) {
+
+            $scope.committees.list = committee;
+
+        });
 
         // right arrow  click //
         function forwardClick() {
@@ -70,6 +75,13 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
           $scope.picture    = Candidates[CurCandidate].photo_url;
+          $scope.leg_id     = Candidates[CurCandidate].leg_id;
+          
+          getCommittee( function( committee ) {
+
+             $scope.committees.list = committee;
+
+          });
 
         }
 
@@ -82,6 +94,13 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
           $scope.picture    = Candidates[CurCandidate].photo_url;
+          $scope.leg_id     = Candidates[CurCandidate].leg_id;
+
+          getCommittee( function( committee ) {
+
+            $scope.committees.list = committee;
+
+          });
         
         }
 
@@ -96,10 +115,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     }// function politician
 
     // Politician on committees //
-    function committee() {
+    function getCommittee( cb ) {
 
-    var politicianCommittees  = [];
-    $scope.committees          = politicianCommittees;
+    var politicianCommittees   = [];
+
 
       $http({
 
@@ -109,7 +128,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
       }).
       success( function ( data, status, headers, config ) {
 
-        console.log("inside committee, data below:");
+        //console.log("inside committee, data below:");
         //console.log(data[0].members[0].leg_id);
 
         for (var i = 0; i < data.length; i++) {
@@ -120,21 +139,24 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
             if ( $scope.leg_id == data[i].members[j].leg_id ) {
 
-              //console.log(data[i].committee[j]);
-
-              politicianCommittees.push( data[i].committee[j] );
+              politicianCommittees.push( data[i].committee[0] );
 
             }
 
           
           }
 
+          cb( politicianCommittees );
+
         }
+        
 
       }).
       error( function ( data, status, headers, config ) {
 
         console.log('Error ' + status);
+        cb( [] 
+);
 
       });
     
