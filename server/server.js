@@ -61,25 +61,34 @@ var Committee     = mongoose.model( 'committee', committeeSchema );
 // server.get('/api/candidates') //
 function getCandidates ( req, res ) {
   
-  /* figure out how to get the page number to increment up in the db */
-  var page = req.params.page;
-
   Candidate.find().sort({ last_name : 1 }).exec(
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
-      console.log(politicians);
+
       res.json( politicians );
 
     });
 
 }// getCanidates
 
+// server.get('/api/committee') //
+function getCommittees ( req, res ) {
+
+  Committee.find( function ( err, comm ) {
+
+    if ( err ) console.log( 'Error ' + err );
+
+    console.log()
+    res.json( comm );
+
+  });
+
+}
+
 
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
-
-  var page = req.params.page;
 
   Contributions.find().sort().exec(
     function ( err, money ) {
@@ -90,7 +99,8 @@ function getContributions ( req, res ) {
 
     });
 
-}// getContributions 
+}// getContributions
+
 
 /**************************************
             * Route Handling
@@ -98,6 +108,7 @@ function getContributions ( req, res ) {
 
 server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
+server.get('/api/committees', getCommittees);
 
 /**************************************
             * Server Setup
