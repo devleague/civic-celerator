@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="myApp2">
+<html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -43,13 +43,13 @@
     </div><!-- /.container-fluid -->
   </nav>
   <!-- ******************* ENDS NAV-BAR ******************* -->
-
+  <div ng-controller="BillCtrl"> 
    <div class="bills-name-section">
       <div class="left-x">
         <span>&nbsp;</span>
       </div> <!-- end of div.left-arrow -->
       <div class="bills-info">
-        <h1> Bill Name </h1>
+        <h1> {{billName}} </h1>
       </div> <!-- end of div.candidate-info -->
 
       <div class="right-x">
@@ -85,7 +85,7 @@
     <div class="desktop-right-section">
       <div class="bill-industry-influence-section">
         <h1>Monetary Influence (by Industry) </h1>
-        <div ng-controller="customController2" class="influence-graph-section">
+        <div ng-controller="InudstryCtrl" class="influence-graph-section">
           <div class="pie-chart" pchart></div>
         </div> <!-- end of div.influence-graph-section -->
       </div> <!-- end of div.industry-influence-section -->
@@ -94,24 +94,37 @@
         </p>
       </div> <!-- end of div.bill-page-industry-description -->
       <div class="bill-description-mobile">
-        <h1> Description: </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. Curabitur euismod pellentesque massa, a egestas turpis pharetra quis.
+        <h1> Summary: </h1>
+        <p>{{billSummary}}
         </p>
       </div> <!-- end of div.candidate-committees -->
 
       <div class="candidate-list-section-mobile">
         <h1> Candidate's Supporting</h1>
         <ul>
-          <a href="#"><li>R2D2<span>></span></li></a>
-          <a href="#"><li>C3PO<span>></span></li></a>
-          <a href="#"><li>AK47<span>></span></li></a>
-          <a href="#"><li>WD40<span>></span></li></a>
+          <li ng-click="candidateView({{candidate.candidate_id}})" ng-repeat="candidate in candidates">{{ billSponsors }}</li>
         </ul>
       </div> <!-- end of div.bills-sponsored-section -->
 
     </div> <!-- end div.desktop-right-section -->
 
   </div> <!-- end of div.container -->
+
+  </div> <!-- end of BillCtrl -->
+
+  <footer class="footer">
+      <ul>
+        <li>About</li>
+        <li>|</li>
+        <li>API</li>
+      </ul>
+      <h2>What industry sectors influence bills being passed?</h2>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
+      <br />
+      Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna.
+      </p> 
+
+  </footer>
 
     <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
@@ -124,3 +137,5 @@
   <script src="js/directives.js"></script>
 </body>
 </html>
+
+

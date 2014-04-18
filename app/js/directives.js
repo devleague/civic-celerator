@@ -28,16 +28,15 @@ myApp.directive('pchart', function($window) {
       scope.$watch(function() {
         return angular.element(window)[0].innerWidth;
       }, function() {
-        scope.render(scope.pData.industymoney);
+        scope.render();
       });
 
       //continue watching for new values
-      scope.$watch('pData', function(newVals, oldVals) {
-        return scope.render(newVals);
+      scope.$watch('pData', function(oldVals) {
+        return scope.render();
       }, true);
 
       scope.render = function(data) {
-        console.log("us");
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
         //for a bar graph
@@ -56,7 +55,6 @@ myApp.directive('pchart', function($window) {
         var pie = d3.layout.pie()
           .sort(null)
           .value(function(data, i) {
-            console.log(data);
             return scope.pData.industrymoney[i].value;
           })
 
@@ -105,9 +103,7 @@ myApp.directive('pchart', function($window) {
   }
 });
 
-var myApp2 = angular.module('myApp2.directives',[]);
-
-myApp2.directive('pchart', function($window) {
+myApp.directive('pchart2', function($window) {
   return {
     restrict: 'A',
     //happens when everything is associated and attached to the dom
@@ -140,7 +136,6 @@ myApp2.directive('pchart', function($window) {
       }, true);
 
       scope.render = function(data) {
-        console.log("us");
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
         //for a bar graph
@@ -158,8 +153,7 @@ myApp2.directive('pchart', function($window) {
         var pie = d3.layout.pie()
           .sort(null)
           .value(function(data, i) {
-            console.log(data);
-            return scope.pData.industrymoney[i];
+            return scope.pData.industrymoney[i].value;
           })
 
 
@@ -188,47 +182,75 @@ myApp2.directive('pchart', function($window) {
     }
   }
 });
-// myApp.directive('pchart', function($window) {
-//   return {
-//     restrict: 'A',
-//     //happens when everything is associated and attached to the dom
-//     link: function(scope, element, attrs) {
 
-//       var width = d3.select(element[0]).node().offsetWidth;
-//       var height = d3.select(element[0]).node().offsetHeight;
-//       var svg = d3.select(element[0])
-//         .append("svg")
-//         .attr('width', width)
-//         .attr('height', height)
-//         .append('g')
-//         .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
-
-//       //if the window gets resized
-//       window.onresize = function() {
-//         scope.render();
-//       };
-
-//       //watch the window the angular way
-//       scope.$watch(function() {
-//         return angular.element(window)[0].innerWidth;
-//       }, function() {
-//         scope.render(scope.pData.industymoney);
-//       });
-
-//       //continue watching for new values
-//       scope.$watch('lData', function(newVals, oldVals) {
-//         return scope.render(newVals);
-//       }, true);
-
-//       scope.render = function(data) {
-//         console.log("us");
-//         //remove the elements (after rerender)
-//         svg.selectAll("*").remove();
-//         //for a bar graph
-//         // var width, height, max;
-//       }
-//     }
-//   }
-// });
+myApp.directive('lchart', function($window) {
+  return {
+    restrict: 'A',
+    //happens when everything is associated and attached to the dom
+    link: function(scope, element, attrs) {
 
 
+      //if the window gets resized
+      // window.onresize = function() {
+      //   scope.renderLine();
+      // };
+
+      //continue watching for new values
+      scope.$watch('scope.lData', function() {
+        return scope.renderLine();
+      }, true);
+
+      scope.renderLine = function() {
+  
+        var width = d3.select(element[0]).node().offsetWidth;
+        var height = d3.select(element[0]).node().offsetHeight;
+        
+        var margin = { top: 30, right: 50, bottom: 30, left: 90};
+        var svg = d3.select(element[0])
+        .append("svg")
+        .attr('width', width+margin.left+margin.right)
+        .attr('height', height+margin.top+margin.bottom)
+        .append('g')
+        .attr("transform", "translate("+margin.left+","+margin.top+")");
+
+        var width = width - margin.left - margin.right;
+        var height = height - margin.top - margin.bottom;
+        var data = scope.lData;
+
+        var parseDate = d3.time.format("%Y-%m-%dT%H:%M:%S").parse;
+
+        data.forEach(function (d) {
+
+          d.date = parseDate(d.date);
+          d.contributionmoney = +d.contributionmoney;
+        });
+
+        var x = d3.time.scale().range([0, width]);
+        var y = d3.scale.linear().range([height, 0]);
+
+        x.domain(d3.extent(data, function(d){ return d.date; }));
+        y.domain([0, d3.max(data, function(d){ return d.contributionmoney; })]);
+
+        var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5);
+        var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5);
+
+        var valueLine = d3.svg.line()
+                          .x(function(d) { return x(d.date);})
+                          .y(function(d) { return y(d.contributionmoney);});
+        svg.append("path")
+        .attr("d", valueLine(data));
+
+        svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
+        
+        svg.append("text").attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom+6) + ")").style("text-anchor", "middle").text("Date");
+
+        svg.append("g").attr("class", "y axis").call(yAxis);
+
+        svg.append("text").attr("transform", "rotate(-90)").attr("y", 0-margin.left).attr("x", 0 -(height/2)).attr("dy", "1em").style("text-anchor", "middle").text("Contributions");
+
+        svg.append("text").attr("x", (width/2)).attr("y", 0-(margin.top/2)).attr("text-anchor", "middle").style("font-size", "16px").text("Contributions over Time");
+      
+      }
+    }
+  }
+});
