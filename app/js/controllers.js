@@ -85,10 +85,7 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
   $scope.coms       = Candidates[CurCandidate].committees;
   $scope.bills      = Candidates[CurCandidate].bills;
   $scope.portrait   = Candidates[CurCandidate].portrait;
-
-  var industrymoneya = Candidates[CurCandidate].industry;
-  var data = {industrymoney: industrymoneya};
-  $scope.pData = data;
+  $scope.pData      = {industrymoney: Candidates[CurCandidate].industry};
   
   // right arrow click  
   $scope.forward    = function () {
@@ -101,10 +98,7 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
     $scope.coms       = Candidates[CurCandidate].committees;
     $scope.bills      = Candidates[CurCandidate].bills;
     $scope.portrait   = Candidates[CurCandidate].portrait;
-
-    var industrymoneya = Candidates[CurCandidate].industry;
-    var data = {industrymoney: industrymoneya};
-    $scope.pData = data;
+    $scope.pData      = {industrymoney: Candidates[CurCandidate].industry};
   };
 
   // left arrow click
@@ -118,29 +112,16 @@ App.controller( 'MainCtrl', [ '$scope', function ( $scope ) {
     $scope.coms       = Candidates[CurCandidate].committees;
     $scope.bills      = Candidates[CurCandidate].bills;
     $scope.portrait   = Candidates[CurCandidate].portrait;
-
-    var industrymoneya = Candidates[CurCandidate].industry;
-    var data = {industrymoney: industrymoneya};
-    $scope.pData = data;
+    $scope.pData      = {industrymoney: Candidates[CurCandidate].industry};
   
   };
 
 }]);
 
-// App.controller('customController', ['$scope',
-//   function($scope) {
 
-//     $scope.sex = Candidates[28;
-//     $scope.entertainment = 15;
-//     $scope.politics = 31;
-//     $scope.food = 2;
-//     $scope.retail = 11;
-
-//     var industrymoneya = [$scope.sex, $scope.entertainment, $scope.politics, $scope.food, $scope.retail];
-//     var data = {industrymoney: industrymoneya}
-//     $scope.pData = data;
-//   }
-// ])
+/****************************
+      * Bills
+****************************/
 
 var App2 = angular.module('myApp2.controllers', []);
 

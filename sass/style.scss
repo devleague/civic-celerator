@@ -20,6 +20,8 @@ body {
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -372,7 +374,7 @@ button:focus {
             height: 300px;
 
             .pie-chart {
-                width: 400px;
+                width: 320px;
                 height: 300px;
                 margin: 0 auto;
             }
@@ -525,6 +527,11 @@ button:focus {
             display: none;
         }
     }
+}
+
+.outside-container {
+    background-color: black;
+    min-height: 100%;
 }
 
 .footer {
