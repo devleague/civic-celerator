@@ -49,7 +49,6 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
         var Candidates    = data;
         var CurCandidate  = 0;
-        $scope.committees = {list: []};
 
         // first politician //
         $scope.firstName  = Candidates[CurCandidate].first_name;
@@ -62,7 +61,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         
         getCommittee( function( committee ) {
 
-            $scope.committees.list = committee;
+            $scope.committees = committee;
 
         });
 
@@ -79,7 +78,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
           
           getCommittee( function( committee ) {
 
-             $scope.committees.list = committee;
+             $scope.committees = committee;
 
           });
 
@@ -98,7 +97,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
           getCommittee( function( committee ) {
 
-            $scope.committees.list = committee;
+            $scope.committees = committee;
 
           });
         
