@@ -40,6 +40,17 @@ var contributionsSchema = new mongoose.Schema({
 
 });
 
+var billsSchema = new mongoose.Schema({
+
+  title     : String,
+  summary   : String,
+  session   : String,
+  id        : String,
+  bill_id   : String,
+  sponsors  : [ { String :  String } ]
+
+});
+
 var committeeSchema = new mongoose.Schema({
 
   committee  : [String]
@@ -51,6 +62,7 @@ var committeeSchema = new mongoose.Schema({
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
 var Contributions = mongoose.model( 'contribution', contributionsSchema );
 var Committee     = mongoose.model( 'committee', committeeSchema );
+var Bills         = mongoose.model( 'bill', billsSchema );
 
 
 /**************************************
@@ -85,6 +97,19 @@ function getCommittees ( req, res ) {
 
 }
 
+function getBills ( req, res ) {
+
+  Bills.find().exec( function ( err, bill ) {
+
+    if ( err ) conosle.log('Error ' + err );
+
+    console.log(bill[0].sponsors);
+    res.json(bill);
+
+  });
+
+}
+
 
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
@@ -108,6 +133,7 @@ function getContributions ( req, res ) {
 server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
 server.get('/api/committees', getCommittees);
+server.get('/api/bills', getBills);
 
 /**************************************
             * Server Setup

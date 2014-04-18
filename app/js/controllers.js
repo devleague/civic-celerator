@@ -11,6 +11,7 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 App.controller( 'MainCtrl', [ '$scope', '$http',
   function ( $scope, $http ) {
 
+    getBills();
     politician();
 
     $http({
@@ -20,8 +21,6 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
     }).
     success( function ( data, status, headers, config ) {
-
-      console.log('/api/contributions data:');
 
     }).
     error( function ( data, status, headers, config ) {
@@ -36,7 +35,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
                     * Helpers
 **************************************************/
     
-    // politician picture & name //
+
+    /*******************************
+      * politician picture & name 
+    *******************************/
+
     function politician() {
       
       $http({
@@ -62,6 +65,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         getCommittee( function( committee ) {
 
             $scope.committees = committee;
+
+        });
+
+        getBills( function( bills ) {
+
+          $scope.bills = bills;
 
         });
 
@@ -113,7 +122,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
     }// function politician
 
-    // Politician on committees //
+    /*******************************
+      * politician's committees 
+    *******************************/
+
     function getCommittee( cb ) {
 
     var politicianCommittees   = [];
@@ -127,14 +139,9 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
       }).
       success( function ( data, status, headers, config ) {
 
-        //console.log("inside committee, data below:");
-        //console.log(data[0].members[0].leg_id);
-
         for (var i = 0; i < data.length; i++) {
 
-          //console.log( data[i] );
           for (var j = 0; j < data[i].members.length; j++) {
-            //console.log(data[i].committee[j]);
 
             if ( $scope.leg_id == data[i].members[j].leg_id ) {
 
@@ -154,12 +161,57 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
       error( function ( data, status, headers, config ) {
 
         console.log('Error ' + status);
-        cb( [] 
-);
+        cb([]);
 
       });
     
     }// function committee
+
+    /*******************************
+          * politician's bills
+    *******************************/
+
+    function getBills( cb ) {
+
+      var billCollection = [];
+
+      $http({
+
+        method  : 'GET',
+        url     : 'http://localhost:3000/api/bills'
+
+      }).
+      success( function ( data, status, headers, config ) {
+
+        console.log("bill title:");
+        console.log(data[0].title);
+
+        console.log("sponsors:");
+        //console.log(data[0].sponsors[0].leg_id);
+        console.log(data[0]);
+
+        for (var i = 0; i < data.length; i++) {
+
+          for (var j = 0; j < data[i].sponsors.length; j++) {
+
+            if ( $scope.leg_id == data[i].sponsors[j].leg_id ) {
+
+              console.log("ray you found me!");
+              console.log( data[i].sponsors[j].leg_id);
+              console.log( data[i].title );
+              console.log( data[i].sponsors[j].name );
+              console.log( data[i].summary );
+            }
+          }
+
+        }
+
+      }).
+      error( function ( data, status, headers, config ) {
+
+      });
+
+    }// function getBills
 
   }
 
