@@ -103,8 +103,7 @@ function getBills ( req, res ) {
 
     if ( err ) conosle.log('Error ' + err );
 
-    console.log(bill[0].sponsors);
-    res.json(bill);
+    res.json( bill );
 
   });
 

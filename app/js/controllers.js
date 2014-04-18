@@ -91,6 +91,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
           });
 
+          getBills( function( bills ) {
+
+            $scope.bills = bills;
+
+          });
+
         }
 
         // left arrow click //
@@ -107,6 +113,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
           getCommittee( function( committee ) {
 
             $scope.committees = committee;
+
+          });
+
+          getBills( function( bills ) {
+
+            $scope.bills = bills;
 
           });
         
@@ -167,6 +179,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     
     }// function committee
 
+
     /*******************************
           * politician's bills
     *******************************/
@@ -196,18 +209,25 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
             if ( $scope.leg_id == data[i].sponsors[j].leg_id ) {
 
-              console.log("ray you found me!");
-              console.log( data[i].sponsors[j].leg_id);
-              console.log( data[i].title );
-              console.log( data[i].sponsors[j].name );
-              console.log( data[i].summary );
+              billCollection.push(data[i].bill_id);
+
+              // console.log( data[i].sponsors[j].leg_id);
+              // console.log( data[i].title );
+              // console.log( data[i].sponsors[j].name );
+              // console.log( data[i].summary );
+
             }
+            
           }
 
         }
 
+        return cb( billCollection );
+
       }).
       error( function ( data, status, headers, config ) {
+
+        console.log( 'Error ' + status );
 
       });
 
