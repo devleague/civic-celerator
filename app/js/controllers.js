@@ -49,11 +49,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         $scope.firstName  = Candidates[CurCandidate].first_name;
         $scope.lastName   = Candidates[CurCandidate].last_name;
         $scope.party      = Candidates[CurCandidate].party;
-        $scope.coms       = Candidates[CurCandidate].committees;
-        $scope.bills      = Candidates[CurCandidate].bill_id;
         $scope.picture    = Candidates[CurCandidate].photo_url;
         $scope.pData      = pieData;
         $scope.forward    = forwardClick;
+        $scope.back       = backwardClick;
 
         function forwardClick() {
 
@@ -72,7 +71,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         }
 
         // left arrow click
-        $scope.back =  function () {
+        function backwardClick() {
 
           ( CurCandidate === 0 )? CurCandidate = Candidates.length -1 : CurCandidate--;
           var pieData       = { industrymoney : Candidates[CurCandidate].industry };
@@ -85,9 +84,8 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
           $scope.bills      = Candidates[CurCandidate].bills;
           $scope.pData      = pieData;
         
-        };
+        }
 
-      
       }).
       error( function ( data, status, headers, config ) {
 
