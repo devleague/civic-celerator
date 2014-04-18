@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var App = angular.module( 'myApp.controllers', [] );
+var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 
 /**************************************************
         * Main Controller / index.html
@@ -52,12 +52,15 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
       var Candidates    = data;
       var CurCandidate  = 0;
       var pieData       = { industrymoney : Candidates[CurCandidate].industry };
+      console.log("Pie data below:");
+      console.log(pieData);
+
 
       $scope.firstName  = Candidates[CurCandidate].first_name;
       $scope.lastName   = Candidates[CurCandidate].last_name;
       $scope.party      = Candidates[CurCandidate].party;
       $scope.coms       = Candidates[CurCandidate].committees;
-      $scope.bills      = Candidates[CurCandidate].bills;
+      $scope.bills      = Candidates[CurCandidate].sponsored_bills;
       $scope.picture    = Candidates[CurCandidate].photo_url;
       $scope.pData      = pieData;
 
@@ -74,7 +77,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         $scope.party      = Candidates[CurCandidate].party;
         $scope.picture    = Candidates[CurCandidate].photo_url;
         $scope.coms       = Candidates[CurCandidate].committees;
-        $scope.bills      = Candidates[CurCandidate].bills;
+        $scope.bills      = Candidates[CurCandidate].sponsored_bills;
         $scope.pData      = pieData;
 
       };

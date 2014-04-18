@@ -21,32 +21,118 @@ myApp.directive('pchart', function($window) {
 
       //if the window gets resized
       window.onresize = function() {
-        width = d3.select(element[0]).node().offsetWidth;
-        height = d3.select(element[0]).node().offsetHeight;
-        console.log("resize");
-        svg = d3.select(element[0])
-        .append("svg")
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
-        scope.renderPie();
+        scope.render();
       };
 
       //watch the window the angular way
       scope.$watch(function() {
         return angular.element(window)[0].innerWidth;
       }, function() {
-        scope.renderPie();
+        scope.render();
+      });
+
+      //continue watching for new values
+      scope.$watch('pData', function(oldVals) {
+        return scope.render();
+      }, true);
+
+      scope.render = function(data) {
+        console.log("Kingtak im here");
+        //remove the elements (after rerender)
+        svg.selectAll("*").remove();
+        //for a bar graph
+        // var width, height, max;
+        var margin = 5;
+        //defining the width of the svg reactively
+        var radius = Math.min(width, height) / 2;
+        var labelr = radius + 30;
+        var color = d3.scale.ordinal()
+          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#ff00ff"]);
+
+        var arc = d3.svg.arc()
+          .outerRadius(radius - 10)
+          .innerRadius(0);
+
+        var pie = d3.layout.pie()
+          .sort(null)
+          .value(function(data, i) {
+            return scope.pData.industrymoney[i].value;
+          })
+
+
+
+        var g = svg.selectAll(".arc")
+          .data(pie(scope.pData.industrymoney))
+          .enter()
+          .append('g')
+          .attr('class', 'arc');
+
+        g.append('path')
+          .attr('d', arc)
+          .style("fill", function(d, i) { return color(scope.pData.industrymoney[i].value); });
+        
+        // g.append('text')
+        //   .attr('transform', function(d) {
+        //     var c = arc.centroid(d),
+        //         x = c[0],
+        //         y = c[1],
+        //         h = Math.sqrt(x*x + y*y);
+
+        //     return "translate(" + (x/h * labelr) + "," + (y/h * labelr) + ")";
+        //   })
+        g.append('text')
+          .attr('transform', function(d) {
+            return "translate(" + arc.centroid(d) + ")";
+          })
+          .attr('dy', '.35em')
+          .style('text-anchor', 'middle')
+    //       .attr("text-anchor", function(d) {
+    //     // are we past the center?
+    //     return (d.endAngle + d.startAngle)/2 > Math.PI ?
+    //         "end" : "start";
+    // })
+          .text(function(d,i) {
+            return scope.pData.industrymoney[i].value;
+          })
+          .attr('fill','white');
+      }
+    }
+  }
+});
+
+myApp.directive('pchart2', function($window) {
+  return {
+    restrict: 'A',
+    //happens when everything is associated and attached to the dom
+    link: function(scope, element, attrs) {
+
+      var width = d3.select(element[0]).node().offsetWidth;
+      var height = d3.select(element[0]).node().offsetHeight;
+      var svg = d3.select(element[0])
+        .append("svg")
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
+
+      //if the window gets resized
+      window.onresize = function() {
+        scope.render();
+      };
+
+      //watch the window the angular way
+      scope.$watch(function() {
+        return angular.element(window)[0].innerWidth;
+      }, function() {
+        scope.render(scope.pData.industymoney);
       });
 
       //continue watching for new values
       scope.$watch('pData', function(newVals, oldVals) {
-        return scope.renderPie(newVals);
+        return scope.render(newVals);
       }, true);
 
-      scope.renderPie = function() {
-        console.log(width);
+      scope.render = function(data) {
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
         //for a bar graph
@@ -64,7 +150,7 @@ myApp.directive('pchart', function($window) {
         var pie = d3.layout.pie()
           .sort(null)
           .value(function(data, i) {
-            return scope.pData.industrymoney[i];
+            return scope.pData.industrymoney[i].value;
           })
 
 
