@@ -11,6 +11,10 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 App.controller( 'MainCtrl', [ '$scope', '$http',
   function ( $scope, $http ) {
 
+    $scope.billView = function(bill_id) {
+      $location.path("/bills/" + bill_id);
+    }
+
     politician();
 
     $http({
@@ -98,3 +102,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
   }
 
 ]);
+
+App.controller( 'BillCtrl', [ '$scope', '$http', function ($scope, $http) {
+  $scope.bill
+}])

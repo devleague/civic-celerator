@@ -46,11 +46,20 @@ var committeeSchema = new mongoose.Schema({
 
 });
 
+var billSchema = new mongoose.Schema({
+  bill_id       : String,
+  session       : String,
+  title         : String,
+  summary       : String,
+  sponsors      : [String]
+});
+
 // Mongoose Models //
 
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
 var Contributions = mongoose.model( 'contribution', contributionsSchema );
 var Committee     = mongoose.model( 'committee', committeeSchema );
+var Bill          = mongoose.model( 'bills', billSchema );
 
 
 /**************************************
@@ -92,12 +101,33 @@ function getContributions ( req, res ) {
 
 }// getContributions 
 
+function getBillbyID ( req, res ) {
+  var bill_id = req.params.bill_id;
+
+  Bill.findById(bill_id, function (err, bill) {
+    if (err) console.log( 'Error' + err);
+
+    console.log("hello" + bill.sponsors);
+
+    if (bill === null) {
+      return res.redirect("/app");
+    }
+
+    return res.view("bill", {
+      bill: bill
+    });
+  });
+
+}// getBillbyId
+
 /**************************************
             * Route Handling
 ***************************************/
 
 server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
+server.get('/api/bills/:id', getBillbyID);
+
 
 /**************************************
             * Server Setup
