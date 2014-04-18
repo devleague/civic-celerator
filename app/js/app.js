@@ -10,27 +10,3 @@ angular.module('myApp', [
   'myApp.controllers'
 
 ]);
-// .config( function ( $routeProvider, $locationProvider ) {
-
-//   $routeProvider.
-//     when( '/api/candidates', {
-
-//       templateUrl : '../index.html'
-//       controller  : 'MainCtrl'
-
-//     }).
-//     when( '/api/contributions', {
-
-//       templateUrl : '../index.html',
-//       controller  : 'MainCtrl'      
-
-//     }).
-//     otherwise({
-
-//       redirectTo  : '/'
-
-//     });
-
-//   $locationProvider.html5mode( true ); 
-
-// });

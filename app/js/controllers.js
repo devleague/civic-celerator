@@ -2,60 +2,7 @@
 
 /* Controllers */
 
-var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
-
-// var Candidates = [
-//   {
-//     first_name  : "Donald",
-//     last_name   : "Trump",
-//     party       : "sexist",
-//     picture     : "http://lorempixel.com/output/cats-h-c-200-300-7.jpg",
-//     committees  : [ "NAMBLA", "Alpha Gamma Pi", "Skulls", "Daggars" ],
-//     bills       : [ "HK432N", "123ABC", "FUCK23", "KINGTA", "JASON5", "RAYYAR" ],
-//     industry    : [ 28, 15, 31, 2, 11 ]
-//   },
-//   {
-//     first_name  : "Kingtak",
-//     last_name   : "Wong",
-//     party       : "All The Time",
-//     picture     : "http://placekitten.com/g/200/300",
-//     committees  : [ "Sexy", "alcoholics anonymous", "Fight club", "dealers" ],
-//     bills       : [ "123456","abcdef","kingwa", "wongbu", "rawrsd", "poopie" ],
-//     industry    : [ 18, 34, 22, 12, 21 ]
-//   },
-//   {
-//     first_name  : "Tyler",
-//     last_name   : "Boright",
-//     party       : "Green",
-//     picture     : "http://placekitten.com/200/300",
-//     committees  : [ "Hippies","DARPA", "Skulls", "Alii" ],
-//     bills       : [ "(.)(.)","qrthfds","artwqtr", "dgsdga", "gjgfhk", "rwewg" ],
-//     industry    : [ 7, 25, 13, 12, 15 ]
-//   },
-//   {
-//     first_name  : "Ray",
-//     last_name   : "Farias",
-//     party       : "Rock",
-//     picture     : "http://lorempixel.com/output/cats-h-c-200-300-1.jpg",
-//     committees  : ["Rambla","gambla", "hammah", "jang"],
-//     bills       : ["sdfcdN","r4rwec","we23sd", "df42sd", "asdffb", "asfasdg" ],
-//     industry    : [ 16, 14, 26, 2, 31 ]
-//   }
-// ];
-
-// var Industry = [{
-
-//     candidateFirst  : "Kingtak",
-//     candidateLast   : "Wong",
-//     entertainment   : "15",
-//     politics        : "31",
-//     retail          : "11",
-//     food            : "2",
-//     sex             : "28"
-
-// }];
-
-
+var App = angular.module( 'myApp.controllers', [] );
 
 /**************************************************
         * Main Controller / index.html
@@ -64,11 +11,40 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 App.controller( 'MainCtrl', [ '$scope', '$http',
   function ( $scope, $http ) {
 
+
+    var industrymoneya = [3, 23, 12, 15, 24, 34];
+    var data = {industrymoney: industrymoneya};
+    $scope.pData = data;
+
+    $scope.lData = [
+      {
+        "date": "2013-03-01T01:10:00",
+        "contributionmoney": "151651"
+      },
+      {
+        "date": "2013-03-06T01:10:00",
+        "contributionmoney": "324234"
+      },
+      {
+        "date": "2013-03-23T01:10:00",
+        "contributionmoney": "843567334"
+      },
+      {
+        "date": "2013-04-20T01:10:00",
+        "contributionmoney": "34654"
+      },
+      {
+        "date": "2013-04-21T01:10:00",
+        "contributionmoney": "9877"
+      }
+
+    ];
+
     console.log("start");
     $http({
 
       method  : 'GET',
-      url     : 'http://localhost:8080/api/candidates'
+      url     : 'http://localhost:3000/api/candidates'
 
     }).
     success( function ( data, status, headers, config ) {
@@ -130,7 +106,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     $http({
 
       method  : 'GET',
-      url     : 'localhost:8080/api/contributions'
+      url     : 'localhost:3000/api/contributions'
 
     }).
     success( function ( data, status, headers, config ) {
@@ -147,13 +123,3 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
   }
 
 ]);
-
-
-
-
-
-
-
-
-
-
