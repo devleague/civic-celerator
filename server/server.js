@@ -87,7 +87,7 @@ function getCandidates ( req, res ) {
 // server.get('/api/committee') //
 function getCommittees ( req, res ) {
 
-  Committee.find( function ( err, comm ) {
+  Committee.find({},'committee members').exec( function ( err, comm ) {
 
     if ( err ) console.log( 'Error ' + err );
 
@@ -99,7 +99,7 @@ function getCommittees ( req, res ) {
 
 function getBills ( req, res ) {
 
-  Bills.find().exec( function ( err, bill ) {
+  Bills.find( {}, 'title all_ids sponsors summary bill_id' ).exec( function ( err, bill ) {
 
     if ( err ) conosle.log('Error ' + err );
 
