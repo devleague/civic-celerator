@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+var myApp = angular.module('myApp', [
   'ngRoute',
   'myApp.filters',
   'myApp.services',
@@ -10,3 +10,22 @@ angular.module('myApp', [
   'myApp.controllers'
 
 ]);
+
+myApp.config(function ($routeProvider, $locationProvider) {
+  $routeProvider.
+    when('/', {
+      templateUrl: 'views/landingPage.html',
+      controller: 'LandingController'
+    }).
+    when('/candidates', {
+      templateUrl: 'views/candidates.html',
+      controller: 'MainCtrl'
+    }).
+    when('/bill/:oid', {
+      templateUrl: '/views/bill.html',
+      controller: 'SingleBillController'
+    }).
+    otherwise('/');
+
+  $locationProvider.html5Mode(true);
+});
