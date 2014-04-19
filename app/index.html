@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Civic-Celerator</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/fonts/MyFontsWebfontsKit.css">
+  <link rel="stylesheet" href="./css/landingStyle.css">
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" type="text/css" href="css/fonts/MyFontsWebfontsKit.css">
   <script src="http://d3js.org/d3.v2.js"></script>
@@ -69,7 +71,7 @@
           <h1> Bills Sponsored</h1>
 
           <ul>
-        <li ng-repeat="bill in bills"><span class="bold">{{ bill.id }}</span><br>{{ bill.title }}</li>
+        <li ng-click="viewSingleBill(bill.oid)" ng-repeat="bill in bills"><span class="bold">{{ bill.id }}</span><br>{{ bill.title }}</li>
           </ul>
         </div> <!-- end of div.bills-sponsored-section-desktop -->
           

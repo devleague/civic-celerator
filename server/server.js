@@ -85,7 +85,7 @@ function getCandidates ( req, res ) {
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
-      console.log(politicians.last_name);
+      // console.log("politicians last name: " + politicians.last_name);
 
       res.json( politicians );
     });
@@ -134,7 +134,7 @@ function getContributions ( req, res ) {
 
 function getSingleBill ( req, res ) {
   var bill_oid = req.params.oid;
-  // console.log(req.params);
+  console.log(req.params);
   Bills.findOne({"_id": bill_oid}, function (err, bill) {
     // console.log(bill);
     res.json(bill);
@@ -149,7 +149,7 @@ function getBillbyID ( req, res ) {
   Bill.findById(bill_id, function (err, bill) {
     if (err) console.log( 'Error' + err);
 
-    console.log("hello" + bill.sponsors);
+    console.log("Bill Sponsors: " + bill.sponsors);
 
     if (bill === null) {
       return res.redirect("/app");
