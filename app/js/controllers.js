@@ -74,6 +74,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           getContributions( function( contributionData ) {
             
             $scope.pData = contributionData;
+            $scope.lData = contributionData.contributedDate;
 
           });
 
@@ -104,6 +105,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
             getContributions( function( contributionData ) {
             
               $scope.pData = contributionData;
+              $scope.lData = contributionData.contributedDate;
 
             });
 
@@ -137,6 +139,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           getContributions( function( contributionData ) {
           
             $scope.pData = contributionData;
+            $scope.lData = contributionData.contributedDate;
 
           });
 
@@ -249,9 +252,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
     // All contributions made to a politician //
     function getContributions ( cb ) {
-
+      //$scope.pData = {};
       var money                   = [];
       var contributionType        = [];
+      var contributedDate         = [];
 
       $http({
 
@@ -267,12 +271,13 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
             
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
+            contributedDate.push(data[i].date);
 
           }
 
         }
 
-          var contributionData  = { industrymoney : money, contributiontype : contributionType };
+          var contributionData  = { industrymoney : money, contributiontype : contributionType, contributedDate: contributedDate };
           //console.log(contributionData)
           return cb ( contributionData );
 
