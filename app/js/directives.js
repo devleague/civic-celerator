@@ -39,7 +39,26 @@ myApp.directive('pchart', function($window) {
       scope.render = function(data) {
         //remove the elements (after rerender)
 
-        console.log(scope.pData);
+
+        var itm = {};
+        var money = [];
+        var type = [];
+
+        for(var i = 0; i < scope.pData.contributiontype.length; i++ ){
+          
+          if(itm[scope.pData.contributiontype[i]] == undefined){
+            itm[scope.pData.contributiontype[i]] = 0;
+          }
+          itm[scope.pData.contributiontype[i]] += scope.pData.industrymoney[i];
+
+        }
+        for(var key in itm){
+          type.push(key);
+          money.push(itm[key]);
+        }
+
+        console.log("this is the type: "  +type);
+        console.log("this is the money: " + money);
         svg.selectAll("*").remove();
         //for a bar graph
         // var width, height, max;
@@ -57,28 +76,22 @@ myApp.directive('pchart', function($window) {
         var pie = d3.layout.pie()
           .sort(null)
           .value(function(data, i) {
-            return scope.pData.industrymoney[i];
+            return money[i];
           })
 
 
 
         var g = svg.selectAll(".arc")
-          .data(pie(scope.pData.industrymoney))
+          .data(pie(money))
           .enter()
           .append('g')
           .attr('class', 'arc');
 
         g.append('path')
           .attr('d', arc)
-<<<<<<< HEAD
-          .style("fill", function(d, i) { return color(scope.pData.industrymoney[i]); });
+          .style("fill", function(d, i) { return color(money[i]); });
         
-      /* //STUB: labels for pie chart
-=======
-          .style("fill", function(d, i) { return color(scope.pData.industrymoney[i].value); });
-
       //STUB: labels for pie chart
->>>>>>> front-end-jason
         g.append('text')
           .attr('transform', function(d) {
             var c = arc.centroid(d),
@@ -103,7 +116,7 @@ myApp.directive('pchart', function($window) {
           })
         
           .text(function(d,i) {
-            return scope.pData.industrymoney[i].value;
+            return type[i];
           })
           .attr('fill','white');
       }
@@ -209,11 +222,11 @@ myApp.directive('lchart', function($window) {
       }, true);
 
       scope.renderLine = function() {
-
+  
         var width = d3.select(element[0]).node().offsetWidth;
         var height = d3.select(element[0]).node().offsetHeight;
         console.log("width" + width);
-
+        
         var margin = { top: 30, right: 50, bottom: 30, left: 90};
         var svg = d3.select(element[0])
         .append("svg")
@@ -252,7 +265,7 @@ myApp.directive('lchart', function($window) {
         .attr("d", valueLine(data));
 
         svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
-
+        
         svg.append("text").attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom+6) + ")").style("text-anchor", "middle").text("Date");
 
         svg.append("g").attr("class", "y axis").call(yAxis);
@@ -260,7 +273,7 @@ myApp.directive('lchart', function($window) {
         svg.append("text").attr("transform", "rotate(-90)").attr("y", 0-margin.left).attr("x", 0 -(height/2)).attr("dy", "1em").style("text-anchor", "middle").text("Contributions");
 
         svg.append("text").attr("x", (width/2)).attr("y", 0-(margin.top/2)).attr("text-anchor", "middle").style("font-size", "16px").text("Contributions over Time");
-
+      
       }
     }
   }

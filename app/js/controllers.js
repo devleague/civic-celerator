@@ -11,8 +11,10 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
-    $scope.billView = function(bill_id) {
-      $location.path('/bills/' + bill_oid);
+    $scope.billView = function( bill_id ) {
+
+      $location.path( '/bills/' + bill_oid );
+
     }
 
     // loads politician: pic, name, bills, committee //
@@ -22,11 +24,8 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
     //getContributions();
 
     $scope.viewSingleBill = function ( oid ) {
-<<<<<<< HEAD
 
-=======
-      console.log(oid);
->>>>>>> front-end-jason
+      //console.log(oid);
       $location.url( '/bill/' + oid );
 
     };
@@ -290,21 +289,17 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
-<<<<<<< HEAD
+
 /**************************************************
         * SingleBillController / bill.html
 **************************************************/
-=======
+
 App.controller('SingleBillController', function ($scope, $http, $routeParams, $location) {
   var bill_oid = $routeParams.oid;
->>>>>>> front-end-jason
 
-App.controller( 'SingleBillController', function ( $scope, $http, $routeParams ) {
-  
-  var bill_oid = $routeParams.oid;
-  getSingleBill(bill_oid);
+getSingleBill();
 
-
+  // supporters();
   /*******************************
         * specific bill.html
   *******************************/
@@ -318,8 +313,11 @@ App.controller( 'SingleBillController', function ( $scope, $http, $routeParams )
 
     }).
     success( function ( data, status, headers, config ) {
+
+      console.log("inside getSingleBill :");
+      console.log(data);
       
-      $scope.singleBill = data;
+
 
     }).
     error( function ( data, status, headers, config ) {
@@ -331,22 +329,55 @@ App.controller( 'SingleBillController', function ( $scope, $http, $routeParams )
 
   } //getSingleBill
 
-   /*******************************
+  /*******************************
         * 
   *******************************/
 
   function supporters() {
 
-    $http()
+    var sponsors = [];
+
+    $http({
+
+      method : 'GET',
+      url    : 'http://localhost:3000/api/bill/billSupport'
+
+    }).
+    success( function ( data, status, headers, config ) {
+
+      console.log( "inside supporters :");
+      console.log( $scope.singleBill);
+      for (var i = 0; i < data.length; i++) {
+        
+        for (var j = 0; j < data[i].sponsors.length; j++ ) {
+
+          //console.log( data[i].sponsors[j].name );
+          sponsors.push( data[i].sponsors[j].name );
+
+        }
+
+      }
+
+      $scope.billSponsors = sponsors;
+
+    }).
+    error( function ( data, status, headers, config ) {
+
+      console.log( 'Error ' + status );
+
+    });
+
   }
 
 });
-<<<<<<< HEAD
-=======
+
 
 App.controller('LandingController', function ($scope, $http, $location) {
+
   $scope.enter = function () {
-    $location.path('/candidates');
+
+    $location.path( '/candidates' );
+
   }
+
 });
->>>>>>> front-end-jason

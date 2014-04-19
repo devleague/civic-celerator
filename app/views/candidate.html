@@ -1,28 +1,19 @@
+
 <div>
   <div class="candidate-section">
 
-  <div class="main" ng-controller="MainCtrl">
+    <div class="left-arrow">
+      <button ng-click="back()">&laquo;</button>
+    </div> <!-- end of div.left-arrow -->
 
-      <!-- ****************** NAVBAR ****************** -->
-  <nav class="header-section">
-    <img src="img/logo.png">
-  </nav>
-  <!-- ******************* ENDS NAV-BAR ******************* -->
+      <div class="candidate-info">
+        <h1> {{ firstName }} {{ lastName }} </h1>
+        <h2> {{ party }} </h2>
+      </div> <!-- end of div.candidate-info -->
 
-  <div class="candidate-section">
-
-      <div class="left-arrow menu-arrow">
-        <img src="img/left.png" ng-click="back()">
-      </div> <!-- end of div.left-arrow -->
-      
-        <div class="candidate-info">
-          <h1> {{ firstName }} {{ lastName }} </h1>
-          <h2> {{ party }} </h2>
-        </div> <!-- end of div.candidate-info -->
-      
-      <div class="right-arrow menu-arrow">
-        <img src="img/right.png" ng-click='forward()'>
-      </div> <!-- end of div.right-arrow -->
+    <div class="right-arrow">
+      <button ng-click='forward()'>&raquo;</button>
+    </div> <!-- end of div.right-arrow -->
 
 
   </div> <!-- end of div.candidate-section -->
@@ -91,4 +82,14 @@
   </div> <!-- end of div.container -->
 
 </div> <!-- end of MainCtrl -->
+  <footer class="footer">
+    <ul>
+      <li>About | API</li>
+    </ul>
+    <h2>What industry sectors influence bills being passed?</h2>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat.
+    <br />
+    Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna.
+    </p>
 
+</footer>

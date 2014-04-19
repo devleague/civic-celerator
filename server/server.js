@@ -78,10 +78,6 @@ function getCandidates ( req, res ) {
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
-<<<<<<< HEAD
-=======
-      // console.log("politicians last name: " + politicians.last_name);
->>>>>>> front-end-jason
 
       res.json( politicians );
 
@@ -104,6 +100,7 @@ function getCommittees ( req, res ) {
 }// getCommittees
 
 
+// ('/api/bills') //
 function getBills ( req, res ) {
 
   Bills.find( {}, 'title all_ids sponsors summary bill_id' ).exec( function ( err, bill ) {
@@ -131,19 +128,21 @@ function getContributions ( req, res ) {
 
 }// getContributions
 
-<<<<<<< HEAD
-=======
+
+// ('/api/bill/:id') //
 function getSingleBill ( req, res ) {
-  var bill_oid = req.params.oid;
-  console.log(req.params);
-  Bills.findOne({"_id": bill_oid}, function (err, bill) {
-    // console.log(bill);
+
+  var bill_oid = req.params.id;
+
+  Bills.findOne({"_id": bill_oid}, function ( err, bill ) {
+    
     res.json(bill);
     return;
+
   });
+
 }
 
->>>>>>> front-end-jason
 
 // ('/api/bills') //
 function getBillbyID ( req, res ) {
@@ -154,13 +153,10 @@ function getBillbyID ( req, res ) {
 
     if ( err ) console.log( 'Error' + err );
 
-<<<<<<< HEAD
     if ( bill === null ) {
 
       return res.redirect( "/app" );
-=======
     console.log("Bill Sponsors: " + bill.sponsors);
->>>>>>> front-end-jason
 
     }
 
@@ -174,7 +170,7 @@ function getBillbyID ( req, res ) {
 // ('/api/bill/billSupport') //
 function getBillSupport ( req, res ) {
 
-  Bill.find().exec( function ( err, bill ) {
+  Bills.find().exec( function ( err, bill ) {
 
     if ( err ) console.log( 'Error ' + err );
 
@@ -193,6 +189,7 @@ server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
 server.get('/api/committees', getCommittees);
 server.get('/api/bills', getBills);
+server.get('/api/bill/:id', getSingleBill);
 server.get('/api/bill/billSupport', getBillSupport);
 
 /**************************************
