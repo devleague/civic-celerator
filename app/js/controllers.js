@@ -11,11 +11,15 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
+    $scope.billView = function(bill_id) {
+      $location.path("/bills/" + bill_id);
+    }
+
     // loads politician: pic, name, bills, committee //
     politician();
 
     // temporarily here //
-    getContributions();
+    //getContributions();
 
     $scope.viewSingleBill = function ( oid ) {
 
@@ -46,6 +50,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         var CurCandidate  = 0;
 
         // first politician //
+        $scope.fullName   = Candidates[CurCandidate].full_name;
         $scope.firstName  = Candidates[CurCandidate].first_name;
         $scope.lastName   = Candidates[CurCandidate].last_name;
         $scope.party      = Candidates[CurCandidate].party;
@@ -66,11 +71,14 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
         });
 
+        getContributions();
+
         // right arrow  click //
         function forwardClick() {
 
           CurCandidate      = ( CurCandidate + 1 ) % Candidates.length;
 
+          $scope.fullName   = Candidates[CurCandidate].first_name;
           $scope.firstName  = Candidates[CurCandidate].first_name;
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
@@ -89,6 +97,8 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
           });
 
+          getContributions();
+
         }
 
         // left arrow click //
@@ -96,6 +106,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
           ( CurCandidate === 0 )? CurCandidate = Candidates.length -1 : CurCandidate--;
 
+          $scope.fullName   = Candidates[CurCandidate].first_name;
           $scope.firstName  = Candidates[CurCandidate].first_name;
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
@@ -113,6 +124,9 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
             $scope.bills = bills;
 
           });
+
+
+          getContributions();
 
         }
 
@@ -214,12 +228,18 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
       error( function ( data, status, headers, config ) {
 
         console.log( 'Error ' + status );
+        cb([]);
 
       });
 
     }// function getBills
 
+
+    // All contributions made to a politician //
     function getContributions ( cb ) {
+
+      var money                   = [];
+      var contributionType        = [];
 
       $http({
 
@@ -228,9 +248,20 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
       }).
       success( function ( data, status, headers, config ) {
+        
+        for ( var i = 0; i < data.length; i++ ) {
 
-        // console.log('inside contributions, data:');
-        // console.log( data );
+          if ( $scope.fullName == data[i].candidate_name ) {
+
+            money.push( data[i].amount );
+            contributionType.push( data[i].contributor_type );
+
+          }
+
+        }
+
+          var contributionData  = { industrymoney : money, contributiontype : contributionType };
+          $scope.pData          = contributionData;
 
       }).
       error( function ( data, status, headers, config ) {
@@ -244,6 +275,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   }
 
 ]);
+
 
 App.controller( 'SingleBillController', function ( $scope, $http, $routeParams ) {
   
@@ -265,7 +297,7 @@ App.controller( 'SingleBillController', function ( $scope, $http, $routeParams )
     }).
     error( function ( data, status, headers, config ) {
 
-      console.log("error getting single bill data: " + data);
+      console.log( "error getting single bill data: " + data );
       console.log( 'Error ' + status );
 
     });

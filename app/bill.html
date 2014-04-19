@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="initial-scale=1">
+  <title>Civic-Celerator</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="http://d3js.org/d3.v2.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!-- ****************** NAVBAR ****************** -->
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">PoliPie</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <!-- ******************* ENDS NAV-BAR ******************* -->
+  <div ng-controller="BillCtrl"> 
+   <div class="bills-name-section">
+      <div class="left-x">
+        <span>&nbsp;</span>
+      </div> <!-- end of div.left-arrow -->
+      <div class="bills-info">
+        <h1> {{billName}} </h1>
+      </div> <!-- end of div.candidate-info -->
+
+      <div class="right-x">
+        <span>X</span>
+      </div> <!-- end of div.right-arrow -->
+    </div> <!-- end of div.candidate-section -->
+
+  <div class="container">
+
+   
+
+    <div class="desktop-left-section">
+
+      <div class="bill-description-desktop">
+        <h1> Description: </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. Curabitur euismod pellentesque massa, a egestas turpis pharetra quis.
+        </p>
+      </div> <!-- end of div.candidate-committees -->
+
+      <div class="candidate-list-section-desktop">
+        <h1> Candidate's Supporting</h1>
+        <ul>
+          <a href="#"><li>Kingtak Atak<span>></span></li></a>
+          <a href="#"><li>Tyler Smyler<span>></span></li></a>
+          <a href="#"><li>Derek Merek<span>></span></li></a>
+          <a href="#"><li>Ray Nostay<span>></span></li></a>
+        </ul>
+      </div> <!-- end of div.bills-sponsored-section -->
+
+
+    </div> <!-- end of div.desktop-left-section -->
+
+    <div class="desktop-right-section">
+      <div class="bill-industry-influence-section">
+        <h1>Monetary Influence (by Industry) </h1>
+        <div ng-controller="IndustryCtrl" class="influence-graph-section">
+          <div class="pie-chart" pchart></div>
+        </div> <!-- end of div.influence-graph-section -->
+      </div> <!-- end of div.industry-influence-section -->
+      <div class="bill-industry-description">
+        <p>Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna. Aliquam dui diam, laoreet eu lacus ut, suscipit commodo quam. Vestibulum vehicula suscipit mauris, id pellentesque turpis ullamcorper quis. Etiam suscipit turpis dui, ut imperdiet mi euismod at. Praesent eget feugiat velit. Fusce eu ultricies tortor. Nam quis nisi ante. Praesent eget volutpat odio.
+        </p>
+      </div> <!-- end of div.bill-page-industry-description -->
+      <div class="bill-description-mobile">
+        <h1> Summary: </h1>
+        <p>{{billSummary}}
+        </p>
+      </div> <!-- end of div.candidate-committees -->
+
+      <div class="candidate-list-section-mobile">
+        <h1> Candidate's Supporting</h1>
+        <ul>
+          <li ng-click="candidateView({{candidate.candidate_id}})" ng-repeat="candidate in candidates">{{ billSponsors }}</li>
+        </ul>
+      </div> <!-- end of div.bills-sponsored-section -->
+
+    </div> <!-- end div.desktop-right-section -->
+
+  </div> <!-- end of div.container -->
+
+  </div> <!-- end of BillCtrl -->
+
+  <footer class="footer">
+      <ul>
+        <li>About</li>
+        <li>|</li>
+        <li>API</li>
+      </ul>
+      <h2>What industry sectors influence bills being passed?</h2>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
+      <br />
+      Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna.
+      </p> 
+
+  </footer>
+
+    <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>
+
+
