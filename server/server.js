@@ -29,17 +29,6 @@ var candidateSchema = new mongoose.Schema({
 
 });
 
-var contributionsSchema = new mongoose.Schema({
-
-  contributor_name  : String,
-  candidate_name    : String,
-  amount            : Number,
-  employer          : String,
-  industry          : String,
-  date_contributed  : Date,
-
-});
-
 var billsSchema = new mongoose.Schema({
 
   title     : String,
@@ -57,12 +46,22 @@ var committeeSchema = new mongoose.Schema({
 
 });
 
+var contributionsSchema = new mongoose.Schema({
+
+  contributor_type  : String,
+  candidate_name    : String,
+  amount            : Number,
+  date              : String
+
+});
+
+
 // Mongoose Models //
 
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
-var Contributions = mongoose.model( 'contribution', contributionsSchema );
 var Committee     = mongoose.model( 'committee', committeeSchema );
 var Bills         = mongoose.model( 'bill', billsSchema );
+var Contributions = mongoose.model( 'contribution', contributionsSchema );
 
 
 /**************************************
@@ -84,6 +83,7 @@ function getCandidates ( req, res ) {
 
 }// getCanidates
 
+
 // server.get('/api/committee') //
 function getCommittees ( req, res ) {
 
@@ -95,7 +95,8 @@ function getCommittees ( req, res ) {
 
   });
 
-}
+}// getCommittees
+
 
 function getBills ( req, res ) {
 
@@ -107,17 +108,17 @@ function getBills ( req, res ) {
 
   });
 
-}
-
+}// getBills
 
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  Contributions.find({}, 'candidate_name contributor_type date amount').exec(
+  Contributions.find({ date : {$gte: "2012-01-01T12:12:43" } }, 'contributor_type candidate_name date amount').exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
-      
+
+      console.log("getting that money");
       res.json( money );
 
     });
