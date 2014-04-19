@@ -13,6 +13,10 @@ var myApp = angular.module('myApp', [
 
 myApp.config(function ($routeProvider, $locationProvider) {
   $routeProvider.
+    when('/', {
+      templateUrl: 'views/candidate.html',
+      controller: 'MainCtrl'
+    }).
     when('/bill/:id', {
       templateUrl: 'bill.html',
       controller: 'SingleBillController'
