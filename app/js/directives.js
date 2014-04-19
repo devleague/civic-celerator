@@ -4,7 +4,6 @@
 
 var myApp = angular.module( 'myApp.directives', [] );
 
-
 myApp.directive( 'pchart', function (  ) {
 
   return {
@@ -28,7 +27,7 @@ myApp.directive( 'pchart', function (  ) {
         var type  = [];
 
         for( var i = 0; i < scope.pData.contributiontype.length; i++ ){
-          
+
           if( itm[ scope.pData.contributiontype[i] ] == undefined ) {
 
             itm[ scope.pData.contributiontype[i] ] = 0;
@@ -131,8 +130,9 @@ myApp.directive( 'pchart', function (  ) {
 });
 
 
-myApp.directive(['pchart2', 'scope', function ( scope, $window ) {
 
+
+myApp.directive(['pchart2', 'scope', function ( scope, $window ) {
   return {
 
     restrict: 'A',
@@ -262,13 +262,15 @@ myApp.directive( 'lchart', function ( $window ) {
 
       scope.renderLine = function() {
 
+        $('.contributions-graph svg').remove();
+
   
         var width   = d3.select( element[0] ).node().offsetWidth;
         var height  = d3.select( element[0] ).node().offsetHeight;
         var margin  = { top : 30, right : 50, bottom : 30, left : 90 };
         var svg = d3.select( element[0] )
                             .append("svg")
-                            .attr('width', width)
+                            .attr('width', width )
                             .attr('height', height)
                             .append('g')
                             .attr("transform", "translate("+margin.left+","+margin.top+")");
@@ -278,12 +280,13 @@ myApp.directive( 'lchart', function ( $window ) {
         var data    = scope.lData;
 
         var parseDate = d3.time.format( "%Y-%m-%dT%H:%M:%S" ).parse;
+        //var parseDate = d3.time.format( "%a %b %d %Y %X GMT-1000" ).parse;
+
 
         data.forEach( function ( d ) {
-
-          d.date              = parseDate( d.date );
+          //d.date              = d3.time.format( "%Y-%m-%dT%H:%M:%S" ).parse( d.date );
+          d.date = new Date(d.date);
           d.contributionmoney = + d.contributionmoney;
-
         });
 
         var x = d3.time.scale().range( [ 0, width ] );

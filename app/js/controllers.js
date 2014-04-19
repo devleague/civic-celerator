@@ -74,7 +74,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
           });
 
           getContributions( function( contributionData ) {
-            
+
             $scope.pData = contributionData;
             $scope.lData = contributionData.contributedDate;
 
@@ -142,6 +142,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
           
             $scope.pData = contributionData;
             $scope.lData = contributionData.contributedDate;
+
 
           });
 
@@ -270,18 +271,18 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
         for ( var i = 0; i < data.length; i++ ) {
 
           if ( $scope.fullName == data[i].candidate_name ) {
-            
+
             money.push( data[i].amount );
-            contributionType.push( data[i].contributor_type );
-            contributedDate.push(data[i].date);
+            contributionType.push( data[i].contributor_type );  
+            contributedDate.push({'date': data[i].date, 'contributionmoney': data[i].amount});
 
           }
 
         }
 
-          var contributionData  = { industrymoney : money, contributiontype : contributionType, contributedDate: contributedDate };
-          //console.log(contributionData)
-          return cb ( contributionData );
+        var contributionData  = { industrymoney : money, contributiontype : contributionType, contributedDate: contributedDate };
+
+        return cb ( contributionData );
 
       }).
       error( function ( data, status, headers, config ) {
