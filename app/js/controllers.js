@@ -121,9 +121,9 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
 
-          getCommittee( function( contributionData ) {
+          getCommittee( function( committee ) {
             
-            $scope.pData = contributionData;
+            $scope.committees = committee;
 
           });
 
@@ -273,7 +273,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         }
 
           var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          console.log(contributionData)
+          //console.log(contributionData)
           return cb ( contributionData );
 
       }).
