@@ -4,7 +4,7 @@
 
 var myApp = angular.module( 'myApp.directives', [] );
 
-myApp.directive( ['pchart', '$scope', function ( $scope, $window ) {
+myApp.directive( 'pchart', [ "$scope", function ( $scope, $window ) {
 
   return {
 
@@ -23,7 +23,8 @@ myApp.directive( ['pchart', '$scope', function ( $scope, $window ) {
         var itm   = {};
         var money = [];
         var type  = [];
-
+        console.log("work sfaksf");
+        console.log($scope.pData.contributiontype[0]);
         for( var i = 0; i < $scope.pData.contributiontype.length; i++ ){
           
           if( itm[ $scope.pData.contributiontype[i] ] == undefined ) {
@@ -121,10 +122,10 @@ myApp.directive( ['pchart', '$scope', function ( $scope, $window ) {
 
   };
 
-}]);
+});
 
 
-myApp.directive(['pchart2', '$scope', function ( $scope, $window ) {
+myApp.directive( 'pchart2', function ( $scope, $window ) {
 
   return {
 
@@ -235,7 +236,7 @@ myApp.directive(['pchart2', '$scope', function ( $scope, $window ) {
 
   };
 
-}]);
+});
 
 // myApp.directive( 'lchart', function ( $window ) {
 

@@ -11,7 +11,7 @@ var myApp = angular.module('myApp', [
 
 ]);
 
-myApp.config(function ($routeProvider, $locationProvider) {
+myApp.config(function ( $routeProvider, $locationProvider ) {
   $routeProvider.
     when('/', {
       templateUrl: 'views/candidate.html',

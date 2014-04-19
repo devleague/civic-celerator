@@ -8,7 +8,7 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
         * Main Controller / index.html
 **************************************************/
 
-App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
+App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
     $scope.billView = function(bill_id) {
@@ -121,9 +121,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
 
-          getCommittee( function( contributionData ) {
+          getCommittee( function( contributionData, datesContributed ) {
             
             $scope.pData = contributionData;
+            $scope.lData = datesContributed;
 
           });
 
@@ -134,9 +135,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           });
 
 
-          getContributions( function( contributionData ) {
+          getContributions( function( contributionData, datesContributed ) {
           
             $scope.pData = contributionData;
+            $scope.lData = datesContributed;
 
           });
 
@@ -250,8 +252,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
     // All contributions made to a politician //
     function getContributions ( cb ) {
 
+      $scope.pData = {};
+
       var money                   = [];
       var contributionType        = [];
+      var contributedDate         = [];
 
       $http({
 
@@ -264,7 +269,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         for ( var i = 0; i < data.length; i++ ) {
 
           if ( $scope.fullName == data[i].candidate_name ) {
-            
+
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
 
@@ -273,8 +278,8 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         }
 
           var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          console.log(contributionData)
-          return cb ( contributionData );
+          var datesContributed  = contributedDate;
+          return cb ( contributionData, datesContributed );
 
       }).
       error( function ( data, status, headers, config ) {
