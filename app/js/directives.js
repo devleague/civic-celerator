@@ -259,6 +259,8 @@ myApp.directive( 'lchart', function ( $window ) {
       }, true );
 
       scope.renderLine = function() {
+
+        $('.contributions-graph svg').remove();
   
         var width   = d3.select( element[0] ).node().offsetWidth;
         var height  = d3.select( element[0] ).node().offsetHeight;

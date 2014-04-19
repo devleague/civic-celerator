@@ -1,0 +1,91 @@
+
+  <div class="main">
+
+      <!-- ****************** NAVBAR ****************** -->
+  <nav class="header-section">
+    <img src="img/logo.png">
+  </nav>
+  <!-- ******************* ENDS NAV-BAR ******************* -->
+
+  <div class="candidate-section">
+
+      <div class="left-arrow menu-arrow">
+        <img src="img/left.png" ng-click="back()">
+      </div> <!-- end of div.left-arrow -->
+      
+        <div class="candidate-info">
+          <h1> {{ firstName }} {{ lastName }} </h1>
+          <h2> {{ party }} </h2>
+        </div> <!-- end of div.candidate-info -->
+      
+      <div class="right-arrow menu-arrow">
+        <img src="img/right.png" ng-click='forward()'>
+      </div> <!-- end of div.right-arrow -->
+
+
+  </div> <!-- end of div.candidate-section -->
+
+  <div class="container">
+
+    <div class="desktop-left-section">
+
+      <div class="candidate-image">
+
+        <img src="{{ picture }}">
+
+      </div> <!-- end of div.candidate-image -->
+
+      <div class="candidate-committees">
+        <h1> Committees </h1>
+        <ul>
+          <li ng-repeat='committee in committees'>
+            <span>{{ committee }}</span>
+          </li>
+        </ul>
+      </div> <!-- end of div.candidate-committees -->
+
+      <div class="bills-sponsored-section-desktop">
+        <h1> Bills Sponsored</h1>
+
+        <ul>
+          <li ng-repeat="bill in bills" ng-click="viewSingleBill(bill.oid)">
+            {{ bill.id }} 
+          </li>
+        </ul>
+      </div> <!-- end of div.bills-sponsored-section-desktop -->
+
+    </div> <!-- end of div.desktop-left-section -->
+
+    <div class="desktop-right-section">
+
+      <div class="campaign-contributions-section">
+
+        <h1> Campaign Contributions </h1>
+        <div class="contributions-graph" lchart ></div>
+
+      </div> <!-- end of div.campaing-contributions-section -->
+
+      <div class="industry-influence-section">
+
+        <h1>Monetary Influence (by Industry)</h1>
+        <div class="influence-graph-section">
+          <div class="pie-chart" pchart></div>
+        </div> <!-- end of div.influence-graph-section -->
+
+      <div class="bills-sponsored-section-mobile">
+
+        <h1> Bills Sponsored</h1>
+
+        <ul>
+          <li ng-repeat="bill in bills" ng-click="viewSingleBill(bill.oid)">{{ bill.id }} <br />{{ bill.title }}</li>
+        </ul>
+
+
+      </div> <!-- end of div.bills-sponsored-section -->
+
+    </div> <!-- end div.desktop-right-section -->
+
+  </div> <!-- end of div.container -->
+
+</div> <!-- end of MainCtrl -->
+
