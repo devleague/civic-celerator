@@ -48,7 +48,7 @@
         <h1> Bills Sponsored</h1>
 
         <ul>
-          <li ng-repeat="bill in bills">
+          <li ng-repeat="bill in bills" ng-click="viewSingleBill(bill.oid)">
             {{ bill.id }} 
           </li>
         </ul>
@@ -67,39 +67,25 @@
 
       <div class="industry-influence-section">
 
-        <h1>Monetary Influence (by Contributor Type)</h1>
+        <h1>Monetary Influence (by Industry)</h1>
         <div class="influence-graph-section">
           <div class="pie-chart" pchart></div>
         </div> <!-- end of div.influence-graph-section -->
-
-      </div>
 
       <div class="bills-sponsored-section-mobile">
 
         <h1> Bills Sponsored</h1>
 
         <ul>
-          <li ng-repeat="bill in bills" ><span class="bold">{{ bill.id }}</span> <br /> {{ bill.title }}</li>
+          <li ng-repeat="bill in bills" ng-click="viewSingleBill(bill.oid)">{{ bill.id }} <br />{{ bill.title }}</li>
         </ul>
 
 
-       </div> <!-- end of div.bills-sponsored-section -->
+      </div> <!-- end of div.bills-sponsored-section -->
 
     </div> <!-- end div.desktop-right-section -->
 
   </div> <!-- end of div.container -->
 
-
-<div class="cleardiv"></div>
 </div> <!-- end of MainCtrl -->
-<footer class="footer-section">
-      <h1>About</h1>
-      <h2>Which contributors influence the bills being signed into law?</h2>
-      <br>
-      <p> The answer, we discovered, is not as concrete as previously thought.  A clash of information and a lack of contribution documentation standards have led us to realize that contributions are extremely difficult to track.  After collecting information from multiple free-data websites, we have compiled two graphs to aid in the diagnosis of political contribution trends.  
-
-      <br><br>Polidex provides a graphical interface through which the public can 'see' when local legislators are collecting the most money.
-      </p> 
-
-  </footer>
 

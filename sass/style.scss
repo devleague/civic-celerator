@@ -308,11 +308,11 @@ li {
 
             }
 
-            li:hover {
-                cursor: pointer;
-                background-color: #7E7C7D;
+            // li:hover {
+            //     cursor: pointer;
+            //     background-color: #7E7C7D;
 
-            }
+            // }
         }
     }
 
@@ -447,7 +447,7 @@ li {
                 margin: 0 auto;
 
                 @media only screen and (min-width: 950px) {
-                    width: 700px;
+                    width: 400px;
                     margin: 0 auto;
                 }
             }
@@ -481,10 +481,8 @@ li {
             .pie-chart {
                 width: 100%;
                 margin: 0 auto;
+                width: 400px;
 
-                @media only screen and (min-width: 950px) {
-                    width: 700px;
-                }
             }
         }
     }
@@ -546,12 +544,12 @@ li {
             color: rgba(0,0,0,.5);
         }
 
-        a:hover {
+        // a:hover {
 
-            li {
-                background-color: darkgray;
-            }
-        }
+        //     li {
+        //         background-color: darkgray;
+        //     }
+        // }
 
         @media only screen and (min-width: 950px) {
             display: none;
@@ -592,12 +590,12 @@ li {
             color: rgba(0,0,0,.5);
         }
 
-        a:hover {
+        // a:hover {
 
-            li {
-                background-color: darkgray;
-            }
-        }
+        //     li {
+        //         background-color: darkgray;
+        //     }
+        // }
 
         @media only screen and (min-width: 950px) {
             display: none;
@@ -655,7 +653,7 @@ path {
     @media only screen and (min-width: 950px) {
         h2 {
             padding: 30px 100px 0 100px;
-            text-align: left;
+            text-align: center;
         }
 
         p {
