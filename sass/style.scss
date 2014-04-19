@@ -1,10 +1,7 @@
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300');
-@import "compass/css3/box-shadow";
-
 html,
 body {
     background-color: black;
-    font-family: "Open Sans", sans-serif !important;
+    font-family: "Novecentosanswide-Normal" , sans-serif !important;
     color: #f9f9f9;
 }
 
@@ -209,6 +206,12 @@ li {
                 padding: 20px 20px;
                 border-bottom: 1px solid rgba(0,0,0,.5);
 
+                span#bill {
+                    background-image: url("../img/bill.svg");
+                    height: 32px;
+
+                }
+
             }
 
             ul {
@@ -216,14 +219,13 @@ li {
                 background-color: #bdbdbd;
                 margin-bottom: 0;
 
-
-
             }
 
             li {
                 list-style-type: none;
                 border-bottom: 1px solid rgba(0,0,0,.5);
                 padding: 10px 0 10px 0;
+                text-transform: uppercase;
 
                 &:first-child {
                     padding-top: 10px;
@@ -269,6 +271,7 @@ li {
                 margin: 0 0 !important;
                 padding: 20px 20px;
                 border-bottom: 1px solid rgba(0,0,0,.5);
+                font-size: 1.2em;
 
             }
 
@@ -399,6 +402,7 @@ li {
     .industry-influence-section {
         text-align: center;
         background-color: #bdbdbd;
+        border: 1px solid rgba(0,0,0,.5);
 
         h1 {
                 background-color: #7E7C7D;
@@ -456,6 +460,7 @@ li {
                 width: 320px;
                 height: 300px;
                 margin: 0 auto;
+
             }
         }
     }
@@ -480,19 +485,21 @@ li {
     }
 
     .bills-sponsored-section-mobile {
-        background-color: #bdbdbd;
+        background-color: #7E7C7D;
         border: 1px solid rgba(0,0,0,.5);
 
         h1 {
             text-align: center;
             padding: 20px;
             border-bottom: 1px solid rgba(0,0,0,.5);
+            margin: 0;
         }
 
         ul {
             margin: 0 auto;
             font-size: 1em;
             background-color: #bdbdbd;
+            text-align: center;
         }
 
         li {
