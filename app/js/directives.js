@@ -4,36 +4,47 @@
 
 var myApp = angular.module( 'myApp.directives', [] );
 
+<<<<<<< HEAD
 myApp.directive( 'pchart', [ "$scope", function ( $scope, $window ) {
+=======
+myApp.directive( 'pchart', function (  ) {
+>>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
 
   return {
 
     restrict: 'A',
 
-    link: function ( $scope, element, attrs ) {
+    link: function ( scope, element, attrs ) {
 
-      $scope.$watch( 'pData', function( oldVals ) {
+      scope.$watch( 'pData', function( oldVals ) {
 
-        return $scope.render();
+        if(scope.pData && scope.pData.contributiontype){
+          return scope.render();
+        }
 
       }, true );
 
-      $scope.render = function( data ) {
+      scope.render = function( data ) {
 
         var itm   = {};
         var money = [];
         var type  = [];
+<<<<<<< HEAD
         console.log("work sfaksf");
         console.log($scope.pData.contributiontype[0]);
         for( var i = 0; i < $scope.pData.contributiontype.length; i++ ){
-          
-          if( itm[ $scope.pData.contributiontype[i] ] == undefined ) {
+=======
 
-            itm[ $scope.pData.contributiontype[i] ] = 0;
+        for( var i = 0; i < scope.pData.contributiontype.length; i++ ){
+>>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
+          
+          if( itm[ scope.pData.contributiontype[i] ] == undefined ) {
+
+            itm[ scope.pData.contributiontype[i] ] = 0;
 
           }
 
-          itm[ $scope.pData.contributiontype[i] ] += $scope.pData.industrymoney[i];
+          itm[ scope.pData.contributiontype[i] ] += scope.pData.industrymoney[i];
 
         }
         for ( var key in itm ) {
@@ -42,6 +53,8 @@ myApp.directive( 'pchart', [ "$scope", function ( $scope, $window ) {
           money.push(itm[key]);
 
         }
+
+        $('.pie-chart svg').remove();
 
 
         var width   = d3.select( element[0] ).node().offsetWidth;
@@ -125,14 +138,18 @@ myApp.directive( 'pchart', [ "$scope", function ( $scope, $window ) {
 });
 
 
+<<<<<<< HEAD
 myApp.directive( 'pchart2', function ( $scope, $window ) {
+=======
+myApp.directive(['pchart2', 'scope', function ( scope, $window ) {
+>>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
 
   return {
 
     restrict: 'A',
 
     //happens when everything is associated and attached to the dom
-    link: function($scope, element, attrs) {
+    link: function(scope, element, attrs) {
 
       var width = d3.select(element[0]).node().offsetWidth;
       var height = d3.select(element[0]).node().offsetHeight;
@@ -145,28 +162,28 @@ myApp.directive( 'pchart2', function ( $scope, $window ) {
 
       //if the window gets resized
       window.onresize = function() {
-        $scope.render();
+        scope.render();
       };
 
       //watch the window the angular way
-      $scope.$watch( function() {
+      scope.$watch( function() {
 
         return angular.element( window )[0].innerWidth;
 
       }, function() {
 
-        $scope.render( $scope.pData.industymoney);
+        scope.render( scope.pData.industrymoney);
 
       });
 
       //continue watching for new values
-      $scope.$watch('pData', function ( newVals, oldVals ) {
+      scope.$watch('pData', function ( newVals, oldVals ) {
 
-        return $scope.render( newVals );
+        return scope.render( newVals );
 
       }, true );
 
-      $scope.render = function ( data ) {
+      scope.render = function ( data ) {
 
         //remove the elements (after rerender)
         svg.selectAll("*").remove();
@@ -192,14 +209,14 @@ myApp.directive( 'pchart2', function ( $scope, $window ) {
           .sort(null)
           .value(function(data, i) {
 
-            return $scope.pData.industrymoney[i].value;
+            return scope.pData.industrymoney[i].value;
 
           });
 
 
 
         var g = svg.selectAll( ".arc" )
-          .data( pie( $scope.pData.industrymoney ) )
+          .data( pie( scope.pData.industrymoney ) )
           .enter()
           .append( 'g' )
           .attr( 'class', 'arc' );
@@ -209,7 +226,7 @@ myApp.directive( 'pchart2', function ( $scope, $window ) {
           .style( "fill",
             function ( d, i ) {
 
-              return color( $scope.pData.industrymoney[i] );
+              return color( scope.pData.industrymoney[i] );
 
             });
 
@@ -225,7 +242,7 @@ myApp.directive( 'pchart2', function ( $scope, $window ) {
             .text(
               function(d,i) {
                 
-                return $scope.pData.industrymoney[i];
+                return scope.pData.industrymoney[i];
 
             })
             .attr('fill','white');
@@ -238,74 +255,76 @@ myApp.directive( 'pchart2', function ( $scope, $window ) {
 
 });
 
-// myApp.directive( 'lchart', function ( $window ) {
+myApp.directive( 'lchart', function ( $window ) {
 
-//   return {
+  return {
 
-//     restrict: 'A',
+    restrict: 'A',
 
-//     link: function(scope, element, attrs) {
+    link: function(scope, element, attrs) {
 
-//       scope.$watch( 'scope.lData', function() {
+      scope.$watch( 'lData', function() {
 
-//         return scope.renderLine();
+        if(scope.lData){
+          return scope.renderLine();
+        }
 
-//       }, true );
+      }, true );
 
-//       scope.renderLine = function() {
+      scope.renderLine = function() {
   
-//         var width   = d3.select( element[0] ).node().offsetWidth;
-//         var height  = d3.select( element[0] ).node().offsetHeight;
-//         var margin  = { top : 30, right : 50, bottom : 30, left : 90 };
-//         var svg = d3.select( element[0] )
-//                             .append("svg")
-//                             .attr('width')
-//                             .attr('height')
-//                             .append('g')
-//                             .attr("transform", "translate("+margin.left+","+margin.top+")");
+        var width   = d3.select( element[0] ).node().offsetWidth;
+        var height  = d3.select( element[0] ).node().offsetHeight;
+        var margin  = { top : 30, right : 50, bottom : 30, left : 90 };
+        var svg = d3.select( element[0] )
+                            .append("svg")
+                            .attr('width')
+                            .attr('height')
+                            .append('g')
+                            .attr("transform", "translate("+margin.left+","+margin.top+")");
 
-//         width   = width - margin.left - margin.right;
-//         height  = height - margin.top - margin.bottom;
-//         var data    = scope.lData;
+        width   = width - margin.left - margin.right;
+        height  = height - margin.top - margin.bottom;
+        var data    = scope.lData;
 
-//         var parseDate = d3.time.format( "%Y-%m-%dT%H:%M:%S" ).parse;
+        var parseDate = d3.time.format( "%Y-%m-%dT%H:%M:%S" ).parse;
 
-//         data.forEach( function ( d ) {
+        data.forEach( function ( d ) {
 
-//           d.date              = parseDate( d.date );
-//           d.contributionmoney = + d.contributionmoney;
+          d.date              = parseDate( d.date );
+          d.contributionmoney = + d.contributionmoney;
 
-//         });
+        });
 
-//         var x = d3.time.scale().range( [ 0, width ] );
-//         var y = d3.scale.linear().range([ height, 0 ]);
+        var x = d3.time.scale().range( [ 0, width ] );
+        var y = d3.scale.linear().range([ height, 0 ]);
 
-//         x.domain( d3.extent( data, function ( d ) { return d.date; }));
-//         y.domain([ 0, d3.max( data, function ( d ) { return d.contributionmoney; })]);
+        x.domain( d3.extent( data, function ( d ) { return d.date; }));
+        y.domain([ 0, d3.max( data, function ( d ) { return d.contributionmoney; })]);
 
-//         var xAxis = d3.svg.axis().scale( x ).orient( "bottom" ).ticks( 5 );
-//         var yAxis = d3.svg.axis().scale( y ).orient( "left" ).ticks( 5 );
+        var xAxis = d3.svg.axis().scale( x ).orient( "bottom" ).ticks( 5 );
+        var yAxis = d3.svg.axis().scale( y ).orient( "left" ).ticks( 5 );
 
-//         var valueLine = d3.svg.line()
-//                           .x( function( d ) { return x( d.date );})
-//                           .y( function( d ) { return y( d.contributionmoney );});
-//         svg.append( "path" )
-//         .attr( "d", valueLine( data ));
+        var valueLine = d3.svg.line()
+                          .x( function( d ) { return x( d.date );})
+                          .y( function( d ) { return y( d.contributionmoney );});
+        svg.append( "path" )
+        .attr( "d", valueLine( data ));
 
-//         svg.append( "g" ).attr( "class", "x axis" ).attr("transform", "translate(0," + height + ")").call(xAxis);
+        svg.append( "g" ).attr( "class", "x axis" ).attr("transform", "translate(0," + height + ")").call(xAxis);
         
-//         svg.append( "text" ).attr( "transform", "translate(" + ( width / 2 ) + " ," + ( height + margin.bottom+6 ) + ")").style( "text-anchor", "middle" ).text( "Date" );
+        svg.append( "text" ).attr( "transform", "translate(" + ( width / 2 ) + " ," + ( height + margin.bottom+6 ) + ")").style( "text-anchor", "middle" ).text( "Date" );
 
-//         svg.append( "g" ).attr("class", "y axis").call(yAxis);
+        svg.append( "g" ).attr("class", "y axis").call(yAxis);
 
-//         svg.append( "text" ).attr( "transform", "rotate(-90)" ).attr( "y", 0-margin.left ).attr( "x", 0 - ( height/2 )).attr( "dy", "1em" ).style( "text-anchor", "middle" ).text( "Contributions" );
+        svg.append( "text" ).attr( "transform", "rotate(-90)" ).attr( "y", 0-margin.left ).attr( "x", 0 - ( height/2 )).attr( "dy", "1em" ).style( "text-anchor", "middle" ).text( "Contributions" );
 
-//         svg.append( "text" ).attr( "x", ( width/2 )).attr( "y", 0 - ( margin.top/2 )).attr( "text-anchor", "middle" ).style( "font-size", "16px" ).text( "Contributions over Time" );
+        svg.append( "text" ).attr( "x", ( width/2 )).attr( "y", 0 - ( margin.top/2 )).attr( "text-anchor", "middle" ).style( "font-size", "16px" ).text( "Contributions over Time" );
       
-//       };
+      };
 
-//     }
+    }
 
-//   };
+  };
 
-// });
+});
