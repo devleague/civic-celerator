@@ -101,9 +101,10 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
           });
 
-            getContributions( function( contributionData ) {
+            getContributions( function( contributionData, datesContributed ) {
             
               $scope.pData = contributionData;
+              $scope.lData = datesContributed;
 
             });
 
