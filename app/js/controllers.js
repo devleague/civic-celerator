@@ -71,10 +71,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
           });
 
-          getContributions( function( contributionData, datesContributed  ) {
-            
+          getContributions( function( contributionData ) {
+
             $scope.pData = contributionData;
-            $scope.lData = datesContributed;
+            $scope.lData = contributionData.contributedDate;
 
           });
 
@@ -102,11 +102,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
           });
 
-            getContributions( function( contributionData, datesContributed ) {
-              
+            getContributions( function( contributionData ) {
+            
               $scope.pData = contributionData;
-              $scope.lData = datesContributed;
-
+              $scope.lData = contributionData.contributedDate;
 
             });
 
@@ -137,11 +136,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           });
 
 
-          getContributions( function( contributionData, datesContributed ) {
+          getContributions( function( contributionData ) {
           
             $scope.pData = contributionData;
-            $scope.lData = datesContributed;
-            console.log($scope.lData);
+            $scope.lData = contributionData.contributedDate;
+
 
           });
 
@@ -254,8 +253,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
     // All contributions made to a politician //
     function getContributions ( cb ) {
-
-      $scope.pData = {};
+      //$scope.pData = {};
       var money                   = [];
       var contributionType        = [];
       var contributedDate         = [];
@@ -273,16 +271,16 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           if ( $scope.fullName == data[i].candidate_name ) {
 
             money.push( data[i].amount );
-            contributionType.push( data[i].contributor_type );
-            contributedDate.push({ date : data[i].date, contributionmoney : data[i].amount });
+            contributionType.push( data[i].contributor_type );  
+            contributedDate.push({'date': data[i].date, 'contributionmoney': data[i].amount});
 
           }
 
         }
 
-          var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          var datesContributed  = contributedDate;
-          return cb ( contributionData, datesContributed );
+        var contributionData  = { industrymoney : money, contributiontype : contributionType, contributedDate: contributedDate };
+
+        return cb ( contributionData );
 
       }).
       error( function ( data, status, headers, config ) {

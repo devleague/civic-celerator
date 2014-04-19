@@ -157,7 +157,6 @@ function getBillSupport ( req, res ) {
 
     if ( err ) console.log( 'Error ' + err );
 
-    console.log("friggen bills!");
     res.json( bill );
 
   });
