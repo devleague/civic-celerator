@@ -87,7 +87,7 @@ function getCandidates ( req, res ) {
 // server.get('/api/committee') //
 function getCommittees ( req, res ) {
 
-  Committee.find({},'committee members').exec( function ( err, comm ) {
+  Committee.find( {},'committee members').exec( function ( err, comm ) {
 
     if ( err ) console.log( 'Error ' + err );
 
@@ -113,7 +113,7 @@ function getBills ( req, res ) {
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  Contributions.find({}, 'candidate_name contributor_type date amount').exec(
+  Contributions.find( {}, 'candidate_name contributor_type date amount').exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
@@ -128,7 +128,7 @@ function getSingleBill ( req, res ) {
   var bill_oid = req.params.oid;
   // console.log(req.params);
   Bills.findOne({"_id": bill_oid}, function (err, bill) {
-    console.log(bill);
+    // console.log(bill);
     res.json(bill);
     return;
   });
