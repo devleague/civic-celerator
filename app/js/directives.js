@@ -275,12 +275,13 @@ myApp.directive( 'lchart', function ( $window ) {
         var data    = scope.lData;
 
         var parseDate = d3.time.format( "%Y-%m-%dT%H:%M:%S" ).parse;
+        //var parseDate = d3.time.format( "%a %b %d %Y %X GMT-1000" ).parse;
+
 
         data.forEach( function ( d ) {
-
-          d.date              = parseDate( d.date );
+          //d.date              = d3.time.format( "%Y-%m-%dT%H:%M:%S" ).parse( d.date );
+          d.date = new Date(d.date);
           d.contributionmoney = + d.contributionmoney;
-
         });
 
         var x = d3.time.scale().range( [ 0, width ] );
