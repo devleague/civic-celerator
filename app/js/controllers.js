@@ -12,14 +12,14 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
     $scope.billView = function(bill_id) {
-      $location.path("/bills/" + bill_id);
+      $location.path('/bills/' + bill_oid);
     }
 
     politician();
     getContributions();
 
     $scope.viewSingleBill = function ( oid ) {
-      // console.log();
+      console.log(oid);
       $location.url( '/bill/' + oid );
     };
 
@@ -248,7 +248,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
-App.controller('SingleBillController', function ($scope, $http, $routeParams) {
+App.controller('SingleBillController', function ($scope, $http, $routeParams, $location) {
   var bill_oid = $routeParams.oid;
 
   getSingleBill(bill_oid);
@@ -269,4 +269,10 @@ App.controller('SingleBillController', function ($scope, $http, $routeParams) {
 
   } //getSingleBill
 
+});
+
+App.controller('LandingController', function ($scope, $http, $location) {
+  $scope.enter = function () {
+    $location.path('/candidates');
+  }
 });
