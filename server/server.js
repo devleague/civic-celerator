@@ -57,6 +57,14 @@ var committeeSchema = new mongoose.Schema({
 
 });
 
+var billSchema = new mongoose.Schema({
+  bill_id       : String,
+  session       : String,
+  title         : String,
+  summary       : String,
+  sponsors      : [String]
+});
+
 // Mongoose Models //
 
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
@@ -77,9 +85,9 @@ function getCandidates ( req, res ) {
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
+      console.log(politicians.last_name);
 
       res.json( politicians );
-
     });
 
 }// getCanidates
@@ -134,6 +142,25 @@ function getSingleBill ( req, res ) {
   });
 }
 
+
+function getBillbyID ( req, res ) {
+  var bill_id = req.params.bill_id;
+
+  Bill.findById(bill_id, function (err, bill) {
+    if (err) console.log( 'Error' + err);
+
+    console.log("hello" + bill.sponsors);
+
+    if (bill === null) {
+      return res.redirect("/app");
+    }
+
+    return res.view("bill", {
+      bill: bill
+    });
+  });
+
+}// getBillbyId
 
 /**************************************
             * Route Handling

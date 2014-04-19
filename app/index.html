@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Civic-Celerator</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css"/>
@@ -18,12 +18,12 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
+        </button> -->
         <a class="navbar-brand" href="#">PoliPie</a>
       </div>
 
@@ -31,20 +31,123 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <!-- <ul class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        </ul>
+        </ul> -->
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
   <!-- ******************* ENDS NAV-BAR ******************* -->
+<<<<<<< HEAD
+=======
+
+
+  <div class="main" ng-controller="MainCtrl">
+
+    <div class="candidate-section">
+
+      <div class="left-arrow">
+        <button ng-click="back()">&laquo;</button>
+      </div> <!-- end of div.left-arrow -->
+      
+        <div class="candidate-info">
+          <h1> {{ firstName }} {{ lastName }} </h1>
+          <h2> {{ party }} </h2>
+        </div> <!-- end of div.candidate-info -->
+      
+      <div class="right-arrow">
+        <button ng-click='forward()'>&raquo;</button>
+      </div> <!-- end of div.right-arrow -->
+      
+  
+    </div> <!-- end of div.candidate-section -->
+
+    <div class="container">
+
+      <div class="desktop-left-section">
+
+        <div class="candidate-image">
+
+          <img src="{{ picture }}">
+
+        </div> <!-- end of div.candidate-image -->
+
+        <div class="candidate-committees">
+
+          <h1> Committees </h1>
+          <ul>
+            <li ng-repeat='committee in committees'>
+              <span>{{ committee }}</span>
+            </li>
+
+          </ul>
+        </div> <!-- end of div.candidate-committees -->
+
+        <div class="bills-sponsored-section-desktop">
+
+          <h1> Bills Sponsored</h1>
+
+          <ul>
+            <li ng-repeat="bill in bills"><span class="bold">{{ bill.id }}</span><br>{{ bill.title }}</li>
+          </ul>
+        </div> <!-- end of div.bills-sponsored-section-desktop -->
+          
+      </div> <!-- end of div.desktop-left-section -->
+
+      <div class="desktop-right-section">
+
+        <div class="campaign-contributions-section">
+
+          <h1> Campaign Contributions Received </h1>
+          <div class="contributions-graph-section">
+              <div class="line-chart" lchart></div>
+          </div> 
+
+        </div> <!-- end of div.campaing-contributions-section -->
+
+        <div class="industry-influence-section">
+
+          <h1>Monetary Influence (by Industry)</h1>
+          <div class="influence-graph-section">
+            <div class="pie-chart" pchart></div>
+          </div> <!-- end of div.influence-graph-section -->
+
+        <div class="bills-sponsored-section-mobile">
+
+          <h1> Bills Sponsored</h1>
+
+          <ul>
+            <li ng-repeat="bill in bills"><span class="bold">{{ bill.id }}</span><br>{{ bill.title }}</li>
+          </ul>
+
+
+        </div> <!-- end of div.bills-sponsored-section -->
+          
+      </div> <!-- end div.desktop-right-section -->
+
+    </div> <!-- end of div.container -->
+
+  </div> <!-- end of MainCtrl -->
+
+
+    <footer class="footer">
+      <h1>About</h1>
+      <h2>What industry sectors influence bills being passed?</h2>
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. 
+      <br />
+      Curabitur euismod pellentesque massa, a egestas turpis pharetra quis. Nullam non congue purus. Fusce a risus non orci sodales scelerisque non sit amet nisi. Vestibulum urna purus, interdum id ligula in, vehicula varius risus. Fusce ac interdum magna.
+      </p> 
+
+  </footer>
+>>>>>>> 57b50bbf72297f0aabb2f6797f65bbb2d34d745c
 
   <div ng-view></div>
+
 
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
