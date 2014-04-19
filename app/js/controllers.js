@@ -25,7 +25,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
     $scope.viewSingleBill = function ( oid ) {
 
+<<<<<<< HEAD
       //console.log(oid);
+=======
+      console.log(oid);
+>>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
       $location.url( '/bill/' + oid );
 
     };
@@ -40,9 +44,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
     /*******************************
       * politician picture & name
     *******************************/
+    var contributionType = ["Candidate","Candidate","Candidate", "Other Entity","Immediate Family", "Other Entity"," Noncandidate Committee", "Political Party", "Individual","Political Party"];
+    var money = [123,1237,143,6,8,3,123,34,235,1324];
+    var contributionData  = { industrymoney : money, contributiontype : contributionType };
+    $scope.pData          = contributionData;
 
     function politician() {
-
       $http({
 
         method  : 'GET',
@@ -70,7 +77,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
         });
 
-        getBills( function( bills ) {
+        getBills("53504530fa5c824f199be48c", function( bills ) {
 
           $scope.bills = bills;
 
@@ -195,14 +202,15 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           * politician's bills
     *******************************/
 
-    function getBills( cb ) {
+    function getBills(id, cb ) {
 
-      var billCollection = [];
-
+      console.log("money");
+      // var billCollection = [];
+      
       $http({
 
         method  : 'GET',
-        url     : 'http://localhost:3000/api/bills'
+        url     : 'localhost:3000/api/bills/'+id
 
       }).
       success( function ( data, status, headers, config ) {
@@ -289,7 +297,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
 /**************************************************
         * SingleBillController / bill.html
 **************************************************/
@@ -328,8 +339,12 @@ getSingleBill();
     });
 
   } //getSingleBill
+<<<<<<< HEAD
 
   /*******************************
+=======
+   /*******************************
+>>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
         * 
   *******************************/
 
@@ -370,7 +385,10 @@ getSingleBill();
   }
 
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
 
 App.controller('LandingController', function ($scope, $http, $location) {
 

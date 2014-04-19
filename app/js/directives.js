@@ -39,11 +39,20 @@ myApp.directive('pchart', function($window) {
       scope.render = function(data) {
         //remove the elements (after rerender)
 
+<<<<<<< HEAD
 
         var itm = {};
         var money = [];
         var type = [];
 
+=======
+        console.log(scope.pData);
+
+        var itm = {};
+
+        var money = [];
+        var type = [];
+>>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
         for(var i = 0; i < scope.pData.contributiontype.length; i++ ){
           
           if(itm[scope.pData.contributiontype[i]] == undefined){
