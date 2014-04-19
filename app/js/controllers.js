@@ -5,14 +5,14 @@
 var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 
 /**************************************************
-        * Main Controller / index.html
+        * Main Controller / candidate.html
 **************************************************/
 
 App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
     $scope.billView = function(bill_id) {
-      $location.path("/bills/" + bill_id);
+      $location.path('/bills/' + bill_oid);
     }
 
     // loads politician: pic, name, bills, committee //
@@ -23,9 +23,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
     $scope.viewSingleBill = function ( oid ) {
 
+      console.log(oid);
       $location.url( '/bill/' + oid );
 
     };
+
+    
 
 /**************************************************
                     * Helpers
@@ -239,11 +242,15 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
     }// function getBills
 
 
-    // All contributions made to a politician //
+    /*****************************************
+          * contributions to politician
+    *****************************************/
+
     function getContributions ( cb ) {
 
       var money                   = [];
       var contributionType        = [];
+      var contributedDate         = [];
 
       $http({
 
@@ -259,13 +266,17 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
+            contributedDate.push( data[i].date );
 
           }
 
         }
-          console.log("contribution");
-          var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          $scope.pData          = contributionData;
+
+          var pieCandidateData = { industrymoney : money, contributiontype : contributionType };
+          var lineChartData    = { industrymoney : money, contributiontype : contributionType, contributiondate : contributedDate };
+
+          $scope.lData  = lineChartData;
+          $scope.pData  = pieCandidateData;
 
       }).
       error( function ( data, status, headers, config ) {
@@ -280,11 +291,19 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
+/**************************************************
+        * SingleBillController / bill.html
+**************************************************/
 
 App.controller( 'SingleBillController', function ( $scope, $http, $routeParams ) {
   
   var bill_oid = $routeParams.oid;
   getSingleBill(bill_oid);
+
+
+  /*******************************
+        * specific bill.html
+  *******************************/
 
   function getSingleBill ( oid ) {
 
@@ -307,5 +326,19 @@ App.controller( 'SingleBillController', function ( $scope, $http, $routeParams )
     });
 
   } //getSingleBill
+   /*******************************
+        * 
+  *******************************/
 
+  function supporters() {
+
+    $http()
+  }
+
+});
+
+App.controller('LandingController', function ($scope, $http, $location) {
+  $scope.enter = function () {
+    $location.path('/candidates');
+  }
 });

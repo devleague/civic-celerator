@@ -1,0 +1,127 @@
+/* line 8, ../../sass/landingStyle.scss */
+html {
+  width: 100%;
+  background-color: #272727;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 15, ../../sass/landingStyle.scss */
+body {
+  background-color: #272727;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 21, ../../sass/landingStyle.scss */
+.full-page-container {
+  background-color: #d2d2d2;
+}
+
+/* line 25, ../../sass/landingStyle.scss */
+.header {
+  position: relative;
+  height: 150px;
+  min-height: 150px;
+  margin: auto;
+  padding-top: 20px;
+  text-align: center;
+  background-color: #d2d2d2;
+}
+
+/* line 45, ../../sass/landingStyle.scss */
+.header-content {
+  padding-right: 60px;
+  padding-left: 60px;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  right: 0px;
+  bottom: 50%;
+  text-align: center;
+}
+
+/* line 61, ../../sass/landingStyle.scss */
+.header-text {
+  font-size: 30px;
+  font-family: Novecentosanswide-Bold;
+  font-weight: bold;
+  font-style: normal;
+  color: #272727;
+}
+
+/* line 69, ../../sass/landingStyle.scss */
+.header-spacing {
+  letter-spacing: 3px;
+}
+
+/* line 73, ../../sass/landingStyle.scss */
+.sub-header-text {
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: #7D7B7C;
+  text-transform: uppercase;
+}
+
+/* line 84, ../../sass/landingStyle.scss */
+.magnifying-glass-div {
+  background-image: url(../img/polidex.png);
+  background-color: #d2d2d2;
+  background-size: 870px 430px;
+  width: 100%;
+  height: 430px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-top: 40px;
+}
+
+/* line 101, ../../sass/landingStyle.scss */
+.container {
+  box-sizing: border-box;
+}
+
+/* line 106, ../../sass/landingStyle.scss */
+#footer {
+  font-family: Novecentosanswide-Normal;
+  display: block;
+  left: 0px;
+  height: 200px;
+  background-color: #272727;
+  background-image: url("../img/navy_blue.png");
+  font-size: 10px;
+}
+
+/* line 120, ../../sass/landingStyle.scss */
+#footer-text {
+  margin: auto;
+  padding: 50px 35px 0px;
+  text-align: left;
+  max-width: 533px;
+  line-height: 22px;
+  word-break: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  color: #7C7A7B;
+}
+
+/* line 134, ../../sass/landingStyle.scss */
+.money {
+  display: block;
+  font-size: 50px;
+  margin-left: 50px;
+  width: 200px;
+  margin: auto;
+  text-align: center;
+  -webkit-transition-duration: 1.5s;
+  -moz-transition-duration: 1.5s;
+  -o-transition-duration: 1.5s;
+  transition-duration: 1.5s;
+}
+
+/* line 145, ../../sass/landingStyle.scss */
+.money:hover {
+  -webkit-transform: rotateY(-170deg);
+}

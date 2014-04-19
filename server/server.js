@@ -78,6 +78,10 @@ function getCandidates ( req, res ) {
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
+<<<<<<< HEAD
+=======
+      // console.log("politicians last name: " + politicians.last_name);
+>>>>>>> front-end-jason
 
       res.json( politicians );
 
@@ -127,6 +131,7 @@ function getContributions ( req, res ) {
 
 }// getContributions
 
+<<<<<<< HEAD
 function getSingleBills( req, res){
   console.log(req.params.id);
   Bills.find({id: req.params.id}, function(){
@@ -135,6 +140,21 @@ function getSingleBills( req, res){
   })
 }
 
+=======
+<<<<<<< HEAD
+=======
+function getSingleBill ( req, res ) {
+  var bill_oid = req.params.oid;
+  console.log(req.params);
+  Bills.findOne({"_id": bill_oid}, function (err, bill) {
+    // console.log(bill);
+    res.json(bill);
+    return;
+  });
+}
+
+>>>>>>> front-end-jason
+>>>>>>> c0e58968e5d62b49a9fe07c58fb1075f11f514ba
 
 // ('/api/bills') //
 function getBillbyID ( req, res ) {
@@ -145,9 +165,13 @@ function getBillbyID ( req, res ) {
 
     if ( err ) console.log( 'Error' + err );
 
+<<<<<<< HEAD
     if ( bill === null ) {
 
       return res.redirect( "/app" );
+=======
+    console.log("Bill Sponsors: " + bill.sponsors);
+>>>>>>> front-end-jason
 
     }
 

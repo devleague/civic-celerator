@@ -14,11 +14,15 @@ var myApp = angular.module('myApp', [
 myApp.config(function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {
-      templateUrl: 'views/candidate.html',
+      templateUrl: 'views/landingPage.html',
+      controller: 'LandingController'
+    }).
+    when('/candidates', {
+      templateUrl: 'views/candidates.html',
       controller: 'MainCtrl'
     }).
     when('/bill/:oid', {
-      templateUrl: 'bill.html',
+      templateUrl: '/views/bill.html',
       controller: 'SingleBillController'
     }).
     otherwise('/');

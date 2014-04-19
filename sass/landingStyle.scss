@@ -1,0 +1,148 @@
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+// Page Styling Begin
+
+$background-color-dark: #272727;
+$background-color-light: #D2D2D2;
+
+html {
+  width: 100%;
+  background-color: $background-color-dark;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-color: $background-color-dark;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.full-page-container {
+  background-color: $background-color-light;
+}
+
+.header {
+  position: relative;
+  // left: 0px;
+  // top: 0px;
+  // right: 0px;
+  // bottom: 0px;
+  // width: 800px;
+  height: 150px;
+  min-height: 150px;
+  // background-size: auto;
+  margin: auto;
+  padding-top: 20px;
+  text-align: center;
+  background-color: $background-color-light
+}
+
+// Page Styling End
+
+
+// Intro HeaderContent
+.header-content {
+  padding-right: 60px;
+  padding-left: 60px;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  right: 0px;
+  bottom: 50%;
+
+  // margin-top: -100px;
+  text-align: center;
+}
+
+// Image classes begin
+
+// Header Text Begins
+.header-text {
+  font-size: 30px;
+  font-family: Novecentosanswide-Bold;
+  font-weight: bold;
+  font-style: normal;
+  color: $background-color-dark;
+}
+
+.header-spacing {
+  letter-spacing: 3px;
+}
+
+.sub-header-text {
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: #7D7B7C;
+  text-transform: uppercase;
+}
+
+// Header Text Ends
+
+
+
+.magnifying-glass-div {
+  background-image: url(../img/polidex.png);
+  background-color: $background-color-light;
+  // margin-top: 80px;
+  // padding-top: 100px;
+  background-size: 870px 430px;
+  // width: 870px;
+  width: 100%;
+  height: 430px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-top: 40px;
+}
+
+// image div classes end
+
+.container {
+  box-sizing: border-box;
+}
+
+// footer stylings
+#footer {
+  font-family: Novecentosanswide-Normal;
+  display: block;
+  // position: fixed;
+  left: 0px;
+  // bottom: 0px;
+  height: 200px;
+  // width: 960px;
+  // margin: 0 auto;
+  background-color: $background-color-dark;
+  background-image: url("../img/navy_blue.png");
+  font-size: 10px;
+}
+
+#footer-text {
+  margin: auto;
+  padding: 50px 35px 0px;
+  text-align: left;
+  max-width: 533px;
+  line-height: 22px;
+  // background-color: $background-color-dark;
+  word-break: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  color: #7C7A7B;
+}
+
+.money {
+  display: block;
+  font-size: 50px;
+  margin-left: 50px;
+  width: 200px;
+  margin: auto;
+  text-align: center;
+  // @include transition-property(width);
+  @include transition-duration(1.5s);
+}
+
+.money:hover {
+  // -webkit-transform: skew(30deg, 10deg);
+  -webkit-transform: rotateY(-170deg);
+}

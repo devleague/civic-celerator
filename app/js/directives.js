@@ -38,7 +38,7 @@ myApp.directive('pchart', function($window) {
 
       scope.render = function(data) {
         //remove the elements (after rerender)
-        console.log("Im here kingtak!");
+
         console.log(scope.pData);
 
         var itm = {};
@@ -92,7 +92,7 @@ myApp.directive('pchart', function($window) {
           .attr('d', arc)
           .style("fill", function(d, i) { return color(money[i]); });
         
-      /* //STUB: labels for pie chart
+      //STUB: labels for pie chart
         g.append('text')
           .attr('transform', function(d) {
             var c = arc.centroid(d),
@@ -102,20 +102,20 @@ myApp.directive('pchart', function($window) {
 
             return "translate(" + (x/h * labelr) + "," + (y/h * labelr) + ")";
           })
-      */
+
         g.append('text')
           .attr('transform', function(d) {
             return "translate(" + arc.centroid(d) + ")";
           })
           .attr('dy', '.35em')
           .style('text-anchor', 'middle')
-        /* //STUB: labels for pie chart
+        //STUB: labels for pie chart
           .attr("text-anchor", function(d) {
             // are we past the center?
             return (d.endAngle + d.startAngle)/2 > Math.PI ?
                 "end" : "start";
           })
-        */
+        
           .text(function(d,i) {
             return type[i];
           })
@@ -223,11 +223,11 @@ myApp.directive('lchart', function($window) {
       }, true);
 
       scope.renderLine = function() {
-  
+
         var width = d3.select(element[0]).node().offsetWidth;
         var height = d3.select(element[0]).node().offsetHeight;
         console.log("width" + width);
-        
+
         var margin = { top: 30, right: 50, bottom: 30, left: 90};
         var svg = d3.select(element[0])
         .append("svg")
@@ -266,7 +266,7 @@ myApp.directive('lchart', function($window) {
         .attr("d", valueLine(data));
 
         svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
-        
+
         svg.append("text").attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom+6) + ")").style("text-anchor", "middle").text("Date");
 
         svg.append("g").attr("class", "y axis").call(yAxis);
@@ -274,7 +274,7 @@ myApp.directive('lchart', function($window) {
         svg.append("text").attr("transform", "rotate(-90)").attr("y", 0-margin.left).attr("x", 0 -(height/2)).attr("dy", "1em").style("text-anchor", "middle").text("Contributions");
 
         svg.append("text").attr("x", (width/2)).attr("y", 0-(margin.top/2)).attr("text-anchor", "middle").style("font-size", "16px").text("Contributions over Time");
-      
+
       }
     }
   }
