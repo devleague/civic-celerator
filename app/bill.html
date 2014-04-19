@@ -43,13 +43,13 @@
     </div><!-- /.container-fluid -->
   </nav>
   <!-- ******************* ENDS NAV-BAR ******************* -->
-  <div ng-controller="BillCtrl"> 
+  <div ng-controller="SingleBillController"> 
    <div class="bills-name-section">
       <div class="left-x">
         <span>&nbsp;</span>
       </div> <!-- end of div.left-arrow -->
       <div class="bills-info">
-        <h1> {{billName}} </h1>
+        <h1> {{ singleBill.title }} </h1>
       </div> <!-- end of div.candidate-info -->
 
       <div class="right-x">
@@ -65,7 +65,8 @@
 
       <div class="bill-description-desktop">
         <h1> Description: </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. Curabitur euismod pellentesque massa, a egestas turpis pharetra quis.
+        <p>
+          {{ singleBill.summary }}
         </p>
       </div> <!-- end of div.candidate-committees -->
 

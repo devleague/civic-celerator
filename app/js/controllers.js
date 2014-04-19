@@ -5,7 +5,7 @@
 var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 
 /**************************************************
-        * Main Controller / index.html
+        * Main Controller / candidate.html
 **************************************************/
 
 App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
@@ -235,11 +235,15 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
     }// function getBills
 
 
-    // All contributions made to a politician //
+    /*****************************************
+          * contributions to politician
+    *****************************************/
+
     function getContributions ( cb ) {
 
       var money                   = [];
       var contributionType        = [];
+      var contributedDate         = [];
 
       $http({
 
@@ -255,13 +259,17 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
+            contributedDate.push( data[i].date );
 
           }
 
         }
 
-          var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          $scope.pData          = contributionData;
+          var pieCandidateData = { industrymoney : money, contributiontype : contributionType };
+          var lineChartData    = { industrymoney : money, contributiontype : contributionType, contributiondate : contributedDate };
+
+          $scope.lData  = lineChartData;
+          $scope.pData  = pieCandidateData;
 
       }).
       error( function ( data, status, headers, config ) {
@@ -276,11 +284,19 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
+/**************************************************
+        * SingleBillController / bill.html
+**************************************************/
 
 App.controller( 'SingleBillController', function ( $scope, $http, $routeParams ) {
   
   var bill_oid = $routeParams.oid;
   getSingleBill(bill_oid);
+
+
+  /*******************************
+        * specific bill.html
+  *******************************/
 
   function getSingleBill ( oid ) {
 
@@ -303,5 +319,14 @@ App.controller( 'SingleBillController', function ( $scope, $http, $routeParams )
     });
 
   } //getSingleBill
+
+   /*******************************
+        * 
+  *******************************/
+
+  function supporters() {
+
+    $http()
+  }
 
 });

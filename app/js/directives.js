@@ -38,7 +38,7 @@ myApp.directive('pchart', function($window) {
 
       scope.render = function(data) {
         //remove the elements (after rerender)
-        console.log("Im here kingtak!");
+
         console.log(scope.pData);
         svg.selectAll("*").remove();
         //for a bar graph
