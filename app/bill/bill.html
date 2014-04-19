@@ -7,12 +7,12 @@
     <meta name="viewport" content="initial-scale=1">
   <title>Civic-Celerator</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css"/>
+<!--   <link rel="stylesheet" href="css/style.css"/> -->
   <script src="http://d3js.org/d3.v2.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body ng-controller='SingleBillController'>
   <!-- ****************** NAVBAR ****************** -->
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
@@ -49,7 +49,7 @@
         <span>&nbsp;</span>
       </div> <!-- end of div.left-arrow -->
       <div class="bills-info">
-        <h1> Bill Name </h1>
+        <h1> {{ title }} </h1>
       </div> <!-- end of div.candidate-info -->
 
       <div class="right-x">
@@ -59,14 +59,13 @@
 
   <div class="container">
 
-   
+
 
     <div class="desktop-left-section">
 
       <div class="bill-description-desktop">
         <h1> Description: </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget mi vehicula, gravida risus non, laoreet elit. Ut fermentum convallis luctus. Pellentesque laoreet ante vitae ornare dapibus. Sed fermentum felis quis sem convallis, et viverra nisi placerat. Curabitur euismod pellentesque massa, a egestas turpis pharetra quis.
-        </p>
+        <p>{{ summary }}</p>
       </div> <!-- end of div.candidate-committees -->
 
       <div class="candidate-list-section-desktop">
@@ -113,7 +112,7 @@
 
   </div> <!-- end of div.container -->
 
-    <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
@@ -124,5 +123,3 @@
   <script src="js/directives.js"></script>
 </body>
 </html>
-
-

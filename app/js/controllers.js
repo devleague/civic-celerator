@@ -8,23 +8,28 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
         * Main Controller / index.html
 **************************************************/
 
-App.controller( 'MainCtrl', [ '$scope', '$http',
-  function ( $scope, $http ) {
+App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
+  function ( $scope, $http, $location ) {
 
     politician();
     getContributions();
 
+    $scope.viewSingleBill = function ( id ) {
+      // console.log();
+      $location.url( '/bill/' + id );
+    };
+
 /**************************************************
                     * Helpers
 **************************************************/
-    
+
 
     /*******************************
-      * politician picture & name 
+      * politician picture & name
     *******************************/
 
     function politician() {
-      
+
       $http({
 
         method  : 'GET',
@@ -44,7 +49,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         $scope.forward    = forwardClick;
         $scope.back       = backwardClick;
         $scope.leg_id     = Candidates[CurCandidate].leg_id;
-        
+
         getCommittee( function( committee ) {
 
             $scope.committees = committee;
@@ -67,7 +72,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
           $scope.party      = Candidates[CurCandidate].party;
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
-          
+
           getCommittee( function( committee ) {
 
              $scope.committees = committee;
@@ -104,7 +109,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
             $scope.bills = bills;
 
           });
-        
+
         }
 
 
@@ -118,7 +123,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     }// function politician
 
     /*******************************
-      * politician's committees 
+      * politician's committees
     *******************************/
 
     function getCommittee( cb ) {
@@ -144,13 +149,13 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
             }
 
-          
+
           }
 
           cb( politicianCommittees );
 
         }
-        
+
 
       }).
       error( function ( data, status, headers, config ) {
@@ -159,7 +164,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         cb([]);
 
       });
-    
+
     }// function committee
 
 
@@ -185,7 +190,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
             if ( $scope.leg_id == data[i].sponsors[j].leg_id ) {
 
-              billCollection.push({ id : data[i].bill_id, title : data[i].title });
+              billCollection.push({
+                id : data[i].bill_id,
+                title : data[i].title,
+                oid: data[i]._id
+              });
 
               // console.log( data[i].sponsors[j].leg_id);
               // console.log( data[i].title );
@@ -234,3 +243,26 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
   }
 
 ]);
+
+App.controller('SingleBillController', function ($scope, $http, $routeParams) {
+  var bill_id = $routeParams.id;
+
+  getSingleBill(bill_oid);
+
+  function getSingleBill (oid) {
+
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/api/bill/' + oid
+    }).
+    success(function ( data, status, headers, config ) {
+      $scope.singleBill = data;
+      console.log("hey man" + data);
+    }).
+    error(function ( data, status, headers, config ) {
+      console.log("error getting single bill data: " + data);
+    });
+
+  } //getSingleBill
+
+});

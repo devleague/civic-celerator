@@ -72,7 +72,7 @@ var Bills         = mongoose.model( 'bill', billsSchema );
 
 // server.get('/api/candidates') //
 function getCandidates ( req, res ) {
-  
+
   Candidate.find().sort({ last_name : 1 }).exec(
     function ( err, politicians ) {
 
@@ -117,12 +117,21 @@ function getContributions ( req, res ) {
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
-      
+
       res.json( money );
 
     });
 
 }// getContributions
+
+function getSingleBill ( req, res ) {
+  var bill_oid = req.params.oid;
+  Bills.findOne({"_id": bill_oid}, function (err, bill) {
+    console.log(bill);
+    res.json(bill);
+    return;
+  });
+}
 
 
 /**************************************
@@ -133,6 +142,7 @@ server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
 server.get('/api/committees', getCommittees);
 server.get('/api/bills', getBills);
+server.get('/api/bill/:id', getSingleBill);
 
 /**************************************
             * Server Setup
