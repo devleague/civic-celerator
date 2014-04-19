@@ -65,20 +65,24 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
         });
 
-        getBills( function( bills ) {
+          getBills( function( bills ) {
 
-          $scope.bills = bills;
+            $scope.bills = bills;
 
-        });
+          });
 
-        getContributions();
+          getContributions( function( contributionData ) {
+            
+            $scope.pData = contributionData;
+
+          });
 
         // right arrow  click //
         function forwardClick() {
 
           CurCandidate      = ( CurCandidate + 1 ) % Candidates.length;
 
-          $scope.fullName   = Candidates[CurCandidate].first_name;
+          $scope.fullName   = Candidates[CurCandidate].full_name;
           $scope.firstName  = Candidates[CurCandidate].first_name;
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
@@ -97,11 +101,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
           });
 
-          getCommittee( function( contributionData ) {
-          
-            $scope.pData = contributionData;
+            getContributions( function( contributionData ) {
+            
+              $scope.pData = contributionData;
 
-          });
+            });
 
         }
 
@@ -110,7 +114,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
           ( CurCandidate === 0 )? CurCandidate = Candidates.length -1 : CurCandidate--;
 
-          $scope.fullName   = Candidates[CurCandidate].first_name;
+          $scope.fullName   = Candidates[CurCandidate].full_name;
           $scope.firstName  = Candidates[CurCandidate].first_name;
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
@@ -130,7 +134,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           });
 
 
-          getContributions();
+          getContributions( function( contributionData ) {
+          
+            $scope.pData = contributionData;
+
+          });
 
         }
 
@@ -256,7 +264,6 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         for ( var i = 0; i < data.length; i++ ) {
 
           if ( $scope.fullName == data[i].candidate_name ) {
-
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
 
@@ -265,7 +272,8 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         }
 
           var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          console.log($scope.pData);
+          console.log(contributionData)
+          return cb ( contributionData );
 
       }).
       error( function ( data, status, headers, config ) {
