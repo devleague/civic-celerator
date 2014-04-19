@@ -23,7 +23,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
     }).
     when('/bill/:oid', {
       templateUrl: '/views/bill.html',
-      controller: 'SingleBillController'
+      controller: 'MainCtrl'
     }).
     otherwise('/');
 

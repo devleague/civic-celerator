@@ -8,8 +8,8 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
         * Main Controller / index.html
 **************************************************/
 
-App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
-  function ( $scope, $http, $location ) {
+App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
+  function ( $scope, $http, $routeParams, $location ) {
 
     $scope.billView = function(bill_id) {
       $location.path('/bills/' + bill_oid);
@@ -246,12 +246,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
     }// function getContributions
 
-  }
-
-]);
-
-App.controller('SingleBillController', function ($scope, $http, $routeParams, $location) {
-  var bill_oid = $routeParams.oid;
+    var bill_oid = $routeParams.oid;
 
   getSingleBill(bill_oid);
 
@@ -274,8 +269,13 @@ App.controller('SingleBillController', function ($scope, $http, $routeParams, $l
  $scope.enter = function () {
     $location.path('/candidates');
   }
+
+  }
+
   
-});
+
+]);
+
 
 App.controller('LandingController', function ($scope, $http, $location) {
   $scope.enter = function () {
