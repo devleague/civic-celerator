@@ -3,7 +3,7 @@
 
 html,
 body {
-    background-image: url("../img/navy_blue.png");
+    background-color: black;
     font-family: "Open Sans", sans-serif !important;
     color: #f9f9f9;
 }
@@ -32,20 +32,19 @@ li {
     font-size: 1em;
 }
 
-.navbar {
-    background-color: rgba(0,0,0,.5);
-    border-color: rgba(0,0,0,.5);
-    margin-bottom: 0px;
-    border-radius: 0px;
+.main {
+    background-image: url("../img/navy_blue.png");
+}
 
-    .navbar-brand {
-        color: lightgray;
-        font-size: 3em;
-    }
+.header-section{
 
-    .navbar-header {
-        padding-left: 30px;
-    }
+    background-color: black;
+   
+   img {
+        margin: 0 auto;
+        display: block;
+        padding: 20px 0;
+   }
 
 }
 
@@ -61,19 +60,7 @@ li {
     }
 }
 
-button {
-    border: 0;
-    background-color: transparent;
-    color: rgba(0,0,0,.5);
 
-    @media only screen and (min-width: 950px) {
-        width: 100px;
-    }
-}
-
-button:focus {
-    outline: none;
-}
 
 .bold {
     font-weight: 700;
@@ -88,7 +75,7 @@ button:focus {
         display: inline-block;
         float: left;
         font-size: 4.5em;
-        width: 50px;
+        width: 61px;
 
         @media only screen and (min-width: 950px) {
             width: 90px;
@@ -121,7 +108,7 @@ button:focus {
         display: inline-block;
         float: right;
         font-size: 4.5em;
-        width: 50px;
+        width: 61px;
 
         @media only screen and (min-width: 950px) {
             width: 90px;
@@ -588,14 +575,14 @@ button:focus {
     }
 }
 
-.outside-container {
-    background-color: rgba(0,0,0,.5);
+.full-container {
+    background-color: black;
     min-height: 100%;
 }
 
-.footer {
+.footer-section {
     color: lightgray;
-    background-color: rgba(0,0,0,.5);
+    background-color: black;
     height: 100%;
 
     h1 {
