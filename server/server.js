@@ -40,6 +40,17 @@ var contributionsSchema = new mongoose.Schema({
 
 });
 
+var billsSchema = new mongoose.Schema({
+
+  title     : String,
+  summary   : String,
+  session   : String,
+  id        : String,
+  bill_id   : String,
+  sponsors  : [ { String :  String } ]
+
+});
+
 var committeeSchema = new mongoose.Schema({
 
   committee  : [String]
@@ -59,7 +70,7 @@ var billSchema = new mongoose.Schema({
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
 var Contributions = mongoose.model( 'contribution', contributionsSchema );
 var Committee     = mongoose.model( 'committee', committeeSchema );
-var Bill          = mongoose.model( 'bills', billSchema );
+var Bills         = mongoose.model( 'bill', billsSchema );
 
 
 /**************************************
@@ -70,35 +81,57 @@ var Bill          = mongoose.model( 'bills', billSchema );
 // server.get('/api/candidates') //
 function getCandidates ( req, res ) {
   
-  /* figure out how to get the page number to increment up in the db */
-  var page = req.params.page;
-
   Candidate.find().sort({ last_name : 1 }).exec(
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
-      res.json( politicians );
+      console.log(politicians.last_name);
 
+      res.json( politicians );
     });
 
 }// getCanidates
+
+// server.get('/api/committee') //
+function getCommittees ( req, res ) {
+
+  Committee.find({},'committee members').exec( function ( err, comm ) {
+
+    if ( err ) console.log( 'Error ' + err );
+
+    res.json( comm );
+
+  });
+
+}
+
+function getBills ( req, res ) {
+
+  Bills.find( {}, 'title all_ids sponsors summary bill_id' ).exec( function ( err, bill ) {
+
+    if ( err ) conosle.log('Error ' + err );
+
+    res.json( bill );
+
+  });
+
+}
 
 
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  var page = req.params.page;
-
-  Contributions.find().sort().exec(
+  Contributions.find({}, 'candidate_name contributor_type date amount').exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
-
+      
       res.json( money );
 
     });
 
-}// getContributions 
+}// getContributions
+
 
 function getBillbyID ( req, res ) {
   var bill_id = req.params.bill_id;
@@ -125,8 +158,8 @@ function getBillbyID ( req, res ) {
 
 server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
-server.get('/api/bills/:id', getBillbyID);
-
+server.get('/api/committees', getCommittees);
+server.get('/api/bills', getBills);
 
 /**************************************
             * Server Setup

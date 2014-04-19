@@ -78,15 +78,11 @@
         <div class="candidate-committees">
 
           <h1> Committees </h1>
-
           <ul>
-<!--             <li ng-repeat='com in coms'>
-              <span>{{ com }}</span>
-            </li> -->
-            <li>Committee 1</li>
-            <li>Committee 1</li>
-            <li>Committee 1</li>
-            <li>Committee 1</li>
+            <li ng-repeat='committee in committees'>
+              <span>{{ committee }}</span>
+            </li>
+
           </ul>
         </div> <!-- end of div.candidate-committees -->
 
@@ -95,13 +91,7 @@
           <h1> Bills Sponsored</h1>
 
           <ul>
-<!--             <li ng-click="billview({{bills.bill_id}})" ng-repeat="bill in bills">{{ bill }}</li> -->
-            <li>Bill 1</li>
-            <li>Bill 1</li>
-            <li>Bill 1</li>
-            <li>Bill 1</li>
-            <li>Bill 1</li>
-
+            <li ng-repeat="bill in bills"><span class="bold">{{ bill.id }}</span><br>{{ bill.title }}</li>
           </ul>
         </div> <!-- end of div.bills-sponsored-section-desktop -->
           
@@ -111,7 +101,7 @@
 
         <div class="campaign-contributions-section">
 
-          <h1> Campaign Contributions </h1>
+          <h1> Campaign Contributions Received </h1>
           <div class="contributions-graph-section">
               <div class="line-chart" lchart></div>
           </div> 
@@ -130,12 +120,7 @@
           <h1> Bills Sponsored</h1>
 
           <ul>
-<!--             <li ng-click="billView({{bills.bill_id}})" ng-repeat="bill in bills">{{ bill }}</li> -->
-            <li>Bill 1</li>
-            <li>Bill 1</li>
-            <li>Bill 1</li>
-            <li>Bill 1</li>
-            <li>Bill 1</li>
+            <li ng-repeat="bill in bills"><span class="bold">{{ bill.id }}</span><br>{{ bill.title }}</li>
           </ul>
 
 
