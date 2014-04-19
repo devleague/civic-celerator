@@ -38,6 +38,28 @@ myApp.directive('pchart', function($window) {
 
       scope.render = function(data) {
         //remove the elements (after rerender)
+        console.log("Im here kingtak!");
+        console.log(scope.pData);
+
+        var itm = {};
+
+        var money = [];
+        var type = [];
+        for(var i = 0; i < scope.pData.contributiontype.length; i++ ){
+          
+          if(itm[scope.pData.contributiontype[i]] == undefined){
+            itm[scope.pData.contributiontype[i]] = 0;
+          }
+          itm[scope.pData.contributiontype[i]] += scope.pData.industrymoney[i];
+
+        }
+        for(var key in itm){
+          type.push(key);
+          money.push(itm[key]);
+        }
+
+        console.log("this is the type: "  +type);
+        console.log("this is the money: " + money);
         svg.selectAll("*").remove();
         //for a bar graph
         // var width, height, max;
@@ -55,43 +77,47 @@ myApp.directive('pchart', function($window) {
         var pie = d3.layout.pie()
           .sort(null)
           .value(function(data, i) {
-            return scope.pData.industrymoney[i].value;
+            return money[i];
           })
 
 
 
         var g = svg.selectAll(".arc")
-          .data(pie(scope.pData.industrymoney))
+          .data(pie(money))
           .enter()
           .append('g')
           .attr('class', 'arc');
 
         g.append('path')
           .attr('d', arc)
-          .style("fill", function(d, i) { return color(scope.pData.industrymoney[i].value); });
+          .style("fill", function(d, i) { return color(money[i]); });
         
-        // g.append('text')
-        //   .attr('transform', function(d) {
-        //     var c = arc.centroid(d),
-        //         x = c[0],
-        //         y = c[1],
-        //         h = Math.sqrt(x*x + y*y);
+      /* //STUB: labels for pie chart
+        g.append('text')
+          .attr('transform', function(d) {
+            var c = arc.centroid(d),
+                x = c[0],
+                y = c[1],
+                h = Math.sqrt(x*x + y*y);
 
-        //     return "translate(" + (x/h * labelr) + "," + (y/h * labelr) + ")";
-        //   })
+            return "translate(" + (x/h * labelr) + "," + (y/h * labelr) + ")";
+          })
+      */
         g.append('text')
           .attr('transform', function(d) {
             return "translate(" + arc.centroid(d) + ")";
           })
           .attr('dy', '.35em')
           .style('text-anchor', 'middle')
-    //       .attr("text-anchor", function(d) {
-    //     // are we past the center?
-    //     return (d.endAngle + d.startAngle)/2 > Math.PI ?
-    //         "end" : "start";
-    // })
+        /* //STUB: labels for pie chart
+          .attr("text-anchor", function(d) {
+            // are we past the center?
+            return (d.endAngle + d.startAngle)/2 > Math.PI ?
+                "end" : "start";
+          })
+        */
           .text(function(d,i) {
-            return scope.pData.industrymoney[i].value;
+            return type[i];
           })
           .attr('fill','white');
       }
@@ -200,12 +226,15 @@ myApp.directive('lchart', function($window) {
   
         var width = d3.select(element[0]).node().offsetWidth;
         var height = d3.select(element[0]).node().offsetHeight;
+        console.log("width" + width);
         
         var margin = { top: 30, right: 50, bottom: 30, left: 90};
         var svg = d3.select(element[0])
         .append("svg")
-        .attr('width', width+margin.left+margin.right)
-        .attr('height', height+margin.top+margin.bottom)
+        .attr('width')
+        .attr('height')
+        // .attr('width', width+margin.left+margin.right)
+        // .attr('height', height+margin.top+margin.bottom)
         .append('g')
         .attr("transform", "translate("+margin.left+","+margin.top+")");
 

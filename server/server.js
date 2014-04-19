@@ -18,6 +18,7 @@ mongoose.connect('mongodb://kingtak:kingtak@ds041367.mongolab.com:41367/civ_acce
 
 var candidateSchema = new mongoose.Schema({
 
+  full_name       : String,
   first_name      : String,
   last_name       : String,
   photo_url       : String,
@@ -26,17 +27,6 @@ var candidateSchema = new mongoose.Schema({
   service_end     : Number,
   committiees     : [String],
   bill_id         : [String]
-
-});
-
-var contributionsSchema = new mongoose.Schema({
-
-  contributor_name  : String,
-  candidate_name    : String,
-  amount            : Number,
-  employer          : String,
-  industry          : String,
-  date_contributed  : Date,
 
 });
 
@@ -57,17 +47,28 @@ var committeeSchema = new mongoose.Schema({
 
 });
 
+var contributionsSchema = new mongoose.Schema({
+
+  contributor_type  : String,
+  candidate_name    : String,
+  amount            : Number,
+  date              : String
+
+});
+
+
 // Mongoose Models //
 
 var Candidate     = mongoose.model( 'candidate', candidateSchema );
-var Contributions = mongoose.model( 'contribution', contributionsSchema );
 var Committee     = mongoose.model( 'committee', committeeSchema );
 var Bills         = mongoose.model( 'bill', billsSchema );
+var Contributions = mongoose.model( 'contribution', contributionsSchema );
 
 
 /**************************************
             * index.html
 ***************************************/
+
 
 
 // server.get('/api/candidates') //
@@ -84,10 +85,11 @@ function getCandidates ( req, res ) {
 
 }// getCanidates
 
+
 // server.get('/api/committee') //
 function getCommittees ( req, res ) {
 
-  Committee.find({},'committee members').exec( function ( err, comm ) {
+  Committee.find( {},'committee members' ).exec( function ( err, comm ) {
 
     if ( err ) console.log( 'Error ' + err );
 
@@ -95,29 +97,30 @@ function getCommittees ( req, res ) {
 
   });
 
-}
+}// getCommittees
+
 
 function getBills ( req, res ) {
 
   Bills.find( {}, 'title all_ids sponsors summary bill_id' ).exec( function ( err, bill ) {
 
-    if ( err ) conosle.log('Error ' + err );
+    if ( err ) conosle.log( 'Error ' + err );
 
     res.json( bill );
 
   });
 
-}
+}// getBills
 
 
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  Contributions.find({}, 'candidate_name contributor_type date amount').exec(
+  Contributions.find({ date : { $gte: "2012-01-01T12:12:43" } }, 'contributor_type candidate_name date amount').exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
-      
+
       res.json( money );
 
     });
@@ -132,6 +135,42 @@ function getSingleBills( req, res){
   })
 }
 
+
+// ('/api/bills') //
+function getBillbyID ( req, res ) {
+
+  var bill_id = req.params.bill_id;
+
+  Bill.findById( bill_id, function ( err, bill ) {
+
+    if ( err ) console.log( 'Error' + err );
+
+    if ( bill === null ) {
+
+      return res.redirect( "/app" );
+
+    }
+
+    return res.view( "bill", { bill : bill } );
+  
+  });
+
+}// getBillbyId
+
+
+// ('/api/bill/billSupport') //
+function getBillSupport ( req, res ) {
+
+  Bill.find().exec( function ( err, bill ) {
+
+    if ( err ) console.log( 'Error ' + err );
+
+    console.log("friggen bills!");
+    res.json( bill );
+
+  });
+
+}// getBillSupport
 
 /**************************************
             * Route Handling

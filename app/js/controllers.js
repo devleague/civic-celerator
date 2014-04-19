@@ -8,28 +8,39 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
         * Main Controller / index.html
 **************************************************/
 
-App.controller( 'MainCtrl', [ '$scope', '$http',
-  function ( $scope, $http ) {
-<<<<<<< HEAD
-    console.log("loading");
-    getBills("53504530fa5c824f199be48c");
-=======
+App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
+  function ( $scope, $http, $location ) {
 
->>>>>>> front-end-derek
+    $scope.billView = function(bill_id) {
+      $location.path("/bills/" + bill_id);
+    }
+
+    // loads politician: pic, name, bills, committee //
     politician();
-    getContributions();
+
+    // temporarily here //
+    //getContributions();
+
+    $scope.viewSingleBill = function ( oid ) {
+
+      $location.url( '/bill/' + oid );
+
+    };
 
 /**************************************************
                     * Helpers
 **************************************************/
-    
+
 
     /*******************************
-      * politician picture & name 
+      * politician picture & name
     *******************************/
+    var contributionType = ["Candidate","Candidate","Candidate", "Other Entity","Immediate Family", "Other Entity"," Noncandidate Committee", "Political Party", "Individual","Political Party"];
+    var money = [123,1237,143,6,8,3,123,34,235,1324];
+    var contributionData  = { industrymoney : money, contributiontype : contributionType };
+    $scope.pData          = contributionData;
 
     function politician() {
-      
       $http({
 
         method  : 'GET',
@@ -42,6 +53,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         var CurCandidate  = 0;
 
         // first politician //
+        $scope.fullName   = Candidates[CurCandidate].full_name;
         $scope.firstName  = Candidates[CurCandidate].first_name;
         $scope.lastName   = Candidates[CurCandidate].last_name;
         $scope.party      = Candidates[CurCandidate].party;
@@ -49,7 +61,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         $scope.forward    = forwardClick;
         $scope.back       = backwardClick;
         $scope.leg_id     = Candidates[CurCandidate].leg_id;
-        
+
         getCommittee( function( committee ) {
 
             $scope.committees = committee;
@@ -62,17 +74,20 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
         });
 
+        getContributions();
+
         // right arrow  click //
         function forwardClick() {
 
           CurCandidate      = ( CurCandidate + 1 ) % Candidates.length;
 
+          $scope.fullName   = Candidates[CurCandidate].first_name;
           $scope.firstName  = Candidates[CurCandidate].first_name;
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
-          
+
           getCommittee( function( committee ) {
 
              $scope.committees = committee;
@@ -85,6 +100,8 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
           });
 
+          getContributions();
+
         }
 
         // left arrow click //
@@ -92,6 +109,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
           ( CurCandidate === 0 )? CurCandidate = Candidates.length -1 : CurCandidate--;
 
+          $scope.fullName   = Candidates[CurCandidate].first_name;
           $scope.firstName  = Candidates[CurCandidate].first_name;
           $scope.lastName   = Candidates[CurCandidate].last_name;
           $scope.party      = Candidates[CurCandidate].party;
@@ -109,7 +127,10 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
             $scope.bills = bills;
 
           });
-        
+
+
+          getContributions();
+
         }
 
 
@@ -123,7 +144,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
     }// function politician
 
     /*******************************
-      * politician's committees 
+      * politician's committees
     *******************************/
 
     function getCommittee( cb ) {
@@ -149,13 +170,13 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
             }
 
-          
+
           }
 
           cb( politicianCommittees );
 
         }
-        
+
 
       }).
       error( function ( data, status, headers, config ) {
@@ -164,7 +185,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
         cb([]);
 
       });
-    
+
     }// function committee
 
 
@@ -191,12 +212,13 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
             if ( $scope.leg_id == data[i].sponsors[j].leg_id ) {
 
-              billCollection.push({ id : data[i].bill_id, title : data[i].title });
+              billCollection.push({
 
-              // console.log( data[i].sponsors[j].leg_id);
-              // console.log( data[i].title );
-              // console.log( data[i].sponsors[j].name );
-              // console.log( data[i].summary );
+                id    : data[i].bill_id,
+                title : data[i].title,
+                oid   : data[i]._id
+
+              });
 
             }
 
@@ -210,12 +232,18 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
       error( function ( data, status, headers, config ) {
 
         console.log( 'Error ' + status );
+        cb([]);
 
       });
 
     }// function getBills
 
+
+    // All contributions made to a politician //
     function getContributions ( cb ) {
+
+      var money                   = [];
+      var contributionType        = [];
 
       $http({
 
@@ -224,9 +252,20 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
       }).
       success( function ( data, status, headers, config ) {
+        
+        for ( var i = 0; i < data.length; i++ ) {
 
-        console.log('inside contributions, data:');
-        console.log( data );
+          if ( $scope.fullName == data[i].candidate_name ) {
+
+            money.push( data[i].amount );
+            contributionType.push( data[i].contributor_type );
+
+          }
+
+        }
+          console.log("contribution");
+          var contributionData  = { industrymoney : money, contributiontype : contributionType };
+          $scope.pData          = contributionData;
 
       }).
       error( function ( data, status, headers, config ) {
@@ -240,3 +279,33 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
   }
 
 ]);
+
+
+App.controller( 'SingleBillController', function ( $scope, $http, $routeParams ) {
+  
+  var bill_oid = $routeParams.oid;
+  getSingleBill(bill_oid);
+
+  function getSingleBill ( oid ) {
+
+    $http({
+
+      method  : 'GET',
+      url     : 'http://localhost:3000/api/bill/' + oid
+
+    }).
+    success( function ( data, status, headers, config ) {
+      
+      $scope.singleBill = data;
+
+    }).
+    error( function ( data, status, headers, config ) {
+
+      console.log( "error getting single bill data: " + data );
+      console.log( 'Error ' + status );
+
+    });
+
+  } //getSingleBill
+
+});
