@@ -80,7 +80,7 @@ var Bills         = mongoose.model( 'bill', billsSchema );
 
 // server.get('/api/candidates') //
 function getCandidates ( req, res ) {
-  
+
   Candidate.find().sort({ last_name : 1 }).exec(
     function ( err, politicians ) {
 
@@ -95,7 +95,7 @@ function getCandidates ( req, res ) {
 // server.get('/api/committee') //
 function getCommittees ( req, res ) {
 
-  Committee.find({},'committee members').exec( function ( err, comm ) {
+  Committee.find( {},'committee members').exec( function ( err, comm ) {
 
     if ( err ) console.log( 'Error ' + err );
 
@@ -121,16 +121,26 @@ function getBills ( req, res ) {
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  Contributions.find({}, 'candidate_name contributor_type date amount').exec(
+  Contributions.find( {}, 'candidate_name contributor_type date amount').exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
-      
+
       res.json( money );
 
     });
 
 }// getContributions
+
+function getSingleBill ( req, res ) {
+  var bill_oid = req.params.oid;
+  // console.log(req.params);
+  Bills.findOne({"_id": bill_oid}, function (err, bill) {
+    // console.log(bill);
+    res.json(bill);
+    return;
+  });
+}
 
 
 function getBillbyID ( req, res ) {
@@ -160,6 +170,7 @@ server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
 server.get('/api/committees', getCommittees);
 server.get('/api/bills', getBills);
+server.get('/api/bill/:oid', getSingleBill);
 
 /**************************************
             * Server Setup
