@@ -77,7 +77,6 @@ function getCandidates ( req, res ) {
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
-      console.log(politicians);
       res.json( politicians );
 
     });

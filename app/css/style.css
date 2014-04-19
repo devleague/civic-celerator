@@ -1,27 +1,13 @@
-/* line 2, ../../sass/style.scss */
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300");
+/* line 5, ../../sass/style.scss */
 html,
 body {
-  background-color: white;
-}
-@media only screen and (max-width: 950px) {
-  /* line 2, ../../sass/style.scss */
-  html,
-  body {
-    margin: 0px !important;
-  }
+  background-image: url("../img/navy_blue.png");
+  font-family: "Open Sans", sans-serif !important;
+  color: #f9f9f9;
 }
 
-/* line 9, ../../sass/style.scss */
-.left-arrow {
-  color: red;
-}
-
-/* line 13, ../../sass/style.scss */
-.right-arrow {
-  color: red;
-}
-
-/* line 17, ../../sass/style.scss */
+/* line 11, ../../sass/style.scss */
 * {
   position: relative;
   -webkit-box-sizing: border-box;
@@ -32,105 +18,132 @@ body {
   padding: 0;
 }
 
-/* line 27, ../../sass/style.scss */
+/* line 22, ../../sass/style.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 31, ../../sass/style.scss */
+/* line 26, ../../sass/style.scss */
 h2 {
   font-size: 1.5em;
 }
 
-/* line 35, ../../sass/style.scss */
+/* line 30, ../../sass/style.scss */
+li {
+  color: black;
+}
+
+/* line 34, ../../sass/style.scss */
 .navbar {
-  background-color: black;
-  border-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.5);
   margin-bottom: 0px;
   border-radius: 0px;
 }
-/* line 41, ../../sass/style.scss */
+/* line 40, ../../sass/style.scss */
 .navbar .navbar-brand {
   color: lightgray;
-  font-size: 2em;
+  font-size: 3em;
+}
+/* line 45, ../../sass/style.scss */
+.navbar .navbar-header {
+  padding-left: 30px;
 }
 
-/* line 48, ../../sass/style.scss */
+/* line 51, ../../sass/style.scss */
 .container {
+  padding: 0 !important;
+  margin: 0 !important;
   width: 100%;
-  background-color: white;
-  padding: 0px 0px 20px 0px !important;
-  margin: 0px 0px 0px 0px !important;
 }
 @media only screen and (min-width: 950px) {
-  /* line 48, ../../sass/style.scss */
+  /* line 51, ../../sass/style.scss */
   .container {
-    padding: 0 0 100px 0 !important;
+    padding: 0 0 50px 0 !important;
     width: 950px;
     margin: 0 auto !important;
   }
 }
 
-/* line 61, ../../sass/style.scss */
+/* line 63, ../../sass/style.scss */
 button {
   border: 0;
-  background-color: white;
-  color: black;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+}
+@media only screen and (min-width: 950px) {
+  /* line 63, ../../sass/style.scss */
+  button {
+    width: 100px;
+  }
 }
 
-/* line 67, ../../sass/style.scss */
+/* line 73, ../../sass/style.scss */
 button:focus {
   outline: none;
 }
 
-/* line 71, ../../sass/style.scss */
+/* line 77, ../../sass/style.scss */
 .candidate-section {
   text-align: center;
   line-height: 100px;
 }
-/* line 75, ../../sass/style.scss */
+/* line 81, ../../sass/style.scss */
 .candidate-section .left-arrow {
   vertical-align: middle;
   display: inline-block;
   float: left;
   font-size: 4.5em;
-  padding-left: 10px;
+  width: 50px;
 }
-/* line 85, ../../sass/style.scss */
+@media only screen and (min-width: 950px) {
+  /* line 81, ../../sass/style.scss */
+  .candidate-section .left-arrow {
+    width: 90px;
+  }
+}
+/* line 94, ../../sass/style.scss */
 .candidate-section .candidate-info {
   display: inline-block;
+  width: 60%;
 }
-/* line 88, ../../sass/style.scss */
+/* line 98, ../../sass/style.scss */
 .candidate-section .candidate-info h1 {
   font-weight: bold;
   margin-bottom: 0;
   font-size: 2.5em;
 }
-/* line 94, ../../sass/style.scss */
+/* line 104, ../../sass/style.scss */
 .candidate-section .candidate-info h2 {
   margin-top: 0;
   font-weight: thin;
 }
-/* line 100, ../../sass/style.scss */
+@media only screen and (min-width: 950px) {
+  /* line 94, ../../sass/style.scss */
+  .candidate-section .candidate-info {
+    width: 750px;
+  }
+}
+/* line 115, ../../sass/style.scss */
 .candidate-section .right-arrow {
   display: inline-block;
   float: right;
   font-size: 4.5em;
-  padding-right: 10px;
+  width: 50px;
 }
-/* line 106, ../../sass/style.scss */
-.candidate-section .right-arrow button {
-  border: 0;
-  background-color: white;
-  color: black;
+@media only screen and (min-width: 950px) {
+  /* line 115, ../../sass/style.scss */
+  .candidate-section .right-arrow {
+    width: 90px;
+  }
 }
 
-/* line 114, ../../sass/style.scss */
+/* line 128, ../../sass/style.scss */
 .bills-name-section {
   text-align: center;
   line-height: 120px;
 }
-/* line 118, ../../sass/style.scss */
+/* line 132, ../../sass/style.scss */
 .bills-name-section .left-x {
   vertical-align: middle;
   display: inline-block;
@@ -138,16 +151,16 @@ button:focus {
   font-size: 4em;
   padding-left: 10px;
 }
-/* line 126, ../../sass/style.scss */
+/* line 140, ../../sass/style.scss */
 .bills-name-section .bills-info {
   display: inline-block;
 }
-/* line 129, ../../sass/style.scss */
+/* line 143, ../../sass/style.scss */
 .bills-name-section .bills-info h1 {
   font-weight: bold;
   font-size: 2.5em;
 }
-/* line 135, ../../sass/style.scss */
+/* line 149, ../../sass/style.scss */
 .bills-name-section .right-x {
   display: inline-block;
   float: right;
@@ -155,164 +168,186 @@ button:focus {
   padding-right: 10px;
 }
 
-/* line 143, ../../sass/style.scss */
+/* line 157, ../../sass/style.scss */
 .desktop-left-section {
   height: 100%;
-  width: 100%;
 }
 @media only screen and (min-width: 950px) {
-  /* line 143, ../../sass/style.scss */
+  /* line 157, ../../sass/style.scss */
   .desktop-left-section {
     float: left;
-    width: 30%;
+    width: 250px;
   }
 }
-/* line 152, ../../sass/style.scss */
+/* line 165, ../../sass/style.scss */
 .desktop-left-section .candidate-image {
   margin: auto;
   text-align: center;
   margin-bottom: 20px;
 }
-/* line 157, ../../sass/style.scss */
+/* line 170, ../../sass/style.scss */
 .desktop-left-section .candidate-image h1 {
   display: none;
 }
-/* line 161, ../../sass/style.scss */
+/* line 174, ../../sass/style.scss */
 .desktop-left-section .candidate-image img {
-  width: 30%;
+  width: 200px;
+  -webkit-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
 }
 @media only screen and (min-width: 950px) {
-  /* line 152, ../../sass/style.scss */
+  /* line 165, ../../sass/style.scss */
   .desktop-left-section .candidate-image {
     text-align: left;
   }
-  /* line 168, ../../sass/style.scss */
+  /* line 185, ../../sass/style.scss */
   .desktop-left-section .candidate-image h1 {
     display: block;
   }
-  /* line 172, ../../sass/style.scss */
+  /* line 189, ../../sass/style.scss */
   .desktop-left-section .candidate-image img {
-    width: 80%;
+    width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
   }
 }
-/* line 178, ../../sass/style.scss */
+/* line 197, ../../sass/style.scss */
 .desktop-left-section .candidate-committees {
   display: none;
-  margin-bottom: 20px;
 }
 @media only screen and (min-width: 950px) {
-  /* line 178, ../../sass/style.scss */
+  /* line 197, ../../sass/style.scss */
   .desktop-left-section .candidate-committees {
     float: left;
     width: 80%;
     display: block;
+    background-color: #bdbdbd;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+    -webkit-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
   }
-  /* line 187, ../../sass/style.scss */
+  /* line 214, ../../sass/style.scss */
   .desktop-left-section .candidate-committees h1 {
-    background-color: white;
+    background-color: #7E7C7D;
+    margin: 0 0 !important;
+    padding: 20px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   }
-  /* line 191, ../../sass/style.scss */
+  /* line 222, ../../sass/style.scss */
   .desktop-left-section .candidate-committees ul {
-    padding-left: 15px;
+    padding: 0px 20px 0 20px;
     font-size: 1.5em;
-    background-color: lightgray;
-    line-height: 2em;
+    line-height: 50px;
+    background-color: #bdbdbd;
+    margin-bottom: 0;
   }
-  /* line 198, ../../sass/style.scss */
+  /* line 233, ../../sass/style.scss */
   .desktop-left-section .candidate-committees li {
     list-style-type: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  /* line 237, ../../sass/style.scss */
+  .desktop-left-section .candidate-committees li:first-child {
+    padding-top: 0;
+  }
+  /* line 241, ../../sass/style.scss */
+  .desktop-left-section .candidate-committees li:last-child {
+    border-bottom: none;
   }
 }
-/* line 204, ../../sass/style.scss */
+/* line 249, ../../sass/style.scss */
 .desktop-left-section .bill-description-desktop {
   display: none;
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 950px) {
-  /* line 204, ../../sass/style.scss */
+  /* line 249, ../../sass/style.scss */
   .desktop-left-section .bill-description-desktop {
     float: left;
     width: 80%;
     display: block;
   }
 }
-/* line 215, ../../sass/style.scss */
+/* line 260, ../../sass/style.scss */
 .desktop-left-section .bills-sponsored-section-desktop {
-  width: 100%;
   display: none;
 }
 @media only screen and (min-width: 950px) {
-  /* line 215, ../../sass/style.scss */
+  /* line 260, ../../sass/style.scss */
   .desktop-left-section .bills-sponsored-section-desktop {
     float: left;
     width: 80%;
     display: block;
+    background-color: #bdbdbd;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+    -webkit-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
   }
-  /* line 224, ../../sass/style.scss */
+  /* line 276, ../../sass/style.scss */
   .desktop-left-section .bills-sponsored-section-desktop h1 {
-    background-color: white;
+    background-color: #7E7C7D;
+    margin: 0 0 !important;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   }
-  /* line 228, ../../sass/style.scss */
+  /* line 284, ../../sass/style.scss */
   .desktop-left-section .bills-sponsored-section-desktop ul {
-    padding-left: 0;
+    padding: 0px 20px 0 20px;
     font-size: 1.5em;
-    background-color: lightgray;
-    line-height: 2em;
+    line-height: 50px;
+    background-color: #bdbdbd;
+    margin-bottom: 0;
   }
-  /* line 235, ../../sass/style.scss */
+  /* line 295, ../../sass/style.scss */
   .desktop-left-section .bills-sponsored-section-desktop li {
-    padding-left: 15px;
     list-style-type: none;
-    border-top: 1px solid white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   }
-  /* line 240, ../../sass/style.scss */
-  .desktop-left-section .bills-sponsored-section-desktop li span {
-    float: right;
-    font-size: 1.5em;
-    vertical-align: middle;
-    line-height: 1.3em;
-    padding-right: 15px;
+  /* line 299, ../../sass/style.scss */
+  .desktop-left-section .bills-sponsored-section-desktop li:first-child {
+    padding-top: 0;
   }
-  /* line 249, ../../sass/style.scss */
-  .desktop-left-section .bills-sponsored-section-desktop a {
-    text-decoration: none;
-    color: black;
-  }
-  /* line 256, ../../sass/style.scss */
-  .desktop-left-section .bills-sponsored-section-desktop a:hover li {
-    background-color: darkgray;
+  /* line 303, ../../sass/style.scss */
+  .desktop-left-section .bills-sponsored-section-desktop li:last-child {
+    border-bottom: none;
   }
 }
-/* line 263, ../../sass/style.scss */
+/* line 311, ../../sass/style.scss */
 .desktop-left-section .candidate-list-section-desktop {
-  width: 100%;
   display: none;
 }
 @media only screen and (min-width: 950px) {
-  /* line 263, ../../sass/style.scss */
+  /* line 311, ../../sass/style.scss */
   .desktop-left-section .candidate-list-section-desktop {
     float: left;
     width: 80%;
     display: block;
+    -webkit-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
   }
-  /* line 272, ../../sass/style.scss */
+  /* line 322, ../../sass/style.scss */
   .desktop-left-section .candidate-list-section-desktop h1 {
-    background-color: white;
+    background-color: #bdbdbd;
   }
-  /* line 276, ../../sass/style.scss */
+  /* line 326, ../../sass/style.scss */
   .desktop-left-section .candidate-list-section-desktop ul {
     padding-left: 0;
     font-size: 1.5em;
     background-color: lightgray;
     line-height: 2em;
   }
-  /* line 283, ../../sass/style.scss */
+  /* line 333, ../../sass/style.scss */
   .desktop-left-section .candidate-list-section-desktop li {
     padding-left: 15px;
     list-style-type: none;
-    border-top: 1px solid white;
+    border-top: 1px solid #bdbdbd;
   }
-  /* line 288, ../../sass/style.scss */
+  /* line 338, ../../sass/style.scss */
   .desktop-left-section .candidate-list-section-desktop li span {
     float: right;
     font-size: 1.5em;
@@ -320,171 +355,183 @@ button:focus {
     line-height: 1.3em;
     padding-right: 15px;
   }
-  /* line 297, ../../sass/style.scss */
+  /* line 347, ../../sass/style.scss */
   .desktop-left-section .candidate-list-section-desktop a {
     text-decoration: none;
-    color: black;
+    color: rgba(0, 0, 0, 0.5);
   }
-  /* line 304, ../../sass/style.scss */
+  /* line 354, ../../sass/style.scss */
   .desktop-left-section .candidate-list-section-desktop a:hover li {
     background-color: darkgray;
   }
 }
 
-/* line 313, ../../sass/style.scss */
+/* line 363, ../../sass/style.scss */
 .desktop-right-section {
   height: 100%;
-  width: 100%;
 }
 @media only screen and (min-width: 950px) {
-  /* line 313, ../../sass/style.scss */
+  /* line 363, ../../sass/style.scss */
   .desktop-right-section {
     display: inline-block;
-    width: 70%;
+    width: 700px;
   }
 }
-/* line 322, ../../sass/style.scss */
+/* line 371, ../../sass/style.scss */
 .desktop-right-section .campaign-contributions-section {
   text-align: center;
-  background-color: lightgray;
+  background-color: #bdbdbd;
   width: 100%;
-  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
-/* line 328, ../../sass/style.scss */
+/* line 377, ../../sass/style.scss */
 .desktop-right-section .campaign-contributions-section h1 {
-  padding-top: 20px;
+  padding: 20px;
+  background-color: #7E7C7D;
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 @media only screen and (min-width: 950px) {
-  /* line 322, ../../sass/style.scss */
+  /* line 371, ../../sass/style.scss */
   .desktop-right-section .campaign-contributions-section {
     text-align: left;
-  }
-  /* line 335, ../../sass/style.scss */
-  .desktop-right-section .campaign-contributions-section h1 {
-    background-color: white;
-    padding-top: 0;
-    padding-bottom: 10px;
-    margin-bottom: 0;
+    margin-bottom: 40px;
+    -webkit-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
   }
 }
-/* line 344, ../../sass/style.scss */
-.desktop-right-section .campaign-contributions-section .contributions-graph {
-  background: url("http://i.stack.imgur.com/jj5Nf.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  min-height: 400px;
-}
-/* line 353, ../../sass/style.scss */
-.desktop-right-section .industry-influence-section {
-  text-align: center;
-  width: 100%;
-}
-/* line 357, ../../sass/style.scss */
-.desktop-right-section .industry-influence-section h1 {
-  padding-top: 20px;
-}
-@media only screen and (min-width: 950px) {
-  /* line 353, ../../sass/style.scss */
-  .desktop-right-section .industry-influence-section {
-    text-align: left;
-    background-color: lightgray;
-  }
-  /* line 365, ../../sass/style.scss */
-  .desktop-right-section .industry-influence-section h1 {
-    padding-top: 0;
-    background-color: white;
-    padding-bottom: 10px;
-    margin-bottom: 0;
-  }
-}
-/* line 373, ../../sass/style.scss */
-.desktop-right-section .industry-influence-section .influence-graph-section {
+/* line 393, ../../sass/style.scss */
+.desktop-right-section .campaign-contributions-section .contributions-graph-section {
   height: 300px;
 }
-/* line 376, ../../sass/style.scss */
-.desktop-right-section .industry-influence-section .influence-graph-section .pie-chart {
-  width: 400px;
+/* line 396, ../../sass/style.scss */
+.desktop-right-section .campaign-contributions-section .contributions-graph-section .line-chart {
+  width: 100%;
   height: 300px;
   margin: 0 auto;
 }
-/* line 384, ../../sass/style.scss */
+@media only screen and (min-width: 950px) {
+  /* line 396, ../../sass/style.scss */
+  .desktop-right-section .campaign-contributions-section .contributions-graph-section .line-chart {
+    width: 700px;
+  }
+}
+/* line 409, ../../sass/style.scss */
+.desktop-right-section .industry-influence-section {
+  text-align: center;
+  background-color: #bdbdbd;
+}
+/* line 413, ../../sass/style.scss */
+.desktop-right-section .industry-influence-section h1 {
+  background-color: #7E7C7D;
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+@media only screen and (min-width: 950px) {
+  /* line 409, ../../sass/style.scss */
+  .desktop-right-section .industry-influence-section {
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+/* line 430, ../../sass/style.scss */
+.desktop-right-section .industry-influence-section .influence-graph-section {
+  height: 300px;
+}
+/* line 433, ../../sass/style.scss */
+.desktop-right-section .industry-influence-section .influence-graph-section .pie-chart {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 950px) {
+  /* line 433, ../../sass/style.scss */
+  .desktop-right-section .industry-influence-section .influence-graph-section .pie-chart {
+    width: 700px;
+  }
+}
+/* line 445, ../../sass/style.scss */
 .desktop-right-section .bill-industry-influence-section {
   text-align: center;
-  width: 100%;
   background-color: lightgray;
 }
-/* line 389, ../../sass/style.scss */
+/* line 449, ../../sass/style.scss */
 .desktop-right-section .bill-industry-influence-section h1 {
   padding-top: 20px;
 }
 @media only screen and (min-width: 950px) {
-  /* line 384, ../../sass/style.scss */
+  /* line 445, ../../sass/style.scss */
   .desktop-right-section .bill-industry-influence-section {
     text-align: left;
   }
-  /* line 396, ../../sass/style.scss */
+  /* line 456, ../../sass/style.scss */
   .desktop-right-section .bill-industry-influence-section h1 {
-    background-color: white;
+    background-color: #bdbdbd;
     padding-top: 0;
   }
 }
-/* line 402, ../../sass/style.scss */
+/* line 462, ../../sass/style.scss */
 .desktop-right-section .bill-industry-influence-section .influence-graph-section {
   height: 300px;
 }
-/* line 405, ../../sass/style.scss */
+/* line 465, ../../sass/style.scss */
 .desktop-right-section .bill-industry-influence-section .influence-graph-section .pie-chart {
   width: 320px;
   height: 300px;
   margin: 0 auto;
 }
-/* line 413, ../../sass/style.scss */
+/* line 473, ../../sass/style.scss */
 .desktop-right-section .bill-industry-description {
   background-color: darkgray;
   padding: 30px;
   display: none;
 }
 @media only screen and (min-width: 950px) {
-  /* line 413, ../../sass/style.scss */
+  /* line 473, ../../sass/style.scss */
   .desktop-right-section .bill-industry-description {
     display: block;
   }
 }
-/* line 423, ../../sass/style.scss */
+/* line 483, ../../sass/style.scss */
 .desktop-right-section .bill-description-mobile {
-  width: 100%;
   padding: 30px;
 }
 @media only screen and (min-width: 950px) {
-  /* line 423, ../../sass/style.scss */
+  /* line 483, ../../sass/style.scss */
   .desktop-right-section .bill-description-mobile {
     display: none;
   }
 }
-/* line 433, ../../sass/style.scss */
+/* line 492, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile {
-  background-color: lightgray;
-  width: 100%;
+  background-color: #bdbdbd;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
-/* line 437, ../../sass/style.scss */
+/* line 496, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile h1 {
   text-align: center;
-  padding-top: 20px;
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
-/* line 442, ../../sass/style.scss */
+/* line 502, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile ul {
-  padding-left: 0;
+  margin: 0 auto;
   font-size: 1.5em;
-  background-color: lightgray;
-  line-height: 3em;
+  background-color: #bdbdbd;
+  line-height: 80px;
 }
-/* line 449, ../../sass/style.scss */
+/* line 509, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile li {
-  padding-left: 50px;
   list-style-type: none;
-  border-top: 1px solid white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
-/* line 454, ../../sass/style.scss */
+/* line 513, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile li span {
   float: right;
   font-size: 1.5em;
@@ -492,45 +539,44 @@ button:focus {
   line-height: 1.3em;
   padding-right: 50px;
 }
-/* line 463, ../../sass/style.scss */
+/* line 522, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile a {
   text-decoration: none;
-  color: black;
+  color: rgba(0, 0, 0, 0.5);
 }
-/* line 470, ../../sass/style.scss */
+/* line 529, ../../sass/style.scss */
 .desktop-right-section .bills-sponsored-section-mobile a:hover li {
   background-color: darkgray;
 }
 @media only screen and (min-width: 950px) {
-  /* line 433, ../../sass/style.scss */
+  /* line 492, ../../sass/style.scss */
   .desktop-right-section .bills-sponsored-section-mobile {
     display: none;
   }
 }
-/* line 480, ../../sass/style.scss */
+/* line 539, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile {
   background-color: lightgray;
-  width: 100%;
 }
-/* line 484, ../../sass/style.scss */
+/* line 542, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile h1 {
   text-align: center;
   padding-top: 20px;
 }
-/* line 489, ../../sass/style.scss */
+/* line 547, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile ul {
   padding-left: 0;
   font-size: 1.5em;
   background-color: lightgray;
   line-height: 3em;
 }
-/* line 496, ../../sass/style.scss */
+/* line 554, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile li {
   padding-left: 50px;
   list-style-type: none;
-  border-top: 1px solid white;
+  border-top: 1px solid #bdbdbd;
 }
-/* line 501, ../../sass/style.scss */
+/* line 559, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile li span {
   float: right;
   font-size: 1.5em;
@@ -538,67 +584,61 @@ button:focus {
   line-height: 1.3em;
   padding-right: 50px;
 }
-/* line 510, ../../sass/style.scss */
+/* line 568, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile a {
   text-decoration: none;
-  color: black;
+  color: rgba(0, 0, 0, 0.5);
 }
-/* line 517, ../../sass/style.scss */
+/* line 575, ../../sass/style.scss */
 .desktop-right-section .candidate-list-section-mobile a:hover li {
   background-color: darkgray;
 }
 @media only screen and (min-width: 950px) {
-  /* line 480, ../../sass/style.scss */
+  /* line 539, ../../sass/style.scss */
   .desktop-right-section .candidate-list-section-mobile {
     display: none;
   }
 }
 @media only screen and (min-width: 950px) {
-  /* line 480, ../../sass/style.scss */
+  /* line 539, ../../sass/style.scss */
   .desktop-right-section .candidate-list-section-mobile {
     display: none;
   }
 }
 
-/* line 532, ../../sass/style.scss */
+/* line 590, ../../sass/style.scss */
 .outside-container {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   min-height: 100%;
 }
 
-/* line 537, ../../sass/style.scss */
+/* line 595, ../../sass/style.scss */
 .footer {
   color: lightgray;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
 }
-/* line 542, ../../sass/style.scss */
-.footer ul {
-  padding-top: 30px;
+/* line 600, ../../sass/style.scss */
+.footer h1 {
   text-align: center;
-  font-size: 2em;
+  padding-top: 20px;
 }
-/* line 548, ../../sass/style.scss */
-.footer li {
-  display: inline;
-  list-style-type: none;
-}
-/* line 553, ../../sass/style.scss */
+/* line 605, ../../sass/style.scss */
 .footer h2 {
   padding: 0 20px 0 20px;
   text-align: center;
 }
-/* line 558, ../../sass/style.scss */
+/* line 610, ../../sass/style.scss */
 .footer p {
   padding: 0 20px 20px 20px;
 }
 @media only screen and (min-width: 950px) {
-  /* line 563, ../../sass/style.scss */
+  /* line 615, ../../sass/style.scss */
   .footer h2 {
     padding: 30px 100px 0 100px;
     text-align: left;
   }
-  /* line 568, ../../sass/style.scss */
+  /* line 620, ../../sass/style.scss */
   .footer p {
     padding: 0 100px 100px 100px;
   }

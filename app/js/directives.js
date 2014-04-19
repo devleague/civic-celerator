@@ -204,12 +204,15 @@ myApp.directive('lchart', function($window) {
   
         var width = d3.select(element[0]).node().offsetWidth;
         var height = d3.select(element[0]).node().offsetHeight;
+        console.log("width" + width);
         
         var margin = { top: 30, right: 50, bottom: 30, left: 90};
         var svg = d3.select(element[0])
         .append("svg")
-        .attr('width', width+margin.left+margin.right)
-        .attr('height', height+margin.top+margin.bottom)
+        .attr('width')
+        .attr('height')
+        // .attr('width', width+margin.left+margin.right)
+        // .attr('height', height+margin.top+margin.bottom)
         .append('g')
         .attr("transform", "translate("+margin.left+","+margin.top+")");
 
