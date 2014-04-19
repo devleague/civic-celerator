@@ -3,7 +3,7 @@
   <div class="main" ng-controller="SingleBillController">
           <!-- ****************** NAVBAR ****************** -->
   <nav class="header-section">
-    <img src="../img/logo.png">
+    <img src="../img/logo.png" ng-click="enter()">
   </nav>
   <!-- ******************* ENDS NAV-BAR ******************* -->
    <div class="bills-name-section">
@@ -57,7 +57,7 @@
       </div> <!-- end of div.candidate-committees -->
 
       <div class="candidate-list-section-mobile">
-        <h1> Candidate's Supporting</h1>
+        <h1> Supporters</h1>
         <ul>
           <li ng-click="candidateView({{candidate.candidate_id}})" ng-repeat="candidate in candidates">{{ billSponsors }}</li>
           

@@ -1,7 +1,9 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300');
+
 html,
 body {
     background-color: black;
-    font-family: "Novecentosanswide-Normal" , sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
     color: #f9f9f9;
 }
 
@@ -18,10 +20,12 @@ body {
 
 h1 {
     font-size: 1.5em;
+    font-family: "Novecentosanswide-Bold" , sans-serif !important;
 }
 
 h2 {
     font-size: 1.5em;
+    font-family: "Novecentosanswide-Normal" , sans-serif !important;
 }
 
 li {
@@ -277,7 +281,7 @@ li {
             }
 
             ul {
-                padding: 0px 20px 0 20px;
+                padding: 0;
                 background-color: #bdbdbd;
                 margin-bottom: 0;
 
@@ -288,7 +292,7 @@ li {
             li {
                 list-style-type: none;
                 border-bottom: 1px solid rgba(0,0,0,.5);
-                padding: 10px 0 10px 0;
+                padding: 10px 20px 10px 20px;
 
                 &:first-child {
                     padding-top: 10px;
@@ -297,6 +301,12 @@ li {
                 &:last-child {
                     border-bottom: none;
                 }
+
+            }
+
+            li:hover {
+                cursor: pointer;
+                background-color: #7E7C7D;
 
             }
         }
@@ -476,12 +486,15 @@ li {
     }
 
     .bill-industry-description {
-        background-color: darkgray;
-        padding: 30px;
+        background-color: #7E7C7D;
+        padding: 20px;
         display: none;
 
         @media only screen and (min-width: 950px) {
             display: block;
+            border-left: 1px solid rgba(0,0,0,.5);
+            border-right: 1px solid rgba(0,0,0,.5);
+            border-bottom: 1px solid rgba(0,0,0,.5);
         }
     }
 

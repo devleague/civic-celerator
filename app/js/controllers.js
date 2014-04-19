@@ -271,6 +271,10 @@ App.controller('SingleBillController', function ($scope, $http, $routeParams, $l
 
   } //getSingleBill
 
+ $scope.enter = function () {
+    $location.path('/candidates');
+  }
+  
 });
 
 App.controller('LandingController', function ($scope, $http, $location) {
