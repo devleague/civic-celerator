@@ -32,6 +32,7 @@
           <li ng-repeat="bill in bills" ng-click="viewSingleBill(bill.oid)">
             {{ bill.id }}
           </li>
+
         </ul>
       </div> <!-- end of div.bills-sponsored-section -->
 
@@ -59,6 +60,7 @@
         <h1> Candidate's Supporting</h1>
         <ul>
           <li ng-click="candidateView({{candidate.candidate_id}})" ng-repeat="candidate in candidates">{{ billSponsors }}</li>
+          
         </ul>
       </div> <!-- end of div.bills-sponsored-section -->
 

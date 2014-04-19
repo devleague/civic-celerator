@@ -107,7 +107,7 @@ function getCommittees ( req, res ) {
 
 function getBills ( req, res ) {
 
-  Bills.find( {}, 'title all_ids sponsors summary bill_id' ).exec( function ( err, bill ) {
+  Bills.find( {}, 'title all_ids sponsors summary bill_id session' ).exec( function ( err, bill ) {
 
     if ( err ) conosle.log('Error ' + err );
 
@@ -136,7 +136,7 @@ function getSingleBill ( req, res ) {
   var bill_oid = req.params.oid;
   console.log(req.params);
   Bills.findOne({"_id": bill_oid}, function (err, bill) {
-    // console.log(bill);
+    console.log("bill" + bill);
     res.json(bill);
     return;
   });
