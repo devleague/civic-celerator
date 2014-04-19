@@ -48,8 +48,8 @@ myApp.directive( 'pchart', function (  ) {
         $('.pie-chart svg').remove();
 
 
-        var width   = d3.select( element[0] ).node().offsetWidth;
-        var height  = d3.select( element[0] ).node().offsetHeight;
+        var width   = 400;
+        var height  = 400;
         var svg     = d3.select( element[0] )
                       .append( "svg" )
                       .attr( 'width', width )
