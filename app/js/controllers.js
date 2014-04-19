@@ -97,7 +97,11 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
           });
 
-          getContributions();
+          getCommittee( function( contributionData ) {
+          
+            $scope.pData = contributionData;
+
+          });
 
         }
 
@@ -113,9 +117,9 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
 
-          getCommittee( function( committee ) {
-
-            $scope.committees = committee;
+          getCommittee( function( contributionData ) {
+            
+            $scope.pData = contributionData;
 
           });
 
@@ -261,7 +265,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         }
 
           var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          $scope.pData          = contributionData;
+          console.log($scope.pData);
 
       }).
       error( function ( data, status, headers, config ) {
