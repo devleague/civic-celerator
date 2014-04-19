@@ -10,8 +10,8 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 
 App.controller( 'MainCtrl', [ '$scope', '$http',
   function ( $scope, $http ) {
-
-    getBills();
+    console.log("loading");
+    getBills("53504530fa5c824f199be48c");
     politician();
 
     $http({
@@ -68,7 +68,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
 
         });
 
-        getBills( function( bills ) {
+        getBills("53504530fa5c824f199be48c", function( bills ) {
 
           $scope.bills = bills;
 
@@ -184,14 +184,15 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
           * politician's bills
     *******************************/
 
-    function getBills( cb ) {
+    function getBills(id, cb ) {
 
-      var billCollection = [];
-
+      console.log("money");
+      // var billCollection = [];
+      
       $http({
 
         method  : 'GET',
-        url     : 'http://localhost:3000/api/bills'
+        url     : 'localhost:3000/api/bills/'+id
 
       }).
       success( function ( data, status, headers, config ) {

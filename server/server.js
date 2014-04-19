@@ -124,6 +124,14 @@ function getContributions ( req, res ) {
 
 }// getContributions
 
+function getSingleBills( req, res){
+  console.log(req.params.id);
+  Bills.find({id: req.params.id}, function(){
+    console.log(bill);
+    res.json(bill);
+  })
+}
+
 
 /**************************************
             * Route Handling
@@ -133,6 +141,7 @@ server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
 server.get('/api/committees', getCommittees);
 server.get('/api/bills', getBills);
+server.get('/api/bills/:id', getSingleBills);
 
 /**************************************
             * Server Setup
