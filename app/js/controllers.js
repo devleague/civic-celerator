@@ -12,7 +12,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
     $scope.billView = function(bill_id) {
-      $location.path("/bills/" + bill_id);
+      $location.path('/bills/' + bill_oid);
     }
 
     // loads politician: pic, name, bills, committee //
@@ -22,10 +22,16 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
     //getContributions();
 
     $scope.viewSingleBill = function ( oid ) {
+<<<<<<< HEAD
 
+=======
+      console.log(oid);
+>>>>>>> front-end-jason
       $location.url( '/bill/' + oid );
 
     };
+
+    
 
 /**************************************************
                     * Helpers
@@ -284,9 +290,14 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
+<<<<<<< HEAD
 /**************************************************
         * SingleBillController / bill.html
 **************************************************/
+=======
+App.controller('SingleBillController', function ($scope, $http, $routeParams, $location) {
+  var bill_oid = $routeParams.oid;
+>>>>>>> front-end-jason
 
 App.controller( 'SingleBillController', function ( $scope, $http, $routeParams ) {
   
@@ -330,3 +341,12 @@ App.controller( 'SingleBillController', function ( $scope, $http, $routeParams )
   }
 
 });
+<<<<<<< HEAD
+=======
+
+App.controller('LandingController', function ($scope, $http, $location) {
+  $scope.enter = function () {
+    $location.path('/candidates');
+  }
+});
+>>>>>>> front-end-jason

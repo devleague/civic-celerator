@@ -78,6 +78,10 @@ function getCandidates ( req, res ) {
     function ( err, politicians ) {
 
       if ( err ) console.log( 'Error ' + err );
+<<<<<<< HEAD
+=======
+      // console.log("politicians last name: " + politicians.last_name);
+>>>>>>> front-end-jason
 
       res.json( politicians );
 
@@ -127,6 +131,19 @@ function getContributions ( req, res ) {
 
 }// getContributions
 
+<<<<<<< HEAD
+=======
+function getSingleBill ( req, res ) {
+  var bill_oid = req.params.oid;
+  console.log(req.params);
+  Bills.findOne({"_id": bill_oid}, function (err, bill) {
+    // console.log(bill);
+    res.json(bill);
+    return;
+  });
+}
+
+>>>>>>> front-end-jason
 
 // ('/api/bills') //
 function getBillbyID ( req, res ) {
@@ -137,9 +154,13 @@ function getBillbyID ( req, res ) {
 
     if ( err ) console.log( 'Error' + err );
 
+<<<<<<< HEAD
     if ( bill === null ) {
 
       return res.redirect( "/app" );
+=======
+    console.log("Bill Sponsors: " + bill.sponsors);
+>>>>>>> front-end-jason
 
     }
 
