@@ -49,6 +49,7 @@ li {
     padding: 0 !important;
     margin: 0 !important;
     width: 100%;
+    
 
     @media only screen and (min-width: 950px) {
         padding: 0 0 50px 0 !important;
@@ -438,29 +439,37 @@ li {
 
     .bill-industry-influence-section {
         text-align: center;
-        background-color: lightgray;
+        background-color: #bdbdbd;
+        border: 1px solid rgba(0,0,0,.5);
 
         h1 {
-            padding-top: 20px;
+                background-color: #7E7C7D;
+                padding: 20px;
+                margin: 0;
+                border-bottom: 1px solid rgba(0,0,0,.5);
+
         }
 
         @media only screen and (min-width: 950px) {
             text-align: left;
+            border: 1px solid rgba(0,0,0,.5);
+            -webkit-box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow:    1px 0px 20px 5px rgba(0, 0, 0, 0.3);
+            box-shadow:         1px 0px 20px 5px rgba(0, 0, 0, 0.3);
 
-            h1 {
-                background-color: #bdbdbd;
-                padding-top: 0;
-            }
         }
 
         .influence-graph-section {
             height: 300px;
 
             .pie-chart {
-                width: 320px;
+                width: 100%;
                 height: 300px;
                 margin: 0 auto;
 
+                @media only screen and (min-width: 950px) {
+                    width: 700px;
+                }
             }
         }
     }
