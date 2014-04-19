@@ -248,7 +248,6 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
-<<<<<<< HEAD
 App.controller('SingleBillController', function ($scope, $http, $routeParams) {
   var bill_oid = $routeParams.oid;
 
@@ -271,8 +270,3 @@ App.controller('SingleBillController', function ($scope, $http, $routeParams) {
   } //getSingleBill
 
 });
-=======
-App.controller( 'BillCtrl', [ '$scope', '$http', function ($scope, $http) {
-  $scope.bill
-}])
->>>>>>> 57b50bbf72297f0aabb2f6797f65bbb2d34d745c
