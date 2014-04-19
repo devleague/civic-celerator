@@ -8,7 +8,7 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
         * Main Controller / index.html
 **************************************************/
 
-App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
+App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
     $scope.billView = function(bill_id) {
@@ -71,7 +71,7 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
           });
 
-          getContributions( function( contributionData, datesContributed ) {
+          getContributions( function( contributionData, datesContributed  ) {
             
             $scope.pData = contributionData;
             $scope.lData = datesContributed;
@@ -124,11 +124,6 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
 
-          getCommittee( function( contributionData, datesContributed ) {
-            
-            $scope.pData = contributionData;
-            $scope.lData = datesContributed;
-
           getCommittee( function( committee ) {
             
             $scope.committees = committee;
@@ -146,10 +141,12 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
           
             $scope.pData = contributionData;
             $scope.lData = datesContributed;
+            console.log($scope.lData);
 
           });
 
         }
+
 
       }).
       error( function ( data, status, headers, config ) {
@@ -277,7 +274,7 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
-            contributedDate.push(data[i].date);
+            contributedDate.push({ date : data[i].date, contributionmoney : data[i].amount });
 
           }
 
