@@ -126,6 +126,7 @@ function getContributions ( req, res ) {
 
 function getSingleBill ( req, res ) {
   var bill_oid = req.params.oid;
+  // console.log(req.params);
   Bills.findOne({"_id": bill_oid}, function (err, bill) {
     console.log(bill);
     res.json(bill);
@@ -142,7 +143,7 @@ server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
 server.get('/api/committees', getCommittees);
 server.get('/api/bills', getBills);
-server.get('/api/bill/:id', getSingleBill);
+server.get('/api/bill/:oid', getSingleBill);
 
 /**************************************
             * Server Setup

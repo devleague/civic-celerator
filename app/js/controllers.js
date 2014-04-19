@@ -14,9 +14,9 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
     politician();
     getContributions();
 
-    $scope.viewSingleBill = function ( id ) {
+    $scope.viewSingleBill = function ( oid ) {
       // console.log();
-      $location.url( '/bill/' + id );
+      $location.url( '/bill/' + oid );
     };
 
 /**************************************************
@@ -228,8 +228,8 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
       }).
       success( function ( data, status, headers, config ) {
 
-        console.log('inside contributions, data:');
-        console.log( data );
+        // console.log('inside contributions, data:');
+        // console.log( data );
 
       }).
       error( function ( data, status, headers, config ) {
@@ -245,7 +245,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 ]);
 
 App.controller('SingleBillController', function ($scope, $http, $routeParams) {
-  var bill_id = $routeParams.id;
+  var bill_oid = $routeParams.oid;
 
   getSingleBill(bill_oid);
 
@@ -257,7 +257,7 @@ App.controller('SingleBillController', function ($scope, $http, $routeParams) {
     }).
     success(function ( data, status, headers, config ) {
       $scope.singleBill = data;
-      console.log("hey man" + data);
+      console.log("data is this: " + data);
     }).
     error(function ( data, status, headers, config ) {
       console.log("error getting single bill data: " + data);

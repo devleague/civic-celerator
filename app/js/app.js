@@ -17,9 +17,11 @@ myApp.config(function ($routeProvider, $locationProvider) {
       templateUrl: 'views/candidate.html',
       controller: 'MainCtrl'
     }).
-    when('/bill/:id', {
+    when('/bill/:oid', {
       templateUrl: 'bill.html',
       controller: 'SingleBillController'
-    });
+    }).
+    otherwise('/');
+
   $locationProvider.html5Mode(true);
 });
