@@ -71,10 +71,10 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
           });
 
-          getContributions( function( contributionData ) {
+          getContributions( function( contributionData, datesContributed ) {
             
             $scope.pData = contributionData;
-            $scope.lData = contributionData.contributedDate;
+            $scope.lData = datesContributed;
 
           });
 
@@ -103,13 +103,10 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
           });
 
             getContributions( function( contributionData, datesContributed ) {
-            
+              
               $scope.pData = contributionData;
-<<<<<<< HEAD
               $scope.lData = datesContributed;
-=======
-              $scope.lData = contributionData.contributedDate;
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
+
 
             });
 
@@ -127,16 +124,14 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
 
-<<<<<<< HEAD
           getCommittee( function( contributionData, datesContributed ) {
             
             $scope.pData = contributionData;
             $scope.lData = datesContributed;
-=======
+
           getCommittee( function( committee ) {
             
             $scope.committees = committee;
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
 
           });
 
@@ -150,16 +145,11 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
           getContributions( function( contributionData, datesContributed ) {
           
             $scope.pData = contributionData;
-<<<<<<< HEAD
             $scope.lData = datesContributed;
-=======
-            $scope.lData = contributionData.contributedDate;
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
 
           });
 
         }
-
 
       }).
       error( function ( data, status, headers, config ) {
@@ -267,13 +257,8 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
     // All contributions made to a politician //
     function getContributions ( cb ) {
-<<<<<<< HEAD
 
       $scope.pData = {};
-
-=======
-      //$scope.pData = {};
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
       var money                   = [];
       var contributionType        = [];
       var contributedDate         = [];
@@ -298,15 +283,9 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
         }
 
-<<<<<<< HEAD
           var contributionData  = { industrymoney : money, contributiontype : contributionType };
           var datesContributed  = contributedDate;
           return cb ( contributionData, datesContributed );
-=======
-          var contributionData  = { industrymoney : money, contributiontype : contributionType, contributedDate: contributedDate };
-          //console.log(contributionData)
-          return cb ( contributionData );
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
 
       }).
       error( function ( data, status, headers, config ) {
