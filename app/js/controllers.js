@@ -11,25 +11,8 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 App.controller( 'MainCtrl', [ '$scope', '$http',
   function ( $scope, $http ) {
 
-    getBills();
     politician();
-
-    $http({
-
-      method  : 'GET',
-      url     : 'http://localhost:3000/api/contributions'
-
-    }).
-    success( function ( data, status, headers, config ) {
-
-    }).
-    error( function ( data, status, headers, config ) {
-
-      console.log( 'Error status : ' + status );
-
-    });
-
-
+    getContributions();
 
 /**************************************************
                     * Helpers
@@ -196,20 +179,13 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
       }).
       success( function ( data, status, headers, config ) {
 
-        console.log("bill title:");
-        console.log(data[0].title);
-
-        console.log("sponsors:");
-        //console.log(data[0].sponsors[0].leg_id);
-        console.log(data[0]);
-
         for (var i = 0; i < data.length; i++) {
 
           for (var j = 0; j < data[i].sponsors.length; j++) {
 
             if ( $scope.leg_id == data[i].sponsors[j].leg_id ) {
 
-              billCollection.push(data[i].bill_id);
+              billCollection.push({ id : data[i].bill_id, title : data[i].title });
 
               // console.log( data[i].sponsors[j].leg_id);
               // console.log( data[i].title );
@@ -217,7 +193,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
               // console.log( data[i].summary );
 
             }
-            
+
           }
 
         }
@@ -232,6 +208,28 @@ App.controller( 'MainCtrl', [ '$scope', '$http',
       });
 
     }// function getBills
+
+    function getContributions ( cb ) {
+
+      $http({
+
+        method  : 'GET',
+        url     : 'http://localhost:3000/api/contributions'
+
+      }).
+      success( function ( data, status, headers, config ) {
+
+        console.log('inside contributions, data:');
+        console.log( data );
+
+      }).
+      error( function ( data, status, headers, config ) {
+
+        console.log( 'Error ' + status );
+
+      });
+
+    }// function getContributions
 
   }
 
