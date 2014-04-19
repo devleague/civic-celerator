@@ -128,23 +128,8 @@ function getContributions ( req, res ) {
 
 }// getContributions
 
-<<<<<<< HEAD
 
 // ('/api/bill/:id') //
-=======
-<<<<<<< HEAD
-function getSingleBills( req, res){
-  console.log(req.params.id);
-  Bills.find({id: req.params.id}, function(){
-    console.log(bill);
-    res.json(bill);
-  })
-}
-
-=======
-<<<<<<< HEAD
-=======
->>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
 function getSingleBill ( req, res ) {
 
   var bill_oid = req.params.id;
@@ -157,12 +142,6 @@ function getSingleBill ( req, res ) {
   });
 
 }
-
-<<<<<<< HEAD
-=======
->>>>>>> front-end-jason
->>>>>>> c0e58968e5d62b49a9fe07c58fb1075f11f514ba
->>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
 
 // ('/api/bills') //
 function getBillbyID ( req, res ) {
@@ -209,12 +188,11 @@ server.get('/api/candidates', getCandidates);
 server.get('/api/contributions', getContributions);
 server.get('/api/committees', getCommittees);
 server.get('/api/bills', getBills);
-<<<<<<< HEAD
+
 server.get('/api/bill/:id', getSingleBill);
 server.get('/api/bill/billSupport', getBillSupport);
-=======
+
 server.get('/api/bills/:id', getSingleBills);
->>>>>>> f1b43aa2853491541482891b1c92b9ca98b4bd6a
 
 /**************************************
             * Server Setup
