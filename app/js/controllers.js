@@ -264,6 +264,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
         for ( var i = 0; i < data.length; i++ ) {
 
           if ( $scope.fullName == data[i].candidate_name ) {
+            
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
 
