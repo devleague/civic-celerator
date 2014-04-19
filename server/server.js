@@ -113,11 +113,11 @@ function getBills ( req, res ) {
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  Contributions.find().sort().exec(
+  Contributions.find({}, 'candidate_name contributor_type date amount').exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
-
+      
       res.json( money );
 
     });
