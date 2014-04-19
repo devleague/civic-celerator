@@ -76,10 +76,9 @@
         <div class="candidate-committees">
 
           <h1> Committees </h1>
-
           <ul>
-            <li ng-repeat='com in coms'>
-              <span>{{ com }}</span>
+            <li ng-repeat='committee in committees'>
+              <span>{{ committee }}</span>
             </li>
           </ul>
         </div> <!-- end of div.candidate-committees -->
@@ -89,7 +88,7 @@
           <h1> Bills Sponsored</h1>
 
           <ul>
-            <li ng-click="billview({{bills.bill_id}})" ng-repeat="bill in bills">{{ bill }}</li>
+            <li ng-repeat="bill in bills">{{ bill.id }}<br>{{ bill.title }}</li>
           </ul>
         </div> <!-- end of div.bills-sponsored-section-desktop -->
           
