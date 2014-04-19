@@ -11,12 +11,16 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
 App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
+    // loads politician: pic, name, bills, committee //
     politician();
+
+    // temporarily here //
     getContributions();
 
     $scope.viewSingleBill = function ( oid ) {
-      // console.log();
+
       $location.url( '/bill/' + oid );
+
     };
 
 /**************************************************
@@ -191,15 +195,12 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
             if ( $scope.leg_id == data[i].sponsors[j].leg_id ) {
 
               billCollection.push({
-                id : data[i].bill_id,
-                title : data[i].title,
-                oid: data[i]._id
-              });
 
-              // console.log( data[i].sponsors[j].leg_id);
-              // console.log( data[i].title );
-              // console.log( data[i].sponsors[j].name );
-              // console.log( data[i].summary );
+                id    : data[i].bill_id,
+                title : data[i].title,
+                oid   : data[i]._id
+
+              });
 
             }
 
@@ -244,23 +245,29 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
 
 ]);
 
-App.controller('SingleBillController', function ($scope, $http, $routeParams) {
+App.controller( 'SingleBillController', function ( $scope, $http, $routeParams ) {
+  
   var bill_oid = $routeParams.oid;
-
   getSingleBill(bill_oid);
 
-  function getSingleBill (oid) {
+  function getSingleBill ( oid ) {
 
     $http({
-      method: 'GET',
-      url: 'http://localhost:3000/api/bill/' + oid
+
+      method  : 'GET',
+      url     : 'http://localhost:3000/api/bill/' + oid
+
     }).
-    success(function ( data, status, headers, config ) {
+    success( function ( data, status, headers, config ) {
+      
       $scope.singleBill = data;
-      console.log("data is this: " + data);
+
     }).
-    error(function ( data, status, headers, config ) {
+    error( function ( data, status, headers, config ) {
+
       console.log("error getting single bill data: " + data);
+      console.log( 'Error ' + status );
+
     });
 
   } //getSingleBill

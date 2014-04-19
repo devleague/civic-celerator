@@ -113,7 +113,7 @@ function getBills ( req, res ) {
 // server.get('/api/contributions') //
 function getContributions ( req, res ) {
 
-  Contributions.find({ date : {$gte: "2012-01-01T12:12:43" } }, 'contributor_type candidate_name date amount').aggregate({}).exec(
+  Contributions.find({ date : {$gte: "2012-01-01T12:12:43" } }, 'contributor_type candidate_name date amount').exec(
     function ( err, money ) {
 
       if ( err ) console.log( 'Error ' + err );
