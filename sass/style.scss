@@ -401,11 +401,11 @@ li {
         }
 
         .contributions-graph-section {
-            height: 300px;
+            height: 600px;
 
-            .line-chart {
+            .contributions-graph {
                 width: 100%;
-                height: 300px;
+                height: 500px;
                 margin: 0 auto;
 
                 @media only screen and (min-width: 950px) {
@@ -448,6 +448,7 @@ li {
 
                 @media only screen and (min-width: 950px) {
                     width: 700px;
+                    margin: 0 auto;
                 }
             }
         }
@@ -611,6 +612,24 @@ li {
 .full-container {
     background-color: black;
     min-height: 100%;
+}
+
+.contributions-graph{
+    height:500px;
+}
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
 }
 
 .footer-section {
