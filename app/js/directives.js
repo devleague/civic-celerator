@@ -10,35 +10,39 @@ myApp.directive('pchart', function($window) {
     //happens when everything is associated and attached to the dom
     link: function(scope, element, attrs) {
 
-      var width = d3.select(element[0]).node().offsetWidth;
-      var height = d3.select(element[0]).node().offsetHeight;
-      var svg = d3.select(element[0])
-        .append("svg")
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
-
-      //if the window gets resized
-      window.onresize = function() {
-        scope.render();
-      };
-
-      //watch the window the angular way
-      scope.$watch(function() {
-        return angular.element(window)[0].innerWidth;
-      }, function() {
-        scope.render();
-      });
-
       //continue watching for new values
       scope.$watch('pData', function(oldVals) {
         return scope.render();
       }, true);
 
       scope.render = function(data) {
-        //remove the elements (after rerender)
-        svg.selectAll("*").remove();
+
+        var itm = {};
+        var money = [];
+        var type = [];
+
+        for(var i = 0; i < scope.pData.contributiontype.length; i++ ){
+          
+          if(itm[scope.pData.contributiontype[i]] == undefined){
+            itm[scope.pData.contributiontype[i]] = 0;
+          }
+          itm[scope.pData.contributiontype[i]] += scope.pData.industrymoney[i];
+
+        }
+        for(var key in itm){
+          type.push(key);
+          money.push(itm[key]);
+        }
+
+
+        var width   = d3.select(element[0]).node().offsetWidth;
+        var height  = d3.select(element[0]).node().offsetHeight;
+        var svg     = d3.select(element[0])
+                      .append("svg")
+                      .attr('width', width)
+                      .attr('height', height)
+                      .append('g')
+                      .attr('transform', "translate(" + width / 2 + ',' + height / 2 + ")");
         //for a bar graph
         // var width, height, max;
         var margin = 5;
@@ -55,20 +59,21 @@ myApp.directive('pchart', function($window) {
         var pie = d3.layout.pie()
           .sort(null)
           .value(function(data, i) {
-            return scope.pData.industrymoney[i].value;
+            return money[i];
           })
 
 
 
         var g = svg.selectAll(".arc")
-          .data(pie(scope.pData.industrymoney))
+          .data(pie(money))
           .enter()
           .append('g')
           .attr('class', 'arc');
 
         g.append('path')
           .attr('d', arc)
-          .style("fill", function(d, i) { return color(scope.pData.industrymoney[i].value); });
+
+          .style("fill", function(d, i) { return color(money[i]); });
 
       //STUB: labels for pie chart
         g.append('text')
@@ -95,13 +100,14 @@ myApp.directive('pchart', function($window) {
           })
         
           .text(function(d,i) {
-            return scope.pData.industrymoney[i].value;
+            return type[i];
           })
           .attr('fill','white');
       }
     }
   }
 });
+
 
 myApp.directive('pchart2', function($window) {
   return {
