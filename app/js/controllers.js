@@ -8,7 +8,7 @@ var App = angular.module( 'myApp.controllers', [ 'ui.bootstrap' ] );
         * Main Controller / index.html
 **************************************************/
 
-App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
+App.controller( 'MainCtrl', [ '$scope', '$http', '$location',
   function ( $scope, $http, $location ) {
 
     $scope.billView = function(bill_id) {
@@ -71,10 +71,10 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
           });
 
-          getContributions( function( contributionData, datesContributed ) {
+          getContributions( function( contributionData ) {
             
             $scope.pData = contributionData;
-            $scope.lData = datesContributed;
+            $scope.lData = contributionData.contributedDate;
 
           });
 
@@ -102,11 +102,10 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
           });
 
-            getContributions( function( contributionData, datesContributed ) {
-              
+            getContributions( function( contributionData ) {
+            
               $scope.pData = contributionData;
-              $scope.lData = datesContributed;
-
+              $scope.lData = contributionData.contributedDate;
 
             });
 
@@ -124,11 +123,6 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
           $scope.picture    = Candidates[CurCandidate].photo_url;
           $scope.leg_id     = Candidates[CurCandidate].leg_id;
 
-          getCommittee( function( contributionData, datesContributed ) {
-            
-            $scope.pData = contributionData;
-            $scope.lData = datesContributed;
-
           getCommittee( function( committee ) {
             
             $scope.committees = committee;
@@ -142,14 +136,15 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
           });
 
 
-          getContributions( function( contributionData, datesContributed ) {
+          getContributions( function( contributionData ) {
           
             $scope.pData = contributionData;
-            $scope.lData = datesContributed;
+            $scope.lData = contributionData.contributedDate;
 
           });
 
         }
+
 
       }).
       error( function ( data, status, headers, config ) {
@@ -257,8 +252,7 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
     // All contributions made to a politician //
     function getContributions ( cb ) {
-
-      $scope.pData = {};
+      //$scope.pData = {};
       var money                   = [];
       var contributionType        = [];
       var contributedDate         = [];
@@ -274,7 +268,7 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
         for ( var i = 0; i < data.length; i++ ) {
 
           if ( $scope.fullName == data[i].candidate_name ) {
-
+            
             money.push( data[i].amount );
             contributionType.push( data[i].contributor_type );
             contributedDate.push(data[i].date);
@@ -283,9 +277,9 @@ App.controller( 'MainCtrl', [ 'pchart', '$scope', '$http', '$location',
 
         }
 
-          var contributionData  = { industrymoney : money, contributiontype : contributionType };
-          var datesContributed  = contributedDate;
-          return cb ( contributionData, datesContributed );
+          var contributionData  = { industrymoney : money, contributiontype : contributionType, contributedDate: contributedDate };
+          //console.log(contributionData)
+          return cb ( contributionData );
 
       }).
       error( function ( data, status, headers, config ) {

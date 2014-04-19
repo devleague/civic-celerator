@@ -4,11 +4,8 @@
 
 var myApp = angular.module( 'myApp.directives', [] );
 
-<<<<<<< HEAD
-myApp.directive( 'pchart', [ "$scope", function ( $scope, $window ) {
-=======
+
 myApp.directive( 'pchart', function (  ) {
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
 
   return {
 
@@ -29,14 +26,8 @@ myApp.directive( 'pchart', function (  ) {
         var itm   = {};
         var money = [];
         var type  = [];
-<<<<<<< HEAD
-        console.log("work sfaksf");
-        console.log($scope.pData.contributiontype[0]);
-        for( var i = 0; i < $scope.pData.contributiontype.length; i++ ){
-=======
 
         for( var i = 0; i < scope.pData.contributiontype.length; i++ ){
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
           
           if( itm[ scope.pData.contributiontype[i] ] == undefined ) {
 
@@ -138,11 +129,7 @@ myApp.directive( 'pchart', function (  ) {
 });
 
 
-<<<<<<< HEAD
-myApp.directive( 'pchart2', function ( $scope, $window ) {
-=======
 myApp.directive(['pchart2', 'scope', function ( scope, $window ) {
->>>>>>> be4c9b2e06f860dc737c92dc770241db3fcd6737
 
   return {
 
@@ -253,7 +240,7 @@ myApp.directive(['pchart2', 'scope', function ( scope, $window ) {
 
   };
 
-});
+}]);
 
 myApp.directive( 'lchart', function ( $window ) {
 
@@ -278,8 +265,8 @@ myApp.directive( 'lchart', function ( $window ) {
         var margin  = { top : 30, right : 50, bottom : 30, left : 90 };
         var svg = d3.select( element[0] )
                             .append("svg")
-                            .attr('width')
-                            .attr('height')
+                            .attr('width', width)
+                            .attr('height', height)
                             .append('g')
                             .attr("transform", "translate("+margin.left+","+margin.top+")");
 
