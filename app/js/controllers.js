@@ -43,7 +43,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
       $http({
 
         method  : 'GET',
-        url     : 'http://localhost:3000/api/candidates'
+        url     : 'http://polydex.devleague.com/api/api/candidates'
 
       }).
       success( function ( data, status, headers, config ) {
@@ -170,7 +170,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
       $http({
 
         method   : 'GET',
-        url      : 'http://localhost:3000/api/committees'
+        url      : 'http://polydex.devleague.com/api/api/committees'
 
       }).
       success( function ( data, status, headers, config ) {
@@ -215,7 +215,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
       $http({
 
         method  : 'GET',
-        url     : 'http://localhost:3000/api/bills'
+        url     : 'http://polydex.devleague.com/api/api/bills'
 
       }).
       success( function ( data, status, headers, config ) {
@@ -263,7 +263,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
       $http({
 
         method  : 'GET',
-        url     : 'http://localhost:3000/api/contributions'
+        url     : 'http://polydex.devleague.com/api/api/contributions'
 
       }).
       success( function ( data, status, headers, config ) {
@@ -301,7 +301,7 @@ App.controller( 'MainCtrl', [ '$scope', '$http', '$routeParams', '$location',
     $http({
 
       method  : 'GET',
-      url     : 'http://localhost:3000/api/bill/' + oid
+      url     : 'http://polydex.devleague.com/api/api/bill/' + oid
 
     }).
     success( function ( data, status, headers, config ) {
